@@ -9,6 +9,6 @@ public static class Problem0001
 
     private static IEnumerable<int> GetMultiplesOfThreeAndFiveBelowTen()
     {
-        return new List<int> { 3, 5, 6, 9 };
+        return Enumerable.Range(1, 9).Where(number => number % 3 == 0 || number % 5 == 0);
     }
 }
