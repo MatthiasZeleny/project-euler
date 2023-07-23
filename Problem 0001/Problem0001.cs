@@ -2,9 +2,12 @@
 
 public static class Problem0001
 {
-    public static int Example() => GetMultiplesOfThreeAndFiveBelow(10).Sum();
+    public static int Example() => GetSumOfAllMultiplesOfThreeAndFiveBelow(10);
 
-    public static int Solution() => GetMultiplesOfThreeAndFiveBelow(1000).Sum();
+    public static int Solution() => GetSumOfAllMultiplesOfThreeAndFiveBelow(1000);
+
+    private static int GetSumOfAllMultiplesOfThreeAndFiveBelow(int threshold) =>
+        GetMultiplesOfThreeAndFiveBelow(threshold).Sum();
 
     private static IEnumerable<int> GetMultiplesOfThreeAndFiveBelow(int threshold) =>
         NumbersBelow(threshold).Where(DivisibleByFourOrFive);
