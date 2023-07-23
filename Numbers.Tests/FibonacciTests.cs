@@ -2,7 +2,7 @@ using FluentAssertions;
 
 namespace Numbers.Tests;
 
-public class FibonacciListTests
+public class FibonacciTests
 {
     [Test]
     public void GetAllLessOrEqual_One_ShouldReturnCorrectList()
