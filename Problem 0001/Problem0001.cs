@@ -1,6 +1,6 @@
 ﻿namespace Problem_0001;
 
-public abstract class Problem0001Solver
+public static class Problem0001
 {
     public static int Example()
     {
