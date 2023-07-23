@@ -1,4 +1,6 @@
-﻿namespace Problem_0002;
+﻿using Numbers;
+
+namespace Problem_0002;
 
 public static class Problem0002
 {
@@ -7,7 +9,7 @@ public static class Problem0002
             .Where(IsEven)
             .Sum();
 
-    private static bool IsEven(int number) => number % 2 == 0;
+    private static bool IsEven(int number) => number.IsDivisibleBy(2);
 
     private static IEnumerable<int> GetFibonacciNumbersLessOrEqual8() => new List<int> { 1, 2, 3, 5, 8 };
 }

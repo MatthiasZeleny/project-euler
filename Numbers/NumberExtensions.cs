@@ -1,4 +1,4 @@
-﻿namespace Problem_0001;
+﻿namespace Numbers;
 
 public static class NumberExtensions
 {

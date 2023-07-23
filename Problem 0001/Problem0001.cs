@@ -1,4 +1,6 @@
-﻿namespace Problem_0001;
+﻿using Numbers;
+
+namespace Problem_0001;
 
 public static class Problem0001
 {
