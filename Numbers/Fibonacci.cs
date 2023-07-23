@@ -1,19 +1,47 @@
-﻿namespace Numbers;
+﻿using System.Collections;
+
+namespace Numbers;
 
 public static class Fibonacci
 {
     public static IEnumerable<int> GetAllLessOrEqual(int threshold)
     {
-        if (threshold == 1)
+        var fibonacciProvider = new FibonacciProvider(threshold);
+
+        return fibonacciProvider;
+    }
+
+    private class FibonacciProvider : IEnumerable<int>
+    {
+        private readonly int _threshold;
+
+        public FibonacciProvider(int threshold)
         {
-            return new List<int> { 1 };
+            _threshold = threshold;
         }
 
-        if (threshold == 2)
+        public IEnumerator<int> GetEnumerator()
         {
-            return new List<int> { 1, 2 };
+            yield return 1;
+            if (_threshold == 1)
+            {
+                yield break;
+            }
+
+            yield return 2;
+            if (_threshold == 2)
+            {
+                yield break;
+            }
+
+            yield return 3;
+            yield return 5;
+            yield return 8;
         }
 
-        return new List<int> { 1, 2, 3, 5, threshold };
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
     }
 }
