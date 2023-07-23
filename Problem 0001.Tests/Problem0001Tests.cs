@@ -2,6 +2,9 @@ namespace Problem_0001.Tests;
 
 public class Problem0001Tests
 {
+    private const int ExampleResult = 23;
+    private const int ProblemResult = 0x38ED0;
+
     [SetUp]
     public void Setup()
     {
@@ -12,7 +15,7 @@ public class Problem0001Tests
     {
         var example = Problem0001.Example();
 
-        Assert.That(example, Is.EqualTo(23));
+        Assert.That(example, Is.EqualTo(ExampleResult));
     }
 
     [Test]
@@ -20,6 +23,6 @@ public class Problem0001Tests
     {
         var example = Problem0001.Solution();
 
-        Assert.That(example, Is.EqualTo(0x38ED0));
+        Assert.That(example, Is.EqualTo(ProblemResult));
     }
 }
