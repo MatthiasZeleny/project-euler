@@ -4,6 +4,8 @@ public static class Problem0001
 {
     public static int Example() => GetMultiplesOfThreeAndFiveBelow(10).Sum();
 
+    public static int Solution() => GetMultiplesOfThreeAndFiveBelow(1000).Sum();
+
     private static IEnumerable<int> GetMultiplesOfThreeAndFiveBelow(int threshold) =>
         NumbersBelow(threshold).Where(DivisibleByFourOrFive);
 

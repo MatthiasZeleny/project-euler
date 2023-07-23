@@ -14,4 +14,12 @@ public class Problem0001Tests
 
         Assert.That(example, Is.EqualTo(23));
     }
+
+    [Test]
+    public void Problem_ShouldReturnCorrectValue()
+    {
+        var example = Problem0001.Solution();
+
+        Assert.That(example, Is.EqualTo(0x38ED0));
+    }
 }
