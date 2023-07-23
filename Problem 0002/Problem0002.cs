@@ -3,7 +3,11 @@
 public static class Problem0002
 {
     public static int Example()
-    {
-        return new List<int> { 1, 2, 3, 5, 8 }.Where(number => number % 2 == 0).Sum();
-    }
+        => GetFibonacciNumbersLessOrEqual8()
+            .Where(IsEven)
+            .Sum();
+
+    private static bool IsEven(int number) => number % 2 == 0;
+
+    private static IEnumerable<int> GetFibonacciNumbersLessOrEqual8() => new List<int> { 1, 2, 3, 5, 8 };
 }
