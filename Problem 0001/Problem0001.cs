@@ -7,10 +7,9 @@ public static class Problem0001
     public static int Solution() => GetSumOfAllMultiplesOfThreeAndFiveBelow(1000);
 
     private static int GetSumOfAllMultiplesOfThreeAndFiveBelow(int threshold) =>
-        GetMultiplesOfThreeAndFiveBelow(threshold).Sum();
-
-    private static IEnumerable<int> GetMultiplesOfThreeAndFiveBelow(int threshold) =>
-        NumbersBelow(threshold).Where(DivisibleByFourOrFive);
+        NumbersBelow(threshold)
+            .Where(DivisibleByFourOrFive)
+            .Sum();
 
     private static bool DivisibleByFourOrFive(int number) => number % 3 == 0 || number % 5 == 0;
 
