@@ -9,5 +9,5 @@ public static class Problem0002
             .Where(NumberExtensions.IsEven)
             .Sum();
 
-    private static IEnumerable<int> GetFibonacciNumbersLessOrEqual8() => FibonacciList.GetAllLessOrEqual(8);
+    private static IEnumerable<int> GetFibonacciNumbersLessOrEqual8() => Fibonacci.GetAllLessOrEqual(8);
 }

@@ -1,6 +1,6 @@
 ﻿namespace Numbers;
 
-public static class FibonacciList
+public static class Fibonacci
 {
     public static IEnumerable<int> GetAllLessOrEqual(int threshold)
     {
