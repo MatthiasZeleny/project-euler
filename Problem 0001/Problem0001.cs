@@ -2,23 +2,12 @@
 
 public static class Problem0001
 {
-    public static int Example()
-    {
-        return GetMultiplesOfThreeAndFiveBelowTen().Sum();
-    }
+    public static int Example() => GetMultiplesOfThreeAndFiveBelowTen().Sum();
 
-    private static IEnumerable<int> GetMultiplesOfThreeAndFiveBelowTen()
-    {
-        return NumbersBelow(10).Where(DivisibleByFourOrFive);
-    }
+    private static IEnumerable<int> GetMultiplesOfThreeAndFiveBelowTen() =>
+        NumbersBelow(10).Where(DivisibleByFourOrFive);
 
-    private static bool DivisibleByFourOrFive(int number)
-    {
-        return number % 3 == 0 || number % 5 == 0;
-    }
+    private static bool DivisibleByFourOrFive(int number) => number % 3 == 0 || number % 5 == 0;
 
-    private static IEnumerable<int> NumbersBelow(int threshold)
-    {
-        return Enumerable.Range(1, threshold - 1);
-    }
+    private static IEnumerable<int> NumbersBelow(int threshold) => Enumerable.Range(1, threshold - 1);
 }
