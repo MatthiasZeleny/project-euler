@@ -1,3 +1,5 @@
+using FluentAssertions;
+
 namespace Problem_0001.Tests;
 
 public class Problem0001Tests
@@ -10,7 +12,7 @@ public class Problem0001Tests
     {
         var example = Problem0001.Example();
 
-        Assert.That(example, Is.EqualTo(ExampleResult));
+        example.Should().Be(ExampleResult);
     }
 
     [Test]
@@ -18,6 +20,6 @@ public class Problem0001Tests
     {
         var example = Problem0001.Solution();
 
-        Assert.That(example, Is.EqualTo(ProblemResult));
+        example.Should().Be(ProblemResult);
     }
 }
