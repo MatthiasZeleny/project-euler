@@ -21,6 +21,22 @@ public class FibonacciTests
     }
 
     [Test]
+    public void GetAllLessOrEqual_Three_ShouldReturnCorrectList()
+    {
+        var list = Fibonacci.GetAllLessOrEqual(3);
+
+        list.Should().BeEquivalentTo(new List<int> { 1, 2, 3 });
+    }
+
+    [Test]
+    public void GetAllLessOrEqual_Four_ShouldReturnCorrectList()
+    {
+        var list = Fibonacci.GetAllLessOrEqual(4);
+
+        list.Should().BeEquivalentTo(new List<int> { 1, 2, 3 });
+    }
+
+    [Test]
     public void GetAllLessOrEqual_Eight_ShouldReturnCorrectList()
     {
         var list = Fibonacci.GetAllLessOrEqual(8);

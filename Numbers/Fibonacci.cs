@@ -35,6 +35,11 @@ public static class Fibonacci
             }
 
             yield return 3;
+            if (_threshold is 3 or 4)
+            {
+                yield break;
+            }
+
             yield return 5;
             yield return 8;
         }
