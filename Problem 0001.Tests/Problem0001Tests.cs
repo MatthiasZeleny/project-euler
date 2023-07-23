@@ -18,8 +18,8 @@ public class Problem0001Tests
     [Test]
     public void Problem_ShouldReturnCorrectValue()
     {
-        var example = Problem0001.Solution();
+        var solution = Problem0001.Solution();
 
-        example.Should().Be(ProblemResult);
+        solution.Should().Be(ProblemResult);
     }
 }
