@@ -14,6 +14,8 @@ public static class Fibonacci
     private class FibonacciProvider : IEnumerable<int>
     {
         private readonly int _threshold;
+        private int _current = 1;
+        private int _previous = 1;
 
         public FibonacciProvider(int threshold)
         {
@@ -22,31 +24,24 @@ public static class Fibonacci
 
         public IEnumerator<int> GetEnumerator()
         {
-            yield return 1;
-            if (_threshold == 1)
+            while (StillNotAboveThreshold())
             {
-                yield break;
+                yield return GetCurrent();
+                ComputeNext();
             }
-
-            yield return 2;
-            if (_threshold == 2)
-            {
-                yield break;
-            }
-
-            yield return 3;
-            if (_threshold is 3 or 4)
-            {
-                yield break;
-            }
-
-            yield return 5;
-            yield return 8;
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
+        private void ComputeNext()
         {
-            return GetEnumerator();
+            var next = _previous + _current;
+            _previous = _current;
+            _current = next;
         }
+
+        private int GetCurrent() => _current;
+
+        private bool StillNotAboveThreshold() => _current <= _threshold;
+
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }
