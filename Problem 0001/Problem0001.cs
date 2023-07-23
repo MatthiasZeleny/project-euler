@@ -2,10 +2,10 @@
 
 public static class Problem0001
 {
-    public static int Example() => GetMultiplesOfThreeAndFiveBelowTen().Sum();
+    public static int Example() => GetMultiplesOfThreeAndFiveBelow(10).Sum();
 
-    private static IEnumerable<int> GetMultiplesOfThreeAndFiveBelowTen() =>
-        NumbersBelow(10).Where(DivisibleByFourOrFive);
+    private static IEnumerable<int> GetMultiplesOfThreeAndFiveBelow(int threshold) =>
+        NumbersBelow(threshold).Where(DivisibleByFourOrFive);
 
     private static bool DivisibleByFourOrFive(int number) => number % 3 == 0 || number % 5 == 0;
 
