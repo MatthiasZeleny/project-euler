@@ -11,7 +11,9 @@ public static class Problem0001
             .Where(DivisibleByFourOrFive)
             .Sum();
 
-    private static bool DivisibleByFourOrFive(int number) => number % 3 == 0 || number % 5 == 0;
+    private static bool DivisibleByFourOrFive(int number) =>
+        number.IsDivisibleBy(3)
+        || number.IsDivisibleBy(5);
 
     private static IEnumerable<int> NumbersBelow(int threshold) => Enumerable.Range(1, threshold - 1);
 }
