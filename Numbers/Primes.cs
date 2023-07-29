@@ -13,7 +13,7 @@ public static class Primes
         {
             while (rest.IsDivisibleBy(prime))
             {
-                rest = rest / prime;
+                rest /= prime;
                 primeFactors.Add(prime);
             }
         }
