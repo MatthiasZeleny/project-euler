@@ -1,6 +1,6 @@
 using FluentAssertions;
 
-namespace Problem_0001.Tests;
+namespace Problems.Tests;
 
 public class Problem0001Tests
 {
