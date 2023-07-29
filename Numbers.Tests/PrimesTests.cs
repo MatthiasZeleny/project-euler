@@ -20,6 +20,14 @@ public class PrimesTests
         list.Should().BeEquivalentTo(new List<int> { 2 });
     }
 
+    [Test]
+    public void FactorsFor_Four_ShouldReturnTwoTwos()
+    {
+        var list = Primes.FactorsFor(4);
+
+        list.Should().BeEquivalentTo(new List<int> { 2, 2 });
+    }
+
 
     [Test]
     public void FactorsFor_Problem0003Example_ShouldReturnCorrectValue()

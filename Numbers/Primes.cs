@@ -11,7 +11,7 @@ public static class Primes
 
         foreach (var prime in primes)
         {
-            if (rest.IsDivisibleBy(prime))
+            while (rest.IsDivisibleBy(prime))
             {
                 rest = rest / prime;
                 primeFactors.Add(prime);
