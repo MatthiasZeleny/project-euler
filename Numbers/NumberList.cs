@@ -2,5 +2,15 @@
 
 public static class NumberList
 {
-    public static IEnumerable<int> Below(int threshold) => Enumerable.Range(1, threshold - 1);
+    public static IEnumerable<long> Below(long threshold) => NumbersUpTo(threshold - 1);
+
+    public static IEnumerable<long> NaturalNumbers() => NumbersUpTo(long.MaxValue);
+
+    private static IEnumerable<long> NumbersUpTo(long maxValue)
+    {
+        for (long number = 1; number <= maxValue; number++)
+        {
+            yield return number;
+        }
+    }
 }

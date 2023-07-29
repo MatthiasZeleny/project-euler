@@ -2,11 +2,11 @@
 
 public static class Primes
 {
-    public static IEnumerable<int> FactorsFor(int number)
+    public static IEnumerable<long> FactorsFor(long number)
     {
         var primes = Create();
 
-        var primeFactors = new List<int>();
+        var primeFactors = new List<long>();
         var rest = number;
 
         foreach (var prime in primes)
@@ -26,10 +26,11 @@ public static class Primes
         return primeFactors;
     }
 
-    public static IEnumerable<int> Create()
+    public static IEnumerable<long> Create()
     {
-        var naturals = Enumerable.Range(2, int.MaxValue - 2);
-        var primes = new List<int>();
+        var naturals = NumberList.NaturalNumbers()
+            .Skip(1);
+        var primes = new List<long>();
 
         foreach (var natural in naturals)
         {

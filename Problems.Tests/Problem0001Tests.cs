@@ -4,8 +4,8 @@ namespace Problems.Tests;
 
 public class Problem0001Tests
 {
-    private const int ExampleResult = 23;
-    private const int ProblemResult = 0x38ED0;
+    private const long ExampleResult = 23;
+    private const long ProblemResult = 0x38ED0;
 
     [Test]
     public void Example_ShouldReturnCorrectValue()

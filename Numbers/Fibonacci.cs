@@ -4,25 +4,25 @@ namespace Numbers;
 
 public static class Fibonacci
 {
-    public static IEnumerable<int> GetAllLessOrEqual(int threshold)
+    public static IEnumerable<long> GetAllLessOrEqual(long threshold)
     {
         var fibonacciProvider = new FibonacciProvider(threshold);
 
         return fibonacciProvider;
     }
 
-    private class FibonacciProvider : IEnumerable<int>
+    private class FibonacciProvider : IEnumerable<long>
     {
-        private readonly int _threshold;
+        private readonly long _threshold;
         private int _current = 1;
         private int _previous = 1;
 
-        public FibonacciProvider(int threshold)
+        public FibonacciProvider(long threshold)
         {
             _threshold = threshold;
         }
 
-        public IEnumerator<int> GetEnumerator()
+        public IEnumerator<long> GetEnumerator()
         {
             while (StillNotAboveThreshold())
             {

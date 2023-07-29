@@ -42,7 +42,7 @@ public class PrimesTests
     {
         var primes = Primes.Create();
 
-        primes.First().Should().Be(2);
+        primes.First().Should().Be(2L);
     }
 
     [Test]
