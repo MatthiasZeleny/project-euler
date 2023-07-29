@@ -4,16 +4,20 @@ public static class Primes
 {
     public static IEnumerable<int> FactorsFor(int number)
     {
-        if (number == 1)
+        var primes = new List<int> { 2, 3, 5, 7, 11, 13, 29 };
+
+        var primeFactors = new List<int>();
+        var rest = number;
+
+        foreach (var prime in primes)
         {
-            return new List<int>();
+            if (rest.IsDivisibleBy(prime))
+            {
+                rest = rest / prime;
+                primeFactors.Add(prime);
+            }
         }
 
-        if (number == 2)
-        {
-            return new List<int> { 2 };
-        }
-
-        return new List<int> { 5, 7, 13, 29 };
+        return primeFactors;
     }
 }
