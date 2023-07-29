@@ -36,4 +36,12 @@ public class PrimesTests
 
         list.Should().BeEquivalentTo(new List<int> { 5, 7, 13, 29 });
     }
+
+    [Test]
+    public void Create_First_ShouldBeTwo()
+    {
+        var primes = Primes.Create();
+
+        primes.First().Should().Be(2);
+    }
 }

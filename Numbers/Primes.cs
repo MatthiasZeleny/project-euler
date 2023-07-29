@@ -4,7 +4,7 @@ public static class Primes
 {
     public static IEnumerable<int> FactorsFor(int number)
     {
-        var primes = CreatePrimes();
+        var primes = Create();
 
         var primeFactors = new List<int>();
         var rest = number;
@@ -21,7 +21,7 @@ public static class Primes
         return primeFactors;
     }
 
-    private static List<int> CreatePrimes()
+    public static List<int> Create()
     {
         return new List<int> { 2, 3, 5, 7, 11, 13, 29 };
     }
