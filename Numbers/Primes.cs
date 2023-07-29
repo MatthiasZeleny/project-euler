@@ -16,13 +16,31 @@ public static class Primes
                 rest /= prime;
                 primeFactors.Add(prime);
             }
+
+            if (rest == 1)
+            {
+                break;
+            }
         }
 
         return primeFactors;
     }
 
-    public static List<int> Create()
+    public static IEnumerable<int> Create()
     {
-        return new List<int> { 2, 3, 5, 7, 11, 13, 29 };
+        var naturals = Enumerable.Range(2, int.MaxValue - 2);
+        var primes = new List<int>();
+
+        foreach (var natural in naturals)
+        {
+            if (primes.Any(prime => natural.IsDivisibleBy(prime)))
+            {
+                continue;
+            }
+
+            primes.Add(natural);
+
+            yield return natural;
+        }
     }
 }
