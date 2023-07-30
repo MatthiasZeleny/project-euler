@@ -6,6 +6,8 @@ public class Problem0006 : IEulerProblem
 {
     public long Example() => SumVsSquareFirstForNumbersUpTo(10);
 
+    public long Solution() => 0;
+
     private static long SumVsSquareFirstForNumbersUpTo(int maxValue)
     {
         var numbers = NumberList.NumbersUpTo(maxValue).ToList();
@@ -15,6 +17,4 @@ public class Problem0006 : IEulerProblem
 
         return squaredOfSum - sumOfSquared;
     }
-
-    public long Solution() => 0;
 }
