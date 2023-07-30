@@ -9,6 +9,11 @@ public static class NumberList
 
     public static IEnumerable<long> NumbersWithDigitCount(int digitCount)
     {
+        if (digitCount == 1)
+        {
+            return NumbersBetween(0, 9);
+        }
+
         if (digitCount == 2)
         {
             return NumbersBetween(10, 99);
