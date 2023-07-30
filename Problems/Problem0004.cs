@@ -5,9 +5,12 @@ namespace Problems;
 
 public class Problem0004 : IEulerProblem
 {
-    public long Example() => UpToTwoDigitNumbers().Then(FindLargestPalindromeGeneratedByTwoOf);
+    public long Example() => LargestPossiblePalindromeGeneratedByAProductOfTwoNumbersWithDigitCount(2);
 
-    public long Solution() => UpToThreeDigitNumbers().Then(FindLargestPalindromeGeneratedByTwoOf);
+    public long Solution() => LargestPossiblePalindromeGeneratedByAProductOfTwoNumbersWithDigitCount(3);
+
+    private static long LargestPossiblePalindromeGeneratedByAProductOfTwoNumbersWithDigitCount(int digitCount) =>
+        NumberList.NumbersWithDigitCount(digitCount).ToList().Then(FindLargestPalindromeGeneratedByTwoOf);
 
 
     private static long FindLargestPalindromeGeneratedByTwoOf(IReadOnlyCollection<long> possibleNumbers) =>
@@ -20,9 +23,4 @@ public class Problem0004 : IEulerProblem
             .SelectMany(first =>
                 possibleNumbers
                     .Select(second => first * second));
-
-
-    private static IReadOnlyCollection<long> UpToTwoDigitNumbers() => NumberList.NumbersWithDigitCount(2).ToList();
-
-    private static IReadOnlyCollection<long> UpToThreeDigitNumbers() => NumberList.NumbersWithDigitCount(3).ToList();
 }
