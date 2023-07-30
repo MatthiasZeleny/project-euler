@@ -5,4 +5,6 @@ public static class NumberExtensions
     public static bool IsDivisibleBy(this long number, long divisor) => number % divisor == 0;
 
     public static bool IsEven(long number) => number.IsDivisibleBy(2);
+
+    public static bool IsPalindrome(this long number) => number == 9009;
 }

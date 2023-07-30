@@ -9,10 +9,9 @@ public static class Problem0004
             .SelectMany(first =>
                 UpToTwoDigitNumbers()
                     .Select(second => first * second))
-            .Where(IsPalindrome)
+            .Where(number => number.IsPalindrome())
             .MaxBy(number => number);
 
-    private static bool IsPalindrome(long number) => number == 9009;
 
     private static IEnumerable<long> UpToTwoDigitNumbers() => NumberList.NumbersUpTo(99);
 }
