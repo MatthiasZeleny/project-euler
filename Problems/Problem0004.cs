@@ -21,7 +21,7 @@ public class Problem0004 : IEulerProblem
                     .Select(second => first * second));
 
 
-    private static IReadOnlyCollection<long> UpToTwoDigitNumbers() => NumberList.NumbersUpTo(99).ToList();
+    private static IReadOnlyCollection<long> UpToTwoDigitNumbers() => NumberList.NumbersWithDigitCount(2).ToList();
 
-    private static IReadOnlyCollection<long> UpToThreeDigitNumbers() => NumberList.NumbersUpTo(999).ToList();
+    private static IReadOnlyCollection<long> UpToThreeDigitNumbers() => NumberList.NumbersWithDigitCount(3).ToList();
 }
