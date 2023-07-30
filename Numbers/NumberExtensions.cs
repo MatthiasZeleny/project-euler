@@ -16,7 +16,7 @@ public static class NumberExtensions
         return numberWithReveredDigits == number;
     }
 
-    private static long CreateNumberFromDigitListStartingFromHighest(IEnumerable<long> digitsStartingFromLowest) =>
+    public static long CreateNumberFromDigitListStartingFromHighest(IEnumerable<long> digitsStartingFromLowest) =>
         digitsStartingFromLowest
             .Aggregate(0L, (current, nextDigit) => current * TenBase + nextDigit);
 
