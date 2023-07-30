@@ -4,14 +4,19 @@ namespace Problems;
 
 public static class Problem0004
 {
-    public static long Example() =>
-        UpToTwoDigitNumbers()
-            .SelectMany(first =>
-                UpToTwoDigitNumbers()
-                    .Select(second => first * second))
+    public static long Example() => FindLargestPalindromeGeneratedByTwoOf(UpToTwoDigitNumbers());
+
+    private static long FindLargestPalindromeGeneratedByTwoOf(IReadOnlyCollection<long> possibleNumbers) =>
+        EveryPossibleCombinationOf(possibleNumbers)
             .Where(number => number.IsPalindrome())
             .MaxBy(number => number);
 
+    private static IEnumerable<long> EveryPossibleCombinationOf(IReadOnlyCollection<long> possibleNumbers) =>
+        possibleNumbers
+            .SelectMany(first =>
+                possibleNumbers
+                    .Select(second => first * second));
 
-    private static IEnumerable<long> UpToTwoDigitNumbers() => NumberList.NumbersUpTo(99);
+
+    private static List<long> UpToTwoDigitNumbers() => NumberList.NumbersUpTo(99).ToList();
 }
