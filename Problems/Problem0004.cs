@@ -1,12 +1,13 @@
 ﻿using Numbers;
+using Utils;
 
 namespace Problems;
 
 public class Problem0004 : IEulerProblem
 {
-    public long Example() => FindLargestPalindromeGeneratedByTwoOf(UpToTwoDigitNumbers());
+    public long Example() => UpToTwoDigitNumbers().Then(FindLargestPalindromeGeneratedByTwoOf);
 
-    public long Solution() => FindLargestPalindromeGeneratedByTwoOf(UpToThreeDigitNumbers());
+    public long Solution() => UpToThreeDigitNumbers().Then(FindLargestPalindromeGeneratedByTwoOf);
 
 
     private static long FindLargestPalindromeGeneratedByTwoOf(IReadOnlyCollection<long> possibleNumbers) =>
