@@ -81,4 +81,17 @@ public class PrimeFactorRepresentationTests
 
         leastCommonMultiple.Should().BeEquivalentTo(new List<int> { 2, 2 });
     }
+
+    [TestCase(1)]
+    [TestCase(2)]
+    [TestCase(3)]
+    [TestCase(14)]
+    public void AsNumber_ShouldReturnNumber(long number)
+    {
+        var primeFactorRepresentation = PrimeFactorRepresentation.For(number);
+
+        var asNumber = primeFactorRepresentation.AsNumber();
+
+        asNumber.Should().Be(number);
+    }
 }

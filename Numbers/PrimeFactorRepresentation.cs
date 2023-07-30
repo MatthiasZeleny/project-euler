@@ -60,4 +60,6 @@ public class PrimeFactorRepresentation
             }
         }
     }
+
+    public long AsNumber() => AsList().Aggregate(1L, (product, prime) => product * prime);
 }
