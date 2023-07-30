@@ -46,7 +46,7 @@ public static class NumberList
     private static IEnumerable<long> ListOfNines(int digitCount) =>
         GetAListOf(9, digitCount);
 
-    private static IEnumerable<long> GetAListOf(long digit, int digitCount) =>
+    public static IEnumerable<long> GetAListOf(long digit, int digitCount) =>
         Enumerable.Repeat(digit, digitCount);
 
     private static IEnumerable<long> NumbersBetween(long lowest, long highest)

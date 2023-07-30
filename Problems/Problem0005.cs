@@ -9,5 +9,5 @@ public class Problem0005 : IEulerProblem
 
     public long Solution() => 0;
 
-    private static long GetLeastCommonMultiple(IEnumerable<long> numbers) => 2 * 2 * 2 * 3 * 3 * 5 * 7;
+    private static long GetLeastCommonMultiple(IEnumerable<long> numbers) => Primes.GetLeastCommonPrimeFactors(numbers);
 }

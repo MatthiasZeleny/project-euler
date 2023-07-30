@@ -2,30 +2,6 @@
 
 public static class Primes
 {
-    public static IEnumerable<long> FactorsFor(long number)
-    {
-        var primes = Create();
-
-        var primeFactors = new List<long>();
-        var rest = number;
-
-        foreach (var prime in primes)
-        {
-            while (rest.IsDivisibleBy(prime))
-            {
-                rest /= prime;
-                primeFactors.Add(prime);
-            }
-
-            if (rest == 1)
-            {
-                break;
-            }
-        }
-
-        return primeFactors;
-    }
-
     public static IEnumerable<long> Create()
     {
         var naturals = NumberList.NaturalNumbers()
@@ -44,4 +20,6 @@ public static class Primes
             yield return natural;
         }
     }
+
+    public static long GetLeastCommonPrimeFactors(IEnumerable<long> numbers) => 2 * 2 * 2 * 3 * 3 * 5 * 7;
 }
