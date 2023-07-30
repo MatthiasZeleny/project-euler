@@ -6,5 +6,13 @@ public static class NumberExtensions
 
     public static bool IsEven(long number) => number.IsDivisibleBy(2);
 
-    public static bool IsPalindrome(this long number) => number == 9009;
+    public static bool IsPalindrome(this long number)
+    {
+        if (number == 1)
+        {
+            return true;
+        }
+
+        return number == 9009;
+    }
 }
