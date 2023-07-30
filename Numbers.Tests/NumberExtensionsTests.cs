@@ -28,4 +28,12 @@ public class NumberExtensionsTests
 
         isPalindrome.Should().BeTrue();
     }
+
+    [Test]
+    public void IsPalindrome_Ten_ShouldBeFalse()
+    {
+        var isPalindrome = 10L.IsPalindrome();
+
+        isPalindrome.Should().BeFalse();
+    }
 }
