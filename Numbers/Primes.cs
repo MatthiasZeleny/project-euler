@@ -21,5 +21,9 @@ public static class Primes
         }
     }
 
-    public static long GetLeastCommonPrimeFactors(IEnumerable<long> numbers) => 2 * 2 * 2 * 3 * 3 * 5 * 7;
+    public static long GetLeastCommonPrimeFactors(IEnumerable<long> numbers) =>
+        numbers
+            .Select(PrimeFactorRepresentation.For)
+            .Aggregate((first, second) => first.LeastCommonMultiple(second))
+            .AsNumber();
 }
