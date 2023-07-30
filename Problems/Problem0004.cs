@@ -2,5 +2,5 @@
 
 public static class Problem0004
 {
-    public static long Example() => 9009;
+    public static long Example() => 91 * 99;
 }
