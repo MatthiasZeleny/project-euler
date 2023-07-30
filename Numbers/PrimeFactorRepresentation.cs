@@ -40,20 +40,21 @@ public class PrimeFactorRepresentation
 
     public PrimeFactorRepresentation LeastCommonMultiple(PrimeFactorRepresentation second)
     {
-        var primesWithCountFirst = _primeFactors.ToList();
-        var primesWithCountSecond = second._primeFactors.ToList();
-
         var primeFactors = new Dictionary<long, int>();
-        foreach (var (prime, count) in primesWithCountFirst)
-        {
-            primeFactors.Add(prime, count);
-        }
+
+        AddPrimeFactors(primeFactors, _primeFactors);
+        AddPrimeFactors(primeFactors, second._primeFactors);
+
+        return new PrimeFactorRepresentation(primeFactors);
+    }
+
+    private static void AddPrimeFactors(Dictionary<long, int> target, Dictionary<long, int> source)
+    {
+        var primesWithCountSecond = source.ToList();
 
         foreach (var (prime, count) in primesWithCountSecond)
         {
-            primeFactors.TryAdd(prime, count);
+            target.TryAdd(prime, count);
         }
-
-        return new PrimeFactorRepresentation(primeFactors);
     }
 }
