@@ -70,4 +70,15 @@ public class PrimeFactorRepresentationTests
 
         leastCommonMultiple.Should().BeEquivalentTo(new List<int> { 2, 2 });
     }
+
+    [Test]
+    public void LeastCommonMultiple_SamePrimeDifferentCountSecondHasMore_ShouldReturnSame()
+    {
+        var first = PrimeFactorRepresentation.For(2);
+        var second = PrimeFactorRepresentation.For(4);
+
+        var leastCommonMultiple = first.LeastCommonMultiple(second).AsList();
+
+        leastCommonMultiple.Should().BeEquivalentTo(new List<int> { 2, 2 });
+    }
 }

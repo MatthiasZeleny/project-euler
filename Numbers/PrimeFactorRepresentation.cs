@@ -54,7 +54,10 @@ public class PrimeFactorRepresentation
 
         foreach (var (prime, count) in primesWithCountSecond)
         {
-            target.TryAdd(prime, count);
+            if (target.TryAdd(prime, count) is false)
+            {
+                target[prime] = Math.Max(target[prime], count);
+            }
         }
     }
 }
