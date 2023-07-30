@@ -4,8 +4,9 @@ public static class NumberList
 {
     public static IEnumerable<long> Below(long threshold) => NumbersUpTo(threshold - 1);
 
-    public static IEnumerable<long> NaturalNumbers() => NumbersUpTo(long.MaxValue);
+    public static IEnumerable<long> NumbersUpTo(long maxValue) => NumbersBetween(1, maxValue);
 
+    public static IEnumerable<long> NaturalNumbers() => NumbersUpTo(long.MaxValue);
 
     public static IEnumerable<long> NumbersWithDigitCount(int digitCount)
     {
@@ -55,6 +56,4 @@ public static class NumberList
             yield return number;
         }
     }
-
-    private static IEnumerable<long> NumbersUpTo(long maxValue) => NumbersBetween(1, maxValue);
 }
