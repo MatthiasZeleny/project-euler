@@ -9,5 +9,6 @@ public class Problem0005 : IEulerProblem
 
     public long Solution() => 0;
 
-    private static long GetLeastCommonMultiple(IEnumerable<long> numbers) => Primes.GetLeastCommonPrimeFactors(numbers);
+    private static long GetLeastCommonMultiple(IEnumerable<long> numbers) => PrimeFactorRepresentation.GetLeastCommon(numbers)
+        .AsNumber();
 }

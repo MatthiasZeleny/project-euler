@@ -62,4 +62,9 @@ public class PrimeFactorRepresentation
     }
 
     public long AsNumber() => AsList().Aggregate(1L, (product, prime) => product * prime);
+
+    public static PrimeFactorRepresentation GetLeastCommon(IEnumerable<long> numbers) =>
+        numbers
+            .Select(For)
+            .Aggregate((first, second) => first.LeastCommonMultiple(second));
 }

@@ -20,10 +20,4 @@ public static class Primes
             yield return natural;
         }
     }
-
-    public static long GetLeastCommonPrimeFactors(IEnumerable<long> numbers) =>
-        numbers
-            .Select(PrimeFactorRepresentation.For)
-            .Aggregate((first, second) => first.LeastCommonMultiple(second))
-            .AsNumber();
 }
