@@ -8,5 +8,5 @@ public class Problem0003 : IEulerProblem
 
     public long Solution() => GetBiggestPrimeFactorFor(600851475143);
 
-    private static long GetBiggestPrimeFactorFor(long number) => PrimeFactors.For(number).AsList().Last();
+    private static long GetBiggestPrimeFactorFor(long number) => PrimeFactorRepresentation.For(number).AsList().Last();
 }

@@ -1,6 +1,6 @@
 ﻿namespace Numbers;
 
-public interface IPrimeFactors
+public interface IPrimeFactorRepresentation
 {
     IEnumerable<long> AsList();
 }
