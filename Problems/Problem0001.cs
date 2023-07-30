@@ -2,11 +2,11 @@
 
 namespace Problems;
 
-public static class Problem0001
+public class Problem0001 : IEulerProblem
 {
-    public static long Example() => GetSumOfAllMultiplesOfThreeAndFiveBelow(10);
+    public long Example() => GetSumOfAllMultiplesOfThreeAndFiveBelow(10);
 
-    public static long Solution() => GetSumOfAllMultiplesOfThreeAndFiveBelow(1000);
+    public long Solution() => GetSumOfAllMultiplesOfThreeAndFiveBelow(1000);
 
     private static long GetSumOfAllMultiplesOfThreeAndFiveBelow(long threshold) =>
         NumberList.Below(threshold)

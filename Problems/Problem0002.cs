@@ -2,11 +2,11 @@
 
 namespace Problems;
 
-public static class Problem0002
+public class Problem0002 : IEulerProblem
 {
-    public static long Example() => GetSumOfEvenFibonacciNumbersUpTo(8);
+    public long Example() => GetSumOfEvenFibonacciNumbersUpTo(8);
 
-    public static long Solution() => GetSumOfEvenFibonacciNumbersUpTo(4_000_000);
+    public long Solution() => GetSumOfEvenFibonacciNumbersUpTo(4_000_000);
 
     private static long GetSumOfEvenFibonacciNumbersUpTo(int threshold)
     {

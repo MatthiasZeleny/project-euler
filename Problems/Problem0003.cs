@@ -2,11 +2,11 @@
 
 namespace Problems;
 
-public static class Problem0003
+public class Problem0003 : IEulerProblem
 {
-    public static long Example() => GetBiggestPrimeFactorFor(13195);
+    public long Example() => GetBiggestPrimeFactorFor(13195);
 
-    public static long Solution() => GetBiggestPrimeFactorFor(600851475143);
+    public long Solution() => GetBiggestPrimeFactorFor(600851475143);
 
     private static long GetBiggestPrimeFactorFor(long number) => Primes.FactorsFor(number).Last();
 }

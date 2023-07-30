@@ -2,14 +2,11 @@
 
 namespace Problems;
 
-public static class Problem0004
+public class Problem0004 : IEulerProblem
 {
-    public static long Example() => FindLargestPalindromeGeneratedByTwoOf(UpToTwoDigitNumbers());
+    public long Example() => FindLargestPalindromeGeneratedByTwoOf(UpToTwoDigitNumbers());
 
-    public static object Solution()
-    {
-        return FindLargestPalindromeGeneratedByTwoOf(UpToThreeDigitNumbers());
-    }
+    public long Solution() => FindLargestPalindromeGeneratedByTwoOf(UpToThreeDigitNumbers());
 
 
     private static long FindLargestPalindromeGeneratedByTwoOf(IReadOnlyCollection<long> possibleNumbers) =>

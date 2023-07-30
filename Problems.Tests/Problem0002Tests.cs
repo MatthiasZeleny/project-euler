@@ -1,25 +1,7 @@
-using FluentAssertions;
-
 namespace Problems.Tests;
 
-public class Problem0002Tests
+public class Problem0002Tests : EulerProblemTestBase<Problem0002>
 {
-    private const int ExampleResult = 10;
-    private const int SolutionResult = 0x466664;
-
-    [Test]
-    public void Example_ShouldReturnCorrectValue()
-    {
-        var example = Problem0002.Example();
-
-        example.Should().Be(ExampleResult);
-    }
-
-    [Test]
-    public void Solution_ShouldReturnCorrectValue()
-    {
-        var solution = Problem0002.Solution();
-
-        solution.Should().Be(SolutionResult);
-    }
+    protected override long ExampleResult => 10;
+    protected override long ProblemResult => 0x466664;
 }
