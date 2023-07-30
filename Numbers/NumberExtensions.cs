@@ -35,4 +35,6 @@ public static class NumberExtensions
 
         return digitsStartingFromLowest;
     }
+
+    public static long Squared(this long number) => number * number;
 }

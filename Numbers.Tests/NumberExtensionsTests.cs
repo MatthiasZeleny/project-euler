@@ -44,4 +44,14 @@ public class NumberExtensionsTests
 
         isPalindrome.Should().BeTrue();
     }
+
+    [TestCase(1, 1)]
+    [TestCase(2, 4)]
+    [TestCase(3, 9)]
+    public void Squared(long number, long expected)
+    {
+        var squared = number.Squared();
+
+        squared.Should().Be(expected);
+    }
 }
