@@ -40,10 +40,13 @@ public static class NumberList
     }
 
     private static IEnumerable<long> ListOfZeros(int digitCount) =>
-        Enumerable.Repeat(0L, digitCount);
+        GetAListOf(0, digitCount);
 
     private static IEnumerable<long> ListOfNines(int digitCount) =>
-        Enumerable.Repeat(9L, digitCount);
+        GetAListOf(9, digitCount);
+
+    private static IEnumerable<long> GetAListOf(long digit, int digitCount) =>
+        Enumerable.Repeat(digit, digitCount);
 
     private static IEnumerable<long> NumbersBetween(long lowest, long highest)
     {
