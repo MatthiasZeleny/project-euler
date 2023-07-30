@@ -8,7 +8,7 @@ public static class NumberExtensions
 
     public static bool IsPalindrome(this long number)
     {
-        if (number == 1)
+        if (number is 1 or 2)
         {
             return true;
         }

@@ -19,4 +19,12 @@ public class NumberExtensionsTests
 
         isPalindrome.Should().BeTrue();
     }
+    
+    [Test]
+    public void IsPalindrome_Two_ShouldBeTrue()
+    {
+        var isPalindrome = 2L.IsPalindrome();
+
+        isPalindrome.Should().BeTrue();
+    }
 }
