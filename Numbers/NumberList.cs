@@ -6,21 +6,24 @@ public static class NumberList
 
     public static IEnumerable<long> NaturalNumbers() => NumbersUpTo(long.MaxValue);
 
-    private static IEnumerable<long> NumbersUpTo(long maxValue)
-    {
-        for (long number = 1; number <= maxValue; number++)
-        {
-            yield return number;
-        }
-    }
 
     public static IEnumerable<long> NumbersWithDigitCount(int digitCount)
     {
         if (digitCount == 2)
         {
-            return NumbersUpTo(99);
+            return NumbersBetween(10, 99);
         }
 
-        return NumbersUpTo(999);
+        return NumbersBetween(100, 999);
     }
+
+    private static IEnumerable<long> NumbersBetween(long lowest, long highest)
+    {
+        for (var number = lowest; number <= highest; number++)
+        {
+            yield return number;
+        }
+    }
+
+    private static IEnumerable<long> NumbersUpTo(long maxValue) => NumbersBetween(1, maxValue);
 }
