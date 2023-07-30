@@ -37,4 +37,9 @@ public class PrimeFactorRepresentation
     public IEnumerable<long> AsList() =>
         _primeFactors.ToList()
             .SelectMany(pair => NumberList.GetAListOf(pair.Key, pair.Value));
+
+    public PrimeFactorRepresentation LeastCommonMultiple(PrimeFactorRepresentation second)
+    {
+        return this;
+    }
 }

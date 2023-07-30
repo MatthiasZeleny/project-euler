@@ -36,4 +36,16 @@ public class PrimeFactorRepresentationTests
 
         list.Should().BeEquivalentTo(new List<int> { 5, 7, 13, 29 });
     }
+
+
+    [Test]
+    public void LeastCommonMultiple_SameNumber_ShouldReturnSame()
+    {
+        var first = PrimeFactorRepresentation.For(2);
+        var second = PrimeFactorRepresentation.For(2);
+
+        var leastCommonMultiple = first.LeastCommonMultiple(second).AsList();
+
+        leastCommonMultiple.Should().BeEquivalentTo(new List<int> { 2 });
+    }
 }
