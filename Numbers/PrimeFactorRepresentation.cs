@@ -1,12 +1,12 @@
 ﻿namespace Numbers;
 
-public class PrimeFactorRepresentation : IPrimeFactorRepresentation
+public class PrimeFactorRepresentation
 {
     private readonly Dictionary<long, int> _primeFactors;
 
     private PrimeFactorRepresentation(Dictionary<long, int> primeFactors) => _primeFactors = primeFactors;
 
-    public static IPrimeFactorRepresentation For(long number)
+    public static PrimeFactorRepresentation For(long number)
     {
         var primes = Primes.Create();
 
