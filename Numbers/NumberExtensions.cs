@@ -2,22 +2,37 @@
 
 public static class NumberExtensions
 {
+    private const int TenBase = 10;
     public static bool IsDivisibleBy(this long number, long divisor) => number % divisor == 0;
 
     public static bool IsEven(long number) => number.IsDivisibleBy(2);
 
     public static bool IsPalindrome(this long number)
     {
-        if (number is >= 0 and < 10)
+        var digitsStartingFromLowest = GetDigitsAsListStartingFromLowest(number);
+
+        var numberWithReveredDigits = CreateNumberFromDigitListStartingFromHighest(digitsStartingFromLowest);
+
+        return numberWithReveredDigits == number;
+    }
+
+    private static long CreateNumberFromDigitListStartingFromHighest(IEnumerable<long> digitsStartingFromLowest) =>
+        digitsStartingFromLowest
+            .Aggregate(0L, (current, nextDigit) => current * TenBase + nextDigit);
+
+    private static IEnumerable<long> GetDigitsAsListStartingFromLowest(long number)
+    {
+        var rest = number;
+
+        var digitsStartingFromLowest = new List<long>();
+
+        while (rest > 0)
         {
-            return true;
+            digitsStartingFromLowest.Add(rest % TenBase);
+
+            rest /= TenBase;
         }
 
-        if (number == 11)
-        {
-            return true;
-        }
-
-        return number == 9009;
+        return digitsStartingFromLowest;
     }
 }
