@@ -36,4 +36,12 @@ public class NumberExtensionsTests
 
         isPalindrome.Should().BeFalse();
     }
+
+    [Test]
+    public void IsPalindrome_Eleven_ShouldBeTrue()
+    {
+        var isPalindrome = 11L.IsPalindrome();
+
+        isPalindrome.Should().BeTrue();
+    }
 }

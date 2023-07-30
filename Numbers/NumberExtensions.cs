@@ -13,6 +13,11 @@ public static class NumberExtensions
             return true;
         }
 
+        if (number == 11)
+        {
+            return true;
+        }
+
         return number == 9009;
     }
 }
