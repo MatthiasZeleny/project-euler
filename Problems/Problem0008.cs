@@ -7,14 +7,9 @@ public class Problem0008 : IEulerProblem
     public long Solution() => 0;
 
     private static long GetLargestProductInMatrixUsingNDigits(int numberOfDigits) =>
-        GetAllPossibleCombinationsOfLength(numberOfDigits, Matrix)
+        Numbers.Matrix.GetAllPossibleCombinationsOfLength(numberOfDigits, Matrix)
             .Select(digitList => digitList.Aggregate(1L, (product, factor) => product * factor))
             .Max();
-
-    private static IEnumerable<List<long>> GetAllPossibleCombinationsOfLength(int numberOfDigits, string matrix)
-    {
-        yield return new List<long> { 9, 9, 8, 9 };
-    }
 
     private const string Matrix = @"73167176531330624919225119674426574742355349194934\n
 96983520312774506326239578318016984801869478851843\n
