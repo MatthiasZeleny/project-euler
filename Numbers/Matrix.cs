@@ -6,7 +6,8 @@ public static class Matrix
     {
         if (numberOfDigits == 1)
         {
-            return new List<List<long>> { new() { long.Parse(matrix) } };
+            return matrix.Split('\n').SelectMany(line => line.ToList()).Select(digit => long.Parse(digit.ToString()))
+                .Select(digit => new List<long> { digit });
         }
 
         return new List<List<long>> { new() { 9, 9, 8, 9 } };
