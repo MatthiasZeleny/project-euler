@@ -6,7 +6,7 @@ public static class Matrix
     {
         if (numberOfDigits == 1)
         {
-            return new List<List<long>> { new() { 1 } };
+            return new List<List<long>> { new() { long.Parse(matrix) } };
         }
 
         return new List<List<long>> { new() { 9, 9, 8, 9 } };
