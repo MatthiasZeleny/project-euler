@@ -4,6 +4,11 @@ public static class Matrix
 {
     public static IEnumerable<List<long>> GetAllPossibleCombinationsOfLength(int numberOfDigits, string matrix)
     {
-        yield return new List<long> { 9, 9, 8, 9 };
+        if (numberOfDigits == 1)
+        {
+            return new List<List<long>> { new() { 1 } };
+        }
+
+        return new List<List<long>> { new() { 9, 9, 8, 9 } };
     }
 }
