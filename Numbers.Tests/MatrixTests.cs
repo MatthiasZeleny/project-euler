@@ -136,6 +136,28 @@ public class MatrixTests
         }, options => options.WithStrictOrdering());
     }
 
+    [Test]
+    public void GetAllPossibleCombinationsOfLength_ThreeDigitsInThreeXThreeMatrix_ShouldReturnListWithTwentyElements()
+    {
+        const string matrix = "123\n456\n789";
+        var allPossibleCombinationsOfLength = Matrix.GetAllPossibleCombinationsOfLength(3, matrix);
+
+        allPossibleCombinationsOfLength.Should().BeEquivalentTo(new List<List<long>>
+        {
+            new() { 1, 2, 3 },
+            new() { 4, 5, 6 },
+            new() { 7, 8, 9 },
+
+            new() { 1, 4, 7 },
+            new() { 2, 5, 8 },
+            new() { 3, 6, 9 },
+
+            new() { 1, 5, 9 },
+
+            new() { 7, 5, 3 },
+        }, options => options.WithStrictOrdering());
+    }
+
     private static void AssertEquivalentWithSameOrder(
         IEnumerable<List<long>> actual,
         IEnumerable<List<long>> expectation)
