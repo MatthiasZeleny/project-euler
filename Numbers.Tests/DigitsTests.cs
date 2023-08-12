@@ -34,4 +34,15 @@ public class DigitsTests
             new() { 2 }
         });
     }
+
+    [Test]
+    public void GetConsecutiveDigitsOfLength_TwoElementsAndLengthTwo_ShouldReturnSingleListWithTwoElements()
+    {
+        var digitTuples = Digits.GetConsecutiveDigitsOfLength(new List<long> { 1, 2 }, 2);
+
+        digitTuples.Should().BeEquivalentToWithStrictOrdering(new List<List<long>>
+        {
+            new() { 1, 2 }
+        });
+    }
 }
