@@ -7,7 +7,7 @@ public static class Digits
         return line.ToList().Select(digit => long.Parse(digit.ToString())).ToList();
     }
 
-    public static List<List<long>> GetConsecutiveDigitsOfLength(IReadOnlyCollection<long> digits, int length)
+    public static List<List<long>> GetConsecutiveDigitsOfLength(this IReadOnlyCollection<long> digits, int length)
     {
         var latestStartingPosition = digits.Count - length + 1;
 

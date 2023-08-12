@@ -18,7 +18,7 @@ public class DigitsTests
     [Test]
     public void GetConsecutiveDigitsOfLength_SingleElement_ShouldReturnSingleElement()
     {
-        var digitTuples = Digits.GetConsecutiveDigitsOfLength(new List<long> { 1 }, 1);
+        var digitTuples = new List<long> { 1 }.GetConsecutiveDigitsOfLength(1);
 
         digitTuples.Should().BeEquivalentToWithStrictOrdering(new List<List<long>> { new() { 1 } });
     }
@@ -26,7 +26,7 @@ public class DigitsTests
     [Test]
     public void GetConsecutiveDigitsOfLength_TwoElementsAndLengthOne_ShouldReturnTwoSingleElements()
     {
-        var digitTuples = Digits.GetConsecutiveDigitsOfLength(new List<long> { 1, 2 }, 1);
+        var digitTuples = new List<long> { 1, 2 }.GetConsecutiveDigitsOfLength(1);
 
         digitTuples.Should().BeEquivalentToWithStrictOrdering(new List<List<long>>
         {
@@ -38,7 +38,7 @@ public class DigitsTests
     [Test]
     public void GetConsecutiveDigitsOfLength_TwoElementsAndLengthTwo_ShouldReturnSingleListWithTwoElements()
     {
-        var digitTuples = Digits.GetConsecutiveDigitsOfLength(new List<long> { 1, 2 }, 2);
+        var digitTuples = new List<long> { 1, 2 }.GetConsecutiveDigitsOfLength(2);
 
         digitTuples.Should().BeEquivalentToWithStrictOrdering(new List<List<long>>
         {
@@ -49,7 +49,7 @@ public class DigitsTests
     [Test]
     public void GetConsecutiveDigitsOfLength_ThreeElementsAndLengthTwo_ShouldReturnTwoListsWithTwoElements()
     {
-        var digitTuples = Digits.GetConsecutiveDigitsOfLength(new List<long> { 1, 2, 3 }, 2);
+        var digitTuples = new List<long> { 1, 2, 3 }.GetConsecutiveDigitsOfLength(2);
 
         digitTuples.Should().BeEquivalentToWithStrictOrdering(new List<List<long>>
         {
