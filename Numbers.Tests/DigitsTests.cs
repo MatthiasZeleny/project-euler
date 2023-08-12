@@ -22,4 +22,16 @@ public class DigitsTests
 
         digitTuples.Should().BeEquivalentToWithStrictOrdering(new List<List<long>> { new() { 1 } });
     }
+
+    [Test]
+    public void GetConsecutiveDigitsOfLength_TwoElementsAndLengthOne_ShouldReturnTwoSingleElements()
+    {
+        var digitTuples = Digits.GetConsecutiveDigitsOfLength(new List<long> { 1, 2 }, 1);
+
+        digitTuples.Should().BeEquivalentToWithStrictOrdering(new List<List<long>>
+        {
+            new() { 1 },
+            new() { 2 }
+        });
+    }
 }
