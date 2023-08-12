@@ -45,4 +45,16 @@ public class DigitsTests
             new() { 1, 2 }
         });
     }
+
+    [Test]
+    public void GetConsecutiveDigitsOfLength_ThreeElementsAndLengthTwo_ShouldReturnTwoListsWithTwoElements()
+    {
+        var digitTuples = Digits.GetConsecutiveDigitsOfLength(new List<long> { 1, 2, 3 }, 2);
+
+        digitTuples.Should().BeEquivalentToWithStrictOrdering(new List<List<long>>
+        {
+            new() { 1, 2 },
+            new() { 2, 3 }
+        });
+    }
 }

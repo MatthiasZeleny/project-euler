@@ -9,11 +9,17 @@ public static class Digits
 
     public static List<List<long>> GetConsecutiveDigitsOfLength(IReadOnlyCollection<long> digits, int length)
     {
-        if (length == 2)
-        {
-            return new List<List<long>> { digits.ToList() };
-        }
+        var latestStartingPosition = digits.Count - length + 1;
 
-        return digits.Select(digit => new List<long> { digit }).ToList();
+        return Enumerable
+            .Range(0, latestStartingPosition)
+            .Select(startingPosition =>
+                TakeSubList(digits, startingPosition, length)
+            ).ToList();
+    }
+
+    private static List<long> TakeSubList(IReadOnlyCollection<long> digits, int startingPosition, int length)
+    {
+        return digits.Skip(startingPosition).Take(length).ToList();
     }
 }
