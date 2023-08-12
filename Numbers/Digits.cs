@@ -1,6 +1,6 @@
 ﻿namespace Numbers;
 
-internal static class Digits
+public static class Digits
 {
     public static List<long> ToDigitList(this string line)
     {
