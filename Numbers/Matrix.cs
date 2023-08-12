@@ -11,7 +11,7 @@ public static class Matrix
         }
 
         var listOfList = matrix.Split('\n')
-            .Select(Digits.StringToDigitList)
+            .Select(Digits.ToDigitList)
             .ToList();
 
         var width = listOfList.Select(line => line.Count).Distinct().Single();
