@@ -10,9 +10,9 @@ public static class Matrix
                 .Select(digit => new List<long> { digit });
         }
 
-
-        var listOfList = matrix.Split('\n').Select(line => line.ToList())
-            .Select(digits => digits.Select(digit => long.Parse(digit.ToString())).ToList()).ToList();
+        var listOfList = matrix.Split('\n')
+            .Select(Digits.StringToDigitList)
+            .ToList();
 
         var width = listOfList.Select(line => line.Count).Distinct().Single();
         var height = listOfList.Count;
