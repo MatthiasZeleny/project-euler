@@ -102,6 +102,40 @@ public class MatrixTests
             });
     }
 
+    [Test]
+    public void GetAllPossibleCombinationsOfLength_TwoDigitsInThreeXThreeMatrix_ShouldReturnListWithTwentyElements()
+    {
+        const string matrix = "123\n456\n789";
+        var allPossibleCombinationsOfLength = Matrix.GetAllPossibleCombinationsOfLength(2, matrix);
+
+        allPossibleCombinationsOfLength.Should().BeEquivalentTo(new List<List<long>>
+        {
+            new() { 1, 2 },
+            new() { 2, 3 },
+            new() { 4, 5 },
+            new() { 5, 6 },
+            new() { 7, 8 },
+            new() { 8, 9 },
+
+            new() { 1, 4 },
+            new() { 2, 5 },
+            new() { 3, 6 },
+            new() { 4, 7 },
+            new() { 5, 8 },
+            new() { 6, 9 },
+
+            new() { 1, 5 },
+            new() { 2, 6 },
+            new() { 4, 8 },
+            new() { 5, 9 },
+
+            new() { 4, 2 },
+            new() { 5, 3 },
+            new() { 7, 5 },
+            new() { 8, 6 },
+        }, options => options.WithStrictOrdering());
+    }
+
     private static void AssertEquivalentWithSameOrder(
         IEnumerable<List<long>> actual,
         IEnumerable<List<long>> expectation)
