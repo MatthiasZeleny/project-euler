@@ -18,16 +18,16 @@ public static class Matrix
             var width = listOfList.Select(line => line.Count).Distinct().Single();
             var height = listOfList.Count;
 
-            var digitMatrix = new long[width, height];
+            var digitMatrix = new long[height, width];
 
             var throughWidth = Enumerable.Range(0, width).ToList();
             var throughHeight = Enumerable.Range(0, height).ToList();
 
-            foreach (var xIndex in throughWidth)
+            foreach (var m in throughHeight)
             {
-                foreach (var yIndex in throughHeight)
+                foreach (var n in throughWidth)
                 {
-                    digitMatrix[xIndex, yIndex] = listOfList[yIndex][xIndex];
+                    digitMatrix[m, n] = listOfList[m][n];
                 }
             }
 
@@ -35,36 +35,36 @@ public static class Matrix
             var throughReducedHeight = throughHeight.Take(height - numberOfDigits + 1).ToList();
 
             var list = new List<List<long>>();
-
-            foreach (var xIndex in throughWidth)
+            foreach (var m in throughReducedHeight)
             {
-                foreach (var yIndex in throughReducedHeight)
+                foreach (var n in throughWidth)
                 {
-                    list.Add(new() { digitMatrix[xIndex, yIndex], digitMatrix[xIndex, yIndex + 1] });
+                    list.Add(new() { digitMatrix[m, n], digitMatrix[m + 1, n] });
                 }
             }
 
-            foreach (var xIndex in throughReducedWidth)
+            foreach (var m in throughHeight)
             {
-                foreach (var yIndex in throughHeight)
+                foreach (var n in throughReducedWidth)
                 {
-                    list.Add(new() { digitMatrix[xIndex, yIndex], digitMatrix[xIndex + 1, yIndex] });
+                    list.Add(new() { digitMatrix[m, n], digitMatrix[m, n + 1] });
                 }
             }
 
-            foreach (var xIndex in throughReducedWidth)
+
+            foreach (var m in throughReducedHeight)
             {
-                foreach (var yIndex in throughReducedHeight)
+                foreach (var n in throughReducedWidth)
                 {
-                    list.Add(new() { digitMatrix[xIndex, yIndex], digitMatrix[xIndex + 1, yIndex + 1] });
+                    list.Add(new() { digitMatrix[m, n], digitMatrix[m + 1, n + 1] });
                 }
             }
 
-            foreach (var xIndex in throughReducedWidth)
+            foreach (var m in throughReducedHeight)
             {
-                foreach (var yIndex in throughReducedHeight)
+                foreach (var n in throughReducedWidth)
                 {
-                    list.Add(new() { digitMatrix[xIndex + 1, yIndex], digitMatrix[xIndex, yIndex + 1] });
+                    list.Add(new() { digitMatrix[m + 1, n], digitMatrix[m, n + 1] });
                 }
             }
 
