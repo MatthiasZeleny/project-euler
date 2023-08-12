@@ -9,9 +9,10 @@ public class Problem0008 : IEulerProblem
     public long Solution() => GetLargestProductInMatrixUsingNDigits(13);
 
     private static long GetLargestProductInMatrixUsingNDigits(int numberOfDigits) =>
-        ThousandDigitNumber.ToDigitList()
+        ThousandDigitNumber
+            .ToDigitList()
             .GetConsecutiveDigitsOfLength(numberOfDigits)
-            .Select(digitList => digitList.Aggregate(1L, (product, factor) => product * factor))
+            .Select(digits => digits.MultiplyToSingleNumber())
             .Max();
 
     private const string ThousandDigitNumber =
