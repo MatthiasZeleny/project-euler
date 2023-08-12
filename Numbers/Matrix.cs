@@ -20,26 +20,36 @@ public static class Matrix
 
             var digitMatrix = new long[width, height];
 
-            var throughWidth = Enumerable.Range(0, width);
+            var throughWidth = Enumerable.Range(0, width).ToList();
             var throughHeight = Enumerable.Range(0, height).ToList();
 
             foreach (var xIndex in throughWidth)
             {
                 foreach (var yIndex in throughHeight)
                 {
-                    digitMatrix[xIndex, yIndex] = listOfList[xIndex][yIndex];
+                    digitMatrix[xIndex, yIndex] = listOfList[yIndex][xIndex];
                 }
             }
 
-            return new List<List<long>>
+
+            var list = new List<List<long>>();
+
+            foreach (var xIndex in throughWidth)
             {
-                new() { digitMatrix[0, 0], digitMatrix[0, 1] },
-                new() { digitMatrix[1, 0], digitMatrix[1, 1] },
-                new() { digitMatrix[0, 0], digitMatrix[1, 0] },
-                new() { digitMatrix[0, 1], digitMatrix[1, 1] },
-                new() { digitMatrix[0, 0], digitMatrix[1, 1] },
-                new() { digitMatrix[1, 0], digitMatrix[0, 1] },
-            };
+                list.Add(new() { digitMatrix[xIndex, 0], digitMatrix[xIndex, 1] });
+            }
+
+            foreach (var yIndex in throughHeight)
+            {
+                list.Add(new() { digitMatrix[0, yIndex], digitMatrix[1, yIndex] });
+            }
+
+
+            list.Add(new() { digitMatrix[0, 0], digitMatrix[1, 1] });
+
+            list.Add(new() { digitMatrix[1, 0], digitMatrix[0, 1] });
+
+            return list;
         }
 
         return new List<List<long>> { new() { 9, 9, 8, 9 } };
