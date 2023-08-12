@@ -14,4 +14,12 @@ public class DigitsTests
 
         digitList.Should().BeEquivalentToWithStrictOrdering(expectedDigits.ToList());
     }
+
+    [Test]
+    public void GetConsecutiveDigitsOfLength_SingleElement_ShouldReturnSingleElement()
+    {
+        var digitTuples = Digits.GetConsecutiveDigitsOfLength(new List<long> { 1 }, 1);
+
+        digitTuples.Should().BeEquivalentToWithStrictOrdering(new List<List<long>> { new() { 1 } });
+    }
 }
