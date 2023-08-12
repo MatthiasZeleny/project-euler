@@ -92,8 +92,8 @@ public class MatrixTests
                 new() { 3, 4 },
                 new() { 5, 6 },
                 new() { 1, 3 },
-                new() { 3, 5 },
                 new() { 2, 4 },
+                new() { 3, 5 },
                 new() { 4, 6 },
                 new() { 1, 4 },
                 new() { 3, 6 },
@@ -105,5 +105,5 @@ public class MatrixTests
     private static void AssertEquivalentWithSameOrder(
         IEnumerable<List<long>> actual,
         IEnumerable<List<long>> expectation)
-        => actual.Should().BeEquivalentTo(expectation);
+        => actual.Should().BeEquivalentTo(expectation, options => options.WithStrictOrdering());
 }

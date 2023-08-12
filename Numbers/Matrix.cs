@@ -35,19 +35,19 @@ public static class Matrix
             var throughReducedHeight = throughHeight.Take(height - numberOfDigits + 1).ToList();
 
             var list = new List<List<long>>();
-            foreach (var m in throughReducedHeight)
-            {
-                foreach (var n in throughWidth)
-                {
-                    list.Add(new() { digitMatrix[m, n], digitMatrix[m + 1, n] });
-                }
-            }
-
             foreach (var m in throughHeight)
             {
                 foreach (var n in throughReducedWidth)
                 {
                     list.Add(new() { digitMatrix[m, n], digitMatrix[m, n + 1] });
+                }
+            }
+
+            foreach (var m in throughReducedHeight)
+            {
+                foreach (var n in throughWidth)
+                {
+                    list.Add(new() { digitMatrix[m, n], digitMatrix[m + 1, n] });
                 }
             }
 
