@@ -6,7 +6,7 @@ public class Problem0008 : IEulerProblem
 {
     public long Example() => GetLargestProductInMatrixUsingNDigits(4);
 
-    public long Solution() => 0;
+    public long Solution() => GetLargestProductInMatrixUsingNDigits(13);
 
     private static long GetLargestProductInMatrixUsingNDigits(int numberOfDigits) =>
         ThousandDigitNumber.ToDigitList()
