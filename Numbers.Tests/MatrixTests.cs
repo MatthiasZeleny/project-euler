@@ -12,9 +12,8 @@ public class MatrixTests
     {
         var allPossibleCombinationsOfLength = Matrix.GetAllPossibleCombinationsOfLength(1, matrix);
 
-        AssertEquivalentWithSameOrder(
-            allPossibleCombinationsOfLength,
-            new List<List<long>> { new() { expectedResult } });
+        allPossibleCombinationsOfLength.Should()
+            .BeEquivalentToWithStrictOrdering(new List<List<long>> { new() { expectedResult } });
     }
 
 
@@ -24,15 +23,13 @@ public class MatrixTests
         const string matrix = "12\n34";
         var allPossibleCombinationsOfLength = Matrix.GetAllPossibleCombinationsOfLength(1, matrix);
 
-        AssertEquivalentWithSameOrder(
-            allPossibleCombinationsOfLength,
-            new List<List<long>>
-            {
-                new() { 1 },
-                new() { 2 },
-                new() { 3 },
-                new() { 4 },
-            });
+        allPossibleCombinationsOfLength.Should().BeEquivalentToWithStrictOrdering(new List<List<long>>
+        {
+            new() { 1 },
+            new() { 2 },
+            new() { 3 },
+            new() { 4 },
+        });
     }
 
     [Test]
@@ -41,17 +38,15 @@ public class MatrixTests
         const string matrix = "12\n34";
         var allPossibleCombinationsOfLength = Matrix.GetAllPossibleCombinationsOfLength(2, matrix);
 
-        AssertEquivalentWithSameOrder(
-            allPossibleCombinationsOfLength,
-            new List<List<long>>
-            {
-                new() { 1, 2 },
-                new() { 3, 4 },
-                new() { 1, 3 },
-                new() { 2, 4 },
-                new() { 1, 4 },
-                new() { 3, 2 }
-            });
+        allPossibleCombinationsOfLength.Should().BeEquivalentToWithStrictOrdering(new List<List<long>>
+        {
+            new() { 1, 2 },
+            new() { 3, 4 },
+            new() { 1, 3 },
+            new() { 2, 4 },
+            new() { 1, 4 },
+            new() { 3, 2 }
+        });
     }
 
     [Test]
@@ -60,22 +55,20 @@ public class MatrixTests
         const string matrix = "123\n456";
         var allPossibleCombinationsOfLength = Matrix.GetAllPossibleCombinationsOfLength(2, matrix);
 
-        AssertEquivalentWithSameOrder(
-            allPossibleCombinationsOfLength,
-            new List<List<long>>
-            {
-                new() { 1, 2 },
-                new() { 2, 3 },
-                new() { 4, 5 },
-                new() { 5, 6 },
-                new() { 1, 4 },
-                new() { 2, 5 },
-                new() { 3, 6 },
-                new() { 1, 5 },
-                new() { 2, 6 },
-                new() { 4, 2 },
-                new() { 5, 3 },
-            });
+        allPossibleCombinationsOfLength.Should().BeEquivalentToWithStrictOrdering(new List<List<long>>
+        {
+            new() { 1, 2 },
+            new() { 2, 3 },
+            new() { 4, 5 },
+            new() { 5, 6 },
+            new() { 1, 4 },
+            new() { 2, 5 },
+            new() { 3, 6 },
+            new() { 1, 5 },
+            new() { 2, 6 },
+            new() { 4, 2 },
+            new() { 5, 3 },
+        });
     }
 
     [Test]
@@ -84,22 +77,20 @@ public class MatrixTests
         const string matrix = "12\n34\n56";
         var allPossibleCombinationsOfLength = Matrix.GetAllPossibleCombinationsOfLength(2, matrix);
 
-        AssertEquivalentWithSameOrder(
-            allPossibleCombinationsOfLength,
-            new List<List<long>>
-            {
-                new() { 1, 2 },
-                new() { 3, 4 },
-                new() { 5, 6 },
-                new() { 1, 3 },
-                new() { 2, 4 },
-                new() { 3, 5 },
-                new() { 4, 6 },
-                new() { 1, 4 },
-                new() { 3, 6 },
-                new() { 3, 2 },
-                new() { 5, 4 },
-            });
+        allPossibleCombinationsOfLength.Should().BeEquivalentToWithStrictOrdering(new List<List<long>>
+        {
+            new() { 1, 2 },
+            new() { 3, 4 },
+            new() { 5, 6 },
+            new() { 1, 3 },
+            new() { 2, 4 },
+            new() { 3, 5 },
+            new() { 4, 6 },
+            new() { 1, 4 },
+            new() { 3, 6 },
+            new() { 3, 2 },
+            new() { 5, 4 },
+        });
     }
 
     [Test]
@@ -108,7 +99,7 @@ public class MatrixTests
         const string matrix = "123\n456\n789";
         var allPossibleCombinationsOfLength = Matrix.GetAllPossibleCombinationsOfLength(2, matrix);
 
-        allPossibleCombinationsOfLength.Should().BeEquivalentTo(new List<List<long>>
+        allPossibleCombinationsOfLength.Should().BeEquivalentToWithStrictOrdering(new List<List<long>>
         {
             new() { 1, 2 },
             new() { 2, 3 },
@@ -133,7 +124,7 @@ public class MatrixTests
             new() { 5, 3 },
             new() { 7, 5 },
             new() { 8, 6 },
-        }, options => options.WithStrictOrdering());
+        });
     }
 
     [Test]
@@ -142,7 +133,7 @@ public class MatrixTests
         const string matrix = "123\n456\n789";
         var allPossibleCombinationsOfLength = Matrix.GetAllPossibleCombinationsOfLength(3, matrix);
 
-        allPossibleCombinationsOfLength.Should().BeEquivalentTo(new List<List<long>>
+        allPossibleCombinationsOfLength.Should().BeEquivalentToWithStrictOrdering(new List<List<long>>
         {
             new() { 1, 2, 3 },
             new() { 4, 5, 6 },
@@ -155,11 +146,6 @@ public class MatrixTests
             new() { 1, 5, 9 },
 
             new() { 7, 5, 3 },
-        }, options => options.WithStrictOrdering());
+        });
     }
-
-    private static void AssertEquivalentWithSameOrder(
-        IEnumerable<List<long>> actual,
-        IEnumerable<List<long>> expectation)
-        => actual.Should().BeEquivalentTo(expectation, options => options.WithStrictOrdering());
 }
