@@ -31,23 +31,43 @@ public static class Matrix
                 }
             }
 
+            var throughReducedWidth = throughWidth.Take(width - numberOfDigits + 1).ToList();
+            var throughReducedHeight = throughHeight.Take(height - numberOfDigits + 1).ToList();
 
             var list = new List<List<long>>();
 
             foreach (var xIndex in throughWidth)
             {
-                list.Add(new() { digitMatrix[xIndex, 0], digitMatrix[xIndex, 1] });
+                foreach (var yIndex in throughReducedHeight)
+                {
+                    list.Add(new() { digitMatrix[xIndex, yIndex], digitMatrix[xIndex, yIndex + 1] });
+                }
             }
 
-            foreach (var yIndex in throughHeight)
+            foreach (var xIndex in throughReducedWidth)
             {
-                list.Add(new() { digitMatrix[0, yIndex], digitMatrix[1, yIndex] });
+                foreach (var yIndex in throughHeight)
+                {
+                    list.Add(new() { digitMatrix[xIndex, yIndex], digitMatrix[xIndex + 1, yIndex] });
+                }
             }
 
+            foreach (var xIndex in throughReducedWidth)
+            {
+                foreach (var yIndex in throughReducedHeight)
+                {
+                    list.Add(new() { digitMatrix[xIndex, yIndex], digitMatrix[xIndex + 1, yIndex + 1] });
+                }
+            }
 
-            list.Add(new() { digitMatrix[0, 0], digitMatrix[1, 1] });
+            foreach (var xIndex in throughReducedWidth)
+            {
+                foreach (var yIndex in throughReducedHeight)
+                {
+                    list.Add(new() { digitMatrix[xIndex + 1, yIndex], digitMatrix[xIndex, yIndex + 1] });
+                }
+            }
 
-            list.Add(new() { digitMatrix[1, 0], digitMatrix[0, 1] });
 
             return list;
         }
