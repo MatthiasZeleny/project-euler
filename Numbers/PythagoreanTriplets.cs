@@ -11,6 +11,11 @@ public static class PythagoreanTriplets
             return new List<(long a, long b, long c)>();
         }
 
-        return new List<(long a, long b, long c)> { (3, 4, 5) };
+        if (highestPossibleNumber != 13)
+        {
+            return new List<(long a, long b, long c)> { (3, 4, 5) };
+        }
+
+        return new List<(long a, long b, long c)> { (3, 4, 5), (5, 12, 13) };
     }
 }

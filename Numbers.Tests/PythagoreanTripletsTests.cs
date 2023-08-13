@@ -29,6 +29,18 @@ public class PythagoreanTripletsTests
         triplet.Should().BeEquivalentToWithStrictOrdering(new List<(long a, long b, long c)> { (3, 4, 5) });
     }
 
+    [Test]
+    public void GetTripletsUpTill_Thirteen_ReturnsTwoTriplets()
+    {
+        var triplet = PythagoreanTriplets.GetTripletsUpTill(13);
+
+        triplet.Should().BeEquivalentToWithStrictOrdering(new List<(long a, long b, long c)>
+        {
+            (3, 4, 5),
+            (5, 12, 13)
+        });
+    }
+
     [TestCase(1)]
     [TestCase(2)]
     [TestCase(3)]
