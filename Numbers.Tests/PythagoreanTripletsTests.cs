@@ -36,8 +36,7 @@ public class PythagoreanTripletsTests
 
         triplet.Should().BeEquivalentToWithStrictOrdering(new List<(long a, long b, long c)>
         {
-            (3, 4, 5),
-            (5, 12, 13)
+            (3, 4, 5), (5, 12, 13), (6, 8, 10)
         });
     }
 
@@ -48,9 +47,7 @@ public class PythagoreanTripletsTests
 
         triplet.Should().BeEquivalentToWithStrictOrdering(new List<(long a, long b, long c)>
         {
-            (3, 4, 5),
-            (5, 12, 13), 
-            (8, 15, 17)
+            (3, 4, 5), (5, 12, 13), (6, 8, 10), (8, 15, 17), (9, 12, 15)
         });
     }
 
