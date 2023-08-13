@@ -20,4 +20,12 @@ public class PythagoreanTripletsTests
 
         triplet.Should().BeEquivalentToWithStrictOrdering(new List<(long a, long b, long c)> { (3, 4, 5) });
     }
+
+    [Test]
+    public void GetTripletsUpTill_Four_ReturnsEmptyList()
+    {
+        var triplet = PythagoreanTriplets.GetTripletsUpTill(4);
+
+        triplet.Should().BeEquivalentToWithStrictOrdering(new List<(long a, long b, long c)>());
+    }
 }
