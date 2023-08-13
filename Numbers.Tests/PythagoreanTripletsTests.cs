@@ -14,14 +14,6 @@ public class PythagoreanTripletsTests
 
 
     [Test]
-    public void GetTripletsUpTill_Five_ReturnsSingleTriplet()
-    {
-        var triplet = PythagoreanTriplets.GetTripletsUpTill(5);
-
-        triplet.Should().BeEquivalentToWithStrictOrdering(new List<(long a, long b, long c)> { (3, 4, 5) });
-    }
-
-    [Test]
     public void GetTripletsUpTill_Four_ReturnsEmptyList()
     {
         var triplets = PythagoreanTriplets.GetTripletsUpTill(4);
@@ -29,10 +21,19 @@ public class PythagoreanTripletsTests
         triplets.Should().BeEquivalentToWithStrictOrdering(new List<(long a, long b, long c)>());
     }
 
+    [Test]
+    public void GetTripletsUpTill_Five_ReturnsSingleTriplet()
+    {
+        var triplet = PythagoreanTriplets.GetTripletsUpTill(5);
+
+        triplet.Should().BeEquivalentToWithStrictOrdering(new List<(long a, long b, long c)> { (3, 4, 5) });
+    }
+
     [TestCase(1)]
     [TestCase(2)]
     [TestCase(3)]
     [TestCase(4)]
+    [TestCase(5)]
     public void GetTripletsUpTill_ReturnsListContainingPreviousOne(long highestNumber)
     {
         var higher = PythagoreanTriplets.GetTripletsUpTill(highestNumber);
