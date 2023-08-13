@@ -28,4 +28,16 @@ public class PythagoreanTripletsTests
 
         triplet.Should().BeEquivalentToWithStrictOrdering(new List<(long a, long b, long c)>());
     }
+
+    [TestCase(1)]
+    [TestCase(2)]
+    [TestCase(3)]
+    [TestCase(4)]
+    public void GetTripletsUpTill_ReturnsListContainingPreviousOne(long highestNumber)
+    {
+        var higher = PythagoreanTriplets.GetTripletsUpTill(highestNumber);
+        var lower = PythagoreanTriplets.GetTripletsUpTill(highestNumber - 1);
+
+        higher.Should().ContainInConsecutiveOrder(lower);
+    }
 }

@@ -6,7 +6,7 @@ public static class PythagoreanTriplets
 
     public static List<(long a, long b, long c)> GetTripletsUpTill(long sum)
     {
-        if (sum == 4)
+        if (sum < 5)
         {
             return new List<(long a, long b, long c)>();
         }
