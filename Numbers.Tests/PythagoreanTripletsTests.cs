@@ -24,9 +24,9 @@ public class PythagoreanTripletsTests
     [Test]
     public void GetTripletsUpTill_Four_ReturnsEmptyList()
     {
-        var triplet = PythagoreanTriplets.GetTripletsUpTill(4);
+        var triplets = PythagoreanTriplets.GetTripletsUpTill(4);
 
-        triplet.Should().BeEquivalentToWithStrictOrdering(new List<(long a, long b, long c)>());
+        triplets.Should().BeEquivalentToWithStrictOrdering(new List<(long a, long b, long c)>());
     }
 
     [TestCase(1)]
