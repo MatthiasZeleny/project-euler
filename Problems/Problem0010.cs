@@ -4,7 +4,14 @@ namespace Problems;
 
 public class Problem0010 : IEulerProblem
 {
-    public long Example() => Primes.Create().TakeWhile(prime => prime < 10).Sum();
+    public long Example() => GetSumOfPrimesBelow(10);
 
     public long Solution() => 0;
+
+    private static long GetSumOfPrimesBelow(long threshold)
+    {
+        return Primes.Create()
+            .TakeWhile(prime => prime < threshold)
+            .Sum();
+    }
 }
