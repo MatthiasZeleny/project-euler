@@ -13,11 +13,6 @@ public static class PythagoreanTriplets
             {
                 for (var c = 1; c <= highestPossibleNumber; c++)
                 {
-                    if ((a < b && b < c) is false)
-                    {
-                        continue;
-                    }
-
                     if (FulfillsPythagoreanTriple(a, b, c))
                     {
                         yield return (a, b, c);
@@ -29,6 +24,9 @@ public static class PythagoreanTriplets
 
     private static bool FulfillsPythagoreanTriple(int a, int b, int c)
     {
-        return a * a + b * b == c * c;
+        var fulfillsEquation = a * a + b * b == c * c;
+        var fulfillsInequality = a < b && b < c;
+
+        return fulfillsEquation && fulfillsInequality;
     }
 }
