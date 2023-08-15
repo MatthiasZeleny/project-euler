@@ -13,12 +13,17 @@ public static class PythagoreanTriplets
             {
                 for (var c = b + 1; c <= highestPossibleNumber; c++)
                 {
-                    if (a * a + b * b == c * c)
+                    if (FulfillsPythagoreanTriple(a, b, c))
                     {
                         yield return (a, b, c);
                     }
                 }
             }
         }
+    }
+
+    private static bool FulfillsPythagoreanTriple(int a, int b, int c)
+    {
+        return a * a + b * b == c * c;
     }
 }
