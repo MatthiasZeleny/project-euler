@@ -10,7 +10,7 @@ public class Problem0009 : IEulerProblem
 
     private static long GetProductOfPythagoreanTripletWithSum(int sum)
     {
-        var (a, b, c) = PythagoreanTriplets.CreateTripledWithSum(sum);
+        var (a, b, c) = PythagoreanTriple.CreateTripledWithSum(sum);
 
         return a * b * c;
     }
