@@ -9,10 +9,15 @@ public static class PythagoreanTriplets
     {
         for (var a = 1; a <= highestPossibleNumber; a++)
         {
-            for (var b = a + 1; b <= highestPossibleNumber; b++)
+            for (var b = 1; b <= highestPossibleNumber; b++)
             {
-                for (var c = b + 1; c <= highestPossibleNumber; c++)
+                for (var c = 1; c <= highestPossibleNumber; c++)
                 {
+                    if ((a < b && b < c) is false)
+                    {
+                        continue;
+                    }
+
                     if (FulfillsPythagoreanTriple(a, b, c))
                     {
                         yield return (a, b, c);
