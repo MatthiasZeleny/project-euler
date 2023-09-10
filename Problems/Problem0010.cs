@@ -10,7 +10,7 @@ public class Problem0010 : IEulerProblem
 
     private static long GetSumOfPrimesBelow(long threshold)
     {
-        return Primes.Create()
+        return Primes.CreatePrimesUpUntil(threshold)
             .TakeWhile(prime => prime < threshold)
             .Sum();
     }

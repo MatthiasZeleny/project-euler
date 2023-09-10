@@ -8,7 +8,7 @@ public class PrimeFactorRepresentation
 
     public static PrimeFactorRepresentation For(long number)
     {
-        var primes = Primes.Create();
+        var primes = Primes.CreatePrimesUpUntil(number);
 
         var primeFactors = new Dictionary<long, int>();
         var rest = number;
