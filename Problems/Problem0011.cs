@@ -6,7 +6,7 @@ public class Problem0011 : IEulerProblem
 {
     public long Example() => GetLargestProductWithNNumbers(2);
 
-    public long Solution() => 0;
+    public long Solution() => GetLargestProductWithNNumbers(4);
 
     private static long GetLargestProductWithNNumbers(int numberOfDigits) =>
         Matrix
