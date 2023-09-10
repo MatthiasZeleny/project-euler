@@ -19,7 +19,7 @@ public class Problem0012 : IEulerProblem
 
             var numberOfFactors = numberOfPossibilitiesForEachPower.MultiplyToSingleNumber();
 
-            if (numberOfFactors >= neededNumberOfFactors)
+            if (numberOfFactors > neededNumberOfFactors)
             {
                 return triangleNumber;
             }
