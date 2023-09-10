@@ -33,4 +33,40 @@ public class NumberListTests
 
         numbersWithDigitCount.Should().BeEquivalentTo(expected);
     }
+
+    [Test]
+    public void MultiplyToSingleNumber_EmptyList_ShouldReturnOne()
+    {
+        var longs = new List<long>();
+
+        var product = longs.MultiplyToSingleNumber();
+
+        product.Should().Be(1);
+    }
+
+    [TestCase(1)]
+    [TestCase(2)]
+    [TestCase(3)]
+    public void MultiplyToSingleNumber_SingleElement_ShouldReturnSingleElement(int number)
+    {
+        var longs = new List<long> { number };
+
+        var product = longs.MultiplyToSingleNumber();
+
+        product.Should().Be(number);
+    }
+
+    [TestCase(2, 1, 2)]
+    [TestCase(6, 2, 3)]
+    [TestCase(30, 2, 3, 5)]
+    public void MultiplyToSingleNumber_SingleElement_ShouldReturnSingleElement(
+        long expectedResult,
+        params long[] numbers)
+    {
+        var longs = numbers.ToList();
+
+        var product = longs.MultiplyToSingleNumber();
+
+        product.Should().Be(expectedResult);
+    }
 }

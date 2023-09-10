@@ -16,6 +16,5 @@ public static class Digits
     private static List<long> TakeSubList(IReadOnlyCollection<long> digits, int startingPosition, int length) =>
         digits.Skip(startingPosition).Take(length).ToList();
 
-    public static long MultiplyToSingleNumber(this List<long> digitList) =>
-        digitList.Aggregate(1L, (product, factor) => product * factor);
+ 
 }
