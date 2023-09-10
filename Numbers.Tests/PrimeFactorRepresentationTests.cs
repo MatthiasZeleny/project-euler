@@ -37,6 +37,16 @@ public class PrimeFactorRepresentationTests
         list.Should().BeEquivalentTo(new List<int> { 5, 7, 13, 29 });
     }
 
+    [Test]
+    public void AsDictionary_Problem0012Example_ShouldReturnCorrectDictionary()
+    {
+        var dictionary = new Dictionary<long, int> { { 2, 2 }, { 7, 1 } };
+
+        var readOnlyDictionary = PrimeFactorRepresentation.For(28).AsDictionary();
+
+        readOnlyDictionary.Should().Equal(dictionary);
+    }
+
 
     [Test]
     public void LeastCommonMultiple_SameNumber_ShouldReturnSame()

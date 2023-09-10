@@ -34,6 +34,8 @@ public class PrimeFactorRepresentation
         return new PrimeFactorRepresentation(primeFactors);
     }
 
+    public IReadOnlyDictionary<long, int> AsDictionary() => _primeFactors;
+
     public IEnumerable<long> AsList() =>
         _primeFactors.ToList()
             .SelectMany(pair => NumberList.GetAListOf(pair.Key, pair.Value));
