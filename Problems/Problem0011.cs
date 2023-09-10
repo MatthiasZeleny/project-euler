@@ -4,10 +4,15 @@ namespace Problems;
 
 public class Problem0011 : IEulerProblem
 {
-    public long Example() => Matrix.GetAllPossibleCombinationsOfLength(2, MatrixAsString)
-        .Select(list => list.MultiplyToSingleNumber()).Max();
+    public long Example() => GetLargestProductWithNNumbers(2);
 
     public long Solution() => 0;
+
+    private static long GetLargestProductWithNNumbers(int numberOfDigits) =>
+        Matrix
+            .GetAllPossibleCombinationsOfLength(numberOfDigits, MatrixAsString)
+            .Select(list => list.MultiplyToSingleNumber())
+            .Max();
 
 
     private const string MatrixAsString = "08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08\n" +
