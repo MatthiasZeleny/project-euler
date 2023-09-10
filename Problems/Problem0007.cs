@@ -9,7 +9,7 @@ public class Problem0007 : IEulerProblem
     public long Solution() => GetPrimeNumber(10001);
 
     private static long GetPrimeNumber(int number) =>
-        Primes.CreateUpToNthPrime(number)
+        Primes.Create()
             .Skip(number - 1)
             .First();
 }
