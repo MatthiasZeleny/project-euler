@@ -16,7 +16,7 @@ public static class NumberList
         return NumbersBetween(lowestNumber, highestNumber);
     }
 
-    public static long MultiplyToSingleNumber(this List<long> numbers) =>
+    public static long MultiplyToSingleNumber(this IEnumerable<long> numbers) =>
         numbers.Aggregate(1L, (product, factor) => product * factor);
 
     private static long GetLowestNumberWithDigitsCount(int digitCount)
