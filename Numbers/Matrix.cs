@@ -6,7 +6,9 @@ public static class Matrix
     {
         if (numberOfDigits == 1)
         {
-            return matrix.Split('\n').SelectMany(line => line.ToList()).Select(digit => long.Parse(digit.ToString()))
+            return matrix
+                .Split('\n')
+                .SelectMany(Digits.ToDigitList)
                 .Select(digit => new List<long> { digit });
         }
 
