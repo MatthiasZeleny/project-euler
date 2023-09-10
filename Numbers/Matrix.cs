@@ -8,12 +8,12 @@ public static class Matrix
         {
             return matrix
                 .Split('\n')
-                .SelectMany(Digits.ToDigitList)
+                .SelectMany(ToNumberList)
                 .Select(digit => new List<long> { digit });
         }
 
         var listOfList = matrix.Split('\n')
-            .Select(Digits.ToDigitList)
+            .Select(ToNumberList)
             .ToList();
 
         var width = listOfList.Select(line => line.Count).Distinct().Single();
@@ -75,5 +75,10 @@ public static class Matrix
 
 
         return list;
+    }
+
+    private static List<long> ToNumberList(this string line)
+    {
+        return line.Split(" ").Select(digit => long.Parse(digit.ToString())).ToList();
     }
 }
