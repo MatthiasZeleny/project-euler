@@ -6,7 +6,7 @@ public class Problem0010 : IEulerProblem
 {
     public long Example() => GetSumOfPrimesBelow(10);
 
-    public long Solution() => 0;
+    public long Solution() => GetSumOfPrimesBelow(2_000_000);
 
     private static long GetSumOfPrimesBelow(long threshold)
     {
