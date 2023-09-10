@@ -6,7 +6,7 @@ public class Problem0012 : IEulerProblem
 {
     public long Example() => GetSmallestTriangleNumberWithNFactors(5);
 
-    public long Solution() => 0;
+    public long Solution() => GetSmallestTriangleNumberWithNFactors(500);
 
     private static long GetSmallestTriangleNumberWithNFactors(int neededNumberOfFactors)
     {
