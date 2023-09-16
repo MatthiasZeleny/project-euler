@@ -5,13 +5,25 @@ namespace Problems;
 
 public class Problem0013 : IEulerProblem<BigInteger>
 {
-    public BigInteger Example() =>
+    public BigInteger Example() => GetFirstTenDigitsOfSum(list => list.Take(2));
+
+    private static BigInteger GetFirstTenDigitsOfSum(Func<IEnumerable<BigInteger>, IEnumerable<BigInteger>> filter) =>
+        GetNumbers()
+            .Then(filter)
+            .Then(Sum)
+            .Then(TakeFirstTenDigits);
+
+    private static IEnumerable<BigInteger> GetNumbers() =>
         NumbersAsString
-            .Take(2)
-            .Select(BigInteger.Parse)
-            .Aggregate(BigInteger.Zero, (sum, next) => sum + next)
+            .Select(BigInteger.Parse);
+
+    private static BigInteger TakeFirstTenDigits(BigInteger result) =>
+        result
             .ToString()[..10]
             .Then(BigInteger.Parse);
+
+    private static BigInteger Sum(IEnumerable<BigInteger> numbers) =>
+        numbers.Aggregate(BigInteger.Zero, (sum, next) => sum + next);
 
     public BigInteger Solution() => BigInteger.Zero;
 
