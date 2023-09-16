@@ -2,7 +2,7 @@
 
 namespace Problems;
 
-public class Problem0012 : IEulerProblem
+public class Problem0012 : IEulerProblem<long>
 {
     public long Example() => GetSmallestTriangleNumberWithNFactors(5);
 

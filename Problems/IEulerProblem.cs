@@ -1,8 +1,8 @@
 ﻿namespace Problems;
 
-public interface IEulerProblem
+public interface IEulerProblem<out TUnit>
 {
-    public long Example();
+    public TUnit Example();
 
-    public long Solution();
+    public TUnit Solution();
 }

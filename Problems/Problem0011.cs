@@ -2,7 +2,7 @@
 
 namespace Problems;
 
-public class Problem0011 : IEulerProblem
+public class Problem0011 : IEulerProblem<long>
 {
     public long Example() => GetLargestProductWithNNumbers(2);
 

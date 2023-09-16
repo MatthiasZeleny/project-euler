@@ -2,7 +2,7 @@
 
 namespace Problems;
 
-public class Problem0009 : IEulerProblem
+public class Problem0009 : IEulerProblem<long>
 {
     public long Example() => GetProductOfPythagoreanTripletWithSum(3 + 4 + 5);
 

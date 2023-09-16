@@ -2,7 +2,7 @@
 
 namespace Problems;
 
-public class Problem0002 : IEulerProblem
+public class Problem0002 : IEulerProblem<long>
 {
     public long Example() => GetSumOfEvenFibonacciNumbersUpTo(8);
 

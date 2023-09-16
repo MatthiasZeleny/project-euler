@@ -2,7 +2,7 @@
 
 namespace Problems;
 
-public class Problem0001 : IEulerProblem
+public class Problem0001 : IEulerProblem<long>
 {
     public long Example() => GetSumOfAllMultiplesOfThreeAndFiveBelow(10);
 

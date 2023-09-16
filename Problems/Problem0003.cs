@@ -2,7 +2,7 @@
 
 namespace Problems;
 
-public class Problem0003 : IEulerProblem
+public class Problem0003 : IEulerProblem<long>
 {
     public long Example() => GetBiggestPrimeFactorFor(13195);
 

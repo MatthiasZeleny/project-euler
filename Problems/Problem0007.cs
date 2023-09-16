@@ -2,7 +2,7 @@
 
 namespace Problems;
 
-public class Problem0007 : IEulerProblem
+public class Problem0007 : IEulerProblem<long>
 {
     public long Example() => GetPrimeNumber(6);
 

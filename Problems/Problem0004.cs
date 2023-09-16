@@ -3,7 +3,7 @@ using Utils;
 
 namespace Problems;
 
-public class Problem0004 : IEulerProblem
+public class Problem0004 : IEulerProblem<long>
 {
     public long Example() => LargestPossiblePalindromeGeneratedByAProductOfTwoNumbersWithDigitCount(2);
 

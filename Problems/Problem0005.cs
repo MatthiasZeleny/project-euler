@@ -3,7 +3,7 @@ using Utils;
 
 namespace Problems;
 
-public class Problem0005 : IEulerProblem
+public class Problem0005 : IEulerProblem<long>
 {
     public long Example() => GetLeastCommonMultipleOfNumbersUpTo(10);
 

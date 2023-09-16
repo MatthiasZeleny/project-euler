@@ -2,7 +2,7 @@
 
 namespace Problems;
 
-public class Problem0006 : IEulerProblem
+public class Problem0006 : IEulerProblem<long>
 {
     public long Example() => SumVsSquareFirstForNumbersUpTo(10);
 

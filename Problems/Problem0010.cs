@@ -2,7 +2,7 @@
 
 namespace Problems;
 
-public class Problem0010 : IEulerProblem
+public class Problem0010 : IEulerProblem<long>
 {
     public long Example() => GetSumOfPrimesBelow(10);
 
