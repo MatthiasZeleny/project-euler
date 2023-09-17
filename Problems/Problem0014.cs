@@ -2,9 +2,9 @@
 
 namespace Problems;
 
-public class Problem0014 : IEulerProblem<int>
+public class Problem0014 : IEulerProblem<long>
 {
-    public int Example() => CollatzSequence.GetSequenceStartingWith(13).Count();
+    public long Example() => CollatzSequence.GetSequenceStartingWith(13).Count();
 
-    public int Solution() => 0;
+    public long Solution() => 0;
 }

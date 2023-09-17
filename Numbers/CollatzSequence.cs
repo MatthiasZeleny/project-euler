@@ -2,7 +2,7 @@
 
 public static class CollatzSequence
 {
-    public static IEnumerable<int> GetSequenceStartingWith(int start)
+    public static IEnumerable<long> GetSequenceStartingWith(long start)
     {
         var current = start;
 
