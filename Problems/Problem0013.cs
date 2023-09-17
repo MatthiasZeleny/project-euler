@@ -7,6 +7,8 @@ public class Problem0013 : IEulerProblem<BigInteger>
 {
     public BigInteger Example() => GetFirstTenDigitsOfSum(list => list.Take(2));
 
+    public BigInteger Solution() => GetFirstTenDigitsOfSum(list => list);
+
     private static BigInteger GetFirstTenDigitsOfSum(Func<IEnumerable<BigInteger>, IEnumerable<BigInteger>> filter) =>
         GetNumbers()
             .Then(filter)
@@ -24,8 +26,6 @@ public class Problem0013 : IEulerProblem<BigInteger>
 
     private static BigInteger Sum(IEnumerable<BigInteger> numbers) =>
         numbers.Aggregate(BigInteger.Zero, (sum, next) => sum + next);
-
-    public BigInteger Solution() => BigInteger.Zero;
 
     private static readonly List<string> NumbersAsString = new()
     {
