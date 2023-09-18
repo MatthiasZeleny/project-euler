@@ -4,9 +4,8 @@ namespace Numbers.Tests;
 
 public class GridsTests
 {
-    [TestCase(1, 1)]
-    [TestCase(2, 2)]
-    [TestCase(3, 6)]
+    [TestCase(1, 2)]
+    [TestCase(2, 6)]
     public void PossibilitiesToTravelAQuadraticGrid_ReturnsCorrectValue(long gridSize, long expected)
     {
         var possibilitiesToTravelAQuadraticGrid = Grids.PossibilitiesToTravelAQuadraticGrid(gridSize);
