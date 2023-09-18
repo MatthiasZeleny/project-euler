@@ -2,5 +2,5 @@
 
 public static class Grids
 {
-    public static long PossibilitiesToTravelAMXMGrid(int gridSize) => 6;
+    public static long PossibilitiesToTravelAQuadraticGrid(int gridSize) => 6;
 }

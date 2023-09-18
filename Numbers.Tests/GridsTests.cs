@@ -5,10 +5,10 @@ namespace Numbers.Tests;
 public class GridsTests
 {
     [Test]
-    public void PossibilitiesToTravelAMXMGrid_Three_ReturnsSix()
+    public void PossibilitiesToTravelAQuadraticGrid_Three_ReturnsSix()
     {
-        var possibilitiesToTravelAmxmGrid = Grids.PossibilitiesToTravelAMXMGrid(3);
+        var possibilitiesToTravelAQuadraticGrid = Grids.PossibilitiesToTravelAQuadraticGrid(3);
 
-        possibilitiesToTravelAmxmGrid.Should().Be(6);
+        possibilitiesToTravelAQuadraticGrid.Should().Be(6);
     }
 }
