@@ -4,11 +4,11 @@ namespace Numbers.Tests;
 
 public class GridsTests
 {
-    [Test]
-    public void PossibilitiesToTravelAQuadraticGrid_Three_ReturnsSix()
+    [TestCase(3, 6)]
+    public void PossibilitiesToTravelAQuadraticGrid_ReturnsCorrectValue(long gridSize, long expected)
     {
-        var possibilitiesToTravelAQuadraticGrid = Grids.PossibilitiesToTravelAQuadraticGrid(3);
+        var possibilitiesToTravelAQuadraticGrid = Grids.PossibilitiesToTravelAQuadraticGrid(gridSize);
 
-        possibilitiesToTravelAQuadraticGrid.Should().Be(6);
+        possibilitiesToTravelAQuadraticGrid.Should().Be(expected);
     }
 }
