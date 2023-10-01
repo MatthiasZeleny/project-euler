@@ -6,12 +6,12 @@ public static class Grids
     {
         var dictionary = new Dictionary<(long Width, long Height), long>();
 
-        Add(dictionary, new Grid(gridSize, gridSize - 1), 1);
-        Add(dictionary, new Grid(gridSize - 1, gridSize), 1);
+        RegisterSubGrids(dictionary, gridSize, gridSize, 1);
 
-        while (dictionary.Keys.FirstOrDefault(tuple => tuple is { Width: > 0, Height: > 0 }) is var (width, height))
+        while (dictionary.Keys.FirstOrDefault(HasMoreThanOnePath) is var (width, height))
         {
-            if (width is 0 || height is 0)
+            var hasOnlyOnePath = width is 0 || height is 0;
+            if (hasOnlyOnePath)
             {
                 break;
             }
@@ -22,15 +22,28 @@ public static class Grids
         return dictionary.Values.Sum();
     }
 
+    private static bool HasMoreThanOnePath((long Width, long Height) tuple)
+    {
+        return tuple is { Width: > 0, Height: > 0 };
+    }
+
     private static void SplitIntoTwoSubGrids(
         Dictionary<(long Width, long Height), long> dictionary,
         long width,
         long height)
     {
         var count = dictionary[(width, height)];
+
+        RegisterSubGrids(dictionary, width, height, count);
+
+        dictionary.Remove((width, height));
+    }
+
+    private static void RegisterSubGrids(Dictionary<(long Width, long Height), long> dictionary, long width,
+        long height, long count)
+    {
         Add(dictionary, new Grid(width, height - 1), count);
         Add(dictionary, new Grid(width - 1, height), count);
-        dictionary.Remove((width, height));
     }
 
     private static void Add(Dictionary<(long Width, long Height), long> dictionary, Grid value, long count)
