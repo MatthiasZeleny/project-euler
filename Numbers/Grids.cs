@@ -5,8 +5,7 @@ public static class Grids
     public static long PossibilitiesToTravelAQuadraticGrid(long gridSize)
     {
         var dictionary = new Dictionary<(long Width, long Height), long>();
-
-        RegisterSubGrids(dictionary, gridSize, gridSize, 1);
+        Add(dictionary, new Grid(gridSize, gridSize), 1);
 
         while (dictionary.Keys.FirstOrDefault(HasMoreThanOnePath) is var (width, height) && (width, height) != default)
         {
