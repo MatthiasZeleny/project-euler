@@ -8,14 +8,8 @@ public static class Grids
 
         RegisterSubGrids(dictionary, gridSize, gridSize, 1);
 
-        while (dictionary.Keys.FirstOrDefault(HasMoreThanOnePath) is var (width, height))
+        while (dictionary.Keys.FirstOrDefault(HasMoreThanOnePath) is var (width, height) && (width, height) != default)
         {
-            var hasOnlyOnePath = width is 0 || height is 0;
-            if (hasOnlyOnePath)
-            {
-                break;
-            }
-
             SplitIntoTwoSubGrids(dictionary, width, height);
         }
 
