@@ -2,26 +2,27 @@
 
 public static class Grids
 {
-    public static long PossibilitiesToTravelAQuadraticGrid(long gridSize)
+    public static long PossibilitiesToTravelAQuadraticGrid(long numberOfEdgesInEachDirection)
     {
-        var dictionary = new Dictionary<(long Width, long Height), long>();
-        Add(dictionary, new Grid(gridSize, gridSize), 1);
+        var dictionary = new Dictionary<(long edgeCountWidth, long edgeCoundHeight), long>();
+        Add(dictionary, new Grid(numberOfEdgesInEachDirection, numberOfEdgesInEachDirection), 1);
 
-        while (dictionary.Keys.FirstOrDefault(HasMoreThanOnePath) is var (width, height) && (width, height) != default)
+        while (dictionary.Keys.FirstOrDefault(HasMoreThanOnePath) is var (edgeCountWidth, edgeCountHeight)
+               && (edgeCountWidth, edgeCountHeight) != default)
         {
-            SplitIntoTwoSubGrids(dictionary, width, height);
+            SplitIntoTwoSubGrids(dictionary, edgeCountWidth, edgeCountHeight);
         }
 
         return dictionary.Values.Sum();
     }
 
-    private static bool HasMoreThanOnePath((long Width, long Height) tuple)
+    private static bool HasMoreThanOnePath((long EdgeCountWidth, long EdgeCountHeight) tuple)
     {
-        return tuple is { Width: > 0, Height: > 0 };
+        return tuple is { EdgeCountWidth: > 0, EdgeCountHeight: > 0 };
     }
 
     private static void SplitIntoTwoSubGrids(
-        Dictionary<(long Width, long Height), long> dictionary,
+        Dictionary<(long edgeCountWidth, long edgeCoundHeight), long> dictionary,
         long width,
         long height)
     {
@@ -32,14 +33,14 @@ public static class Grids
         dictionary.Remove((width, height));
     }
 
-    private static void RegisterSubGrids(Dictionary<(long Width, long Height), long> dictionary, long width,
+    private static void RegisterSubGrids(Dictionary<(long edgeCountWidth, long edgeCoundHeight), long> dictionary, long width,
         long height, long count)
     {
         Add(dictionary, new Grid(width, height - 1), count);
         Add(dictionary, new Grid(width - 1, height), count);
     }
 
-    private static void Add(Dictionary<(long Width, long Height), long> dictionary, Grid value, long count)
+    private static void Add(Dictionary<(long edgeCountWidth, long edgeCoundHeight), long> dictionary, Grid value, long count)
     {
         if (dictionary.TryAdd(value.NormalizedSize, count) is false)
         {
@@ -49,15 +50,17 @@ public static class Grids
 
     private class Grid
     {
-        private long Width { get; }
-        private long Height { get; }
+        private long EdgeCountWidth { get; }
+        private long EdgeCountHeight { get; }
 
-        public Grid(long width, long height)
+        public Grid(long edgeCountWidth, long edgeCountHeight)
         {
-            Width = width;
-            Height = height;
+            EdgeCountWidth = edgeCountWidth;
+            EdgeCountHeight = edgeCountHeight;
         }
 
-        public (long Width, long Height) NormalizedSize => Width > Height ? (Width, Height) : (Height, Width);
+        public (long edgeCountWidth, long edgeCoundHeight) NormalizedSize => EdgeCountWidth > EdgeCountHeight
+            ? (EdgeCountWidth, EdgeCountHeight)
+            : (EdgeCountHeight, EdgeCountWidth);
     }
 }
