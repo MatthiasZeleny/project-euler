@@ -2,6 +2,21 @@
 
 public static class Digits
 {
+    private const int BaseTen = 10;
+
+    public static IEnumerable<long> ToDigitList(this long number) =>
+        CreateEnumerableStartingFromLowest(number).Reverse();
+
+    private static IEnumerable<long> CreateEnumerableStartingFromLowest(long number)
+    {
+        var temp = number;
+        while (temp > 0)
+        {
+            yield return temp % BaseTen;
+            temp /= BaseTen;
+        }
+    }
+
     public static List<long> ToDigitList(this string line)
     {
         return line.ToList().Select(digit => long.Parse(digit.ToString())).ToList();
@@ -20,6 +35,4 @@ public static class Digits
 
     private static List<long> TakeSubList(IReadOnlyCollection<long> digits, int startingPosition, int length) =>
         digits.Skip(startingPosition).Take(length).ToList();
-
- 
 }

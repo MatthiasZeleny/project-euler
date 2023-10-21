@@ -4,6 +4,18 @@ namespace Numbers.Tests;
 
 public class DigitsTests
 {
+    [TestCase(0)]
+    [TestCase(1, 1)]
+    [TestCase(9, 9)]
+    [TestCase(10, 1, 0)]
+    [TestCase(210, 2, 1, 0)]
+    public void ToDigitList_Number_ShouldReturnCorrectList(long number, params long[] expectedDigits)
+    {
+        var digitList = number.ToDigitList();
+
+        digitList.Should().BeEquivalentToWithStrictOrdering(expectedDigits);
+    }
+
     [TestCase("")]
     [TestCase("1", 1)]
     [TestCase("2", 2)]
