@@ -7,7 +7,7 @@ public class Problem0016 : IEulerProblem<long>
 {
     public long Example() => GetDigitSumOfTwoToThePowerOf(15);
 
-    public long Solution() => 0;
+    public long Solution() => GetDigitSumOfTwoToThePowerOf(1_000);
 
     private static long GetDigitSumOfTwoToThePowerOf(int count) =>
         TwoToThePowerOf(count)
