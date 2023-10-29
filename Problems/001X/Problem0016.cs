@@ -1,4 +1,5 @@
-﻿using Numbers;
+﻿using System.Numerics;
+using Numbers;
 
 namespace Problems._001X;
 
@@ -13,8 +14,8 @@ public class Problem0016 : IEulerProblem<long>
             .ToDigitList()
             .Sum();
 
-    private static long TwoToThePowerOf(int count) =>
+    private static BigInteger TwoToThePowerOf(int count) =>
         Enumerable
-            .Repeat(2, count)
-            .Aggregate(1L, (product, nextFactor) => product * nextFactor);
+            .Repeat(BigInteger.Parse("2"), count)
+            .Aggregate(BigInteger.One, (product, nextFactor) => product * nextFactor);
 }

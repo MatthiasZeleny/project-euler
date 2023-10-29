@@ -1,10 +1,15 @@
-﻿namespace Numbers;
+﻿using System.Numerics;
+
+namespace Numbers;
 
 public static class Digits
 {
-    private const int BaseTen = 10;
+    private const long BaseTen = 10;
 
     public static IEnumerable<long> ToDigitList(this long number) =>
+        CreateEnumerableStartingFromLowest(number).Reverse();   
+    
+    public static IEnumerable<long> ToDigitList(this BigInteger number) =>
         CreateEnumerableStartingFromLowest(number).Reverse();
 
     private static IEnumerable<long> CreateEnumerableStartingFromLowest(long number)
@@ -13,6 +18,16 @@ public static class Digits
         while (temp > 0)
         {
             yield return temp % BaseTen;
+            temp /= BaseTen;
+        }
+    }
+
+    private static IEnumerable<long> CreateEnumerableStartingFromLowest(BigInteger number)
+    {
+        var temp = number;
+        while (temp > 0)
+        {
+            yield return (long)(temp % BaseTen);
             temp /= BaseTen;
         }
     }
