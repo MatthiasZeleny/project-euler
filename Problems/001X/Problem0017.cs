@@ -1,9 +1,16 @@
-﻿namespace Problems._001X;
+﻿using Numbers;
+
+namespace Problems._001X;
 
 public class Problem0017 : IEulerProblem<long>
 {
     public long Example() =>
-        new List<string> { "one", "two", "three", "four", "five" }.Select(word => word.Length).Sum();
+        CreateWordListUpUntil(5).Select(word => word.Length).Sum();
 
     public long Solution() => 0;
+
+    private static IEnumerable<string> CreateWordListUpUntil(int highestNumber) =>
+        NumberList
+            .NumbersUpTo(highestNumber)
+            .Select(Words.ToWord);
 }
