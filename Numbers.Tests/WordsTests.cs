@@ -36,4 +36,21 @@ public class WordsTests
 
         word.Should().Be(expectedWord);
     }
+
+    [TestCase(20, "twenty")]
+    [TestCase(21, "twenty-one")]
+    [TestCase(22, "twenty-two")]
+    [TestCase(23, "twenty-three")]
+    [TestCase(24, "twenty-four")]
+    [TestCase(25, "twenty-five")]
+    [TestCase(26, "twenty-six")]
+    [TestCase(27, "twenty-seven")]
+    [TestCase(28, "twenty-eight")]
+    [TestCase(29, "twenty-nine")]
+    public void ToWord_DoubleDigitsTwentyAndAbove_ShouldReturnCorrectString(int number, string expectedWord)
+    {
+        var word = Words.ToWord(number);
+
+        word.Should().Be(expectedWord);
+    }
 }
