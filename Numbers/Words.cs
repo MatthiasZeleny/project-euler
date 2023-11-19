@@ -34,21 +34,16 @@ public static class Words
         };
 
 
-    private static string CreateSingleDigitAsSuffix(long number) =>
-        (number % 10) switch
+    private static string CreateSingleDigitAsSuffix(long number)
+    {
+        var singleDigit = number % 10;
+
+        return singleDigit switch
         {
             0 => "",
-            1 => "-one",
-            2 => "-two",
-            3 => "-three",
-            4 => "-four",
-            5 => "-five",
-            6 => "-six",
-            7 => "-seven",
-            8 => "-eight",
-            9 => "-nine",
-            _ => ThrowException(number)
+            _ => "-" + CreateSingleDigit(singleDigit)
         };
+    }
 
     private static string CreateTenToNineTeen(long number) =>
         number switch
