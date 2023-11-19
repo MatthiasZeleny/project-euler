@@ -28,22 +28,14 @@ public static class Words
         number switch
         {
             < 20 => CreateTenToNineTeen(number),
-            < 30 => CreateTwentyToTwentyNine(number),
-            < 40 => CreateThirtyToThirtyNine(number),
+            < 30 => "twenty" + CreateSingleDigitAsSuffix(number),
+            < 40 => "thirty" + CreateSingleDigitAsSuffix(number),
             _ => ThrowException(number)
         };
 
-    private static string CreateTwentyToTwentyNine(long number) =>
-        "twenty" + CreateSingleDigitAsSuffix(number);
 
-    private static string CreateThirtyToThirtyNine(long number) =>
-        "thirty" + CreateSingleDigitAsSuffix(number);
-
-
-    private static string CreateSingleDigitAsSuffix(long number)
-    {
-        var l = (number % 10);
-        var singleDigit = l switch
+    private static string CreateSingleDigitAsSuffix(long number) =>
+        (number % 10) switch
         {
             0 => "",
             1 => "-one",
@@ -57,8 +49,6 @@ public static class Words
             9 => "-nine",
             _ => ThrowException(number)
         };
-        return singleDigit;
-    }
 
     private static string CreateTenToNineTeen(long number) =>
         number switch
