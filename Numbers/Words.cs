@@ -33,44 +33,31 @@ public static class Words
             _ => ThrowException(number)
         };
 
-    private static string CreateTwentyToTwentyNine(long number)
-    {
-        const string twenty = "twenty";
+    private static string CreateTwentyToTwentyNine(long number) =>
+        "twenty" + CreateSingleDigitAsSuffix(number);
 
-        return number switch
+    private static string CreateThirtyToThirtyNine(long number) =>
+        "thirty" + CreateSingleDigitAsSuffix(number);
+
+
+    private static string CreateSingleDigitAsSuffix(long number)
+    {
+        var l = (number % 10);
+        var singleDigit = l switch
         {
-            20 => twenty + "",
-            21 => twenty + "-one",
-            22 => twenty + "-two",
-            23 => twenty + "-three",
-            24 => twenty + "-four",
-            25 => twenty + "-five",
-            26 => twenty + "-six",
-            27 => twenty + "-seven",
-            28 => twenty + "-eight",
-            29 => twenty + "-nine",
+            0 => "",
+            1 => "-one",
+            2 => "-two",
+            3 => "-three",
+            4 => "-four",
+            5 => "-five",
+            6 => "-six",
+            7 => "-seven",
+            8 => "-eight",
+            9 => "-nine",
             _ => ThrowException(number)
         };
-    }
-
-    private static string CreateThirtyToThirtyNine(long number)
-    {
-        const string thirty = "thirty";
-
-        return number switch
-        {
-            30 => thirty + "",
-            31 => thirty + "-one",
-            32 => thirty + "-two",
-            33 => thirty + "-three",
-            34 => thirty + "-four",
-            35 => thirty + "-five",
-            36 => thirty + "-six",
-            37 => thirty + "-seven",
-            38 => thirty + "-eight",
-            39 => thirty + "-nine",
-            _ => ThrowException(number)
-        };
+        return singleDigit;
     }
 
     private static string CreateTenToNineTeen(long number) =>
