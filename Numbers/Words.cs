@@ -14,6 +14,13 @@ public static class Words
             7 => "seven",
             8 => "eight",
             9 => "nine",
+            > 9 => CreateDoubleDigit(number),
+            _ => throw new ArgumentException("Number cannot be handled.", nameof(number))
+        };
+
+    private static string CreateDoubleDigit(long number) =>
+        number switch
+        {
             10 => "ten",
             11 => "eleven",
             12 => "twelve",
