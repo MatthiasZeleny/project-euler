@@ -28,28 +28,50 @@ public static class Words
         number switch
         {
             < 20 => CreateTenToNineTeen(number),
-            20 => "twenty",
-            21 => "twenty-one",
-            22 => "twenty-two",
-            23 => "twenty-three",
-            24 => "twenty-four",
-            25 => "twenty-five",
-            26 => "twenty-six",
-            27 => "twenty-seven",
-            28 => "twenty-eight",
-            29 => "twenty-nine",
-            30 => "thirty",
-            31 => "thirty-one",
-            32 => "thirty-two",
-            33 => "thirty-three",
-            34 => "thirty-four",
-            35 => "thirty-five",
-            36 => "thirty-six",
-            37 => "thirty-seven",
-            38 => "thirty-eight",
-            39 => "thirty-nine",
+            < 30 => CreateTwentyToTwentyNine(number),
+            < 40 => CreateThirtyToThirtyNine(number),
             _ => ThrowException(number)
         };
+
+    private static string CreateTwentyToTwentyNine(long number)
+    {
+        const string twenty = "twenty";
+
+        return number switch
+        {
+            20 => twenty + "",
+            21 => twenty + "-one",
+            22 => twenty + "-two",
+            23 => twenty + "-three",
+            24 => twenty + "-four",
+            25 => twenty + "-five",
+            26 => twenty + "-six",
+            27 => twenty + "-seven",
+            28 => twenty + "-eight",
+            29 => twenty + "-nine",
+            _ => ThrowException(number)
+        };
+    }
+
+    private static string CreateThirtyToThirtyNine(long number)
+    {
+        const string thirty = "thirty";
+
+        return number switch
+        {
+            30 => thirty + "",
+            31 => thirty + "-one",
+            32 => thirty + "-two",
+            33 => thirty + "-three",
+            34 => thirty + "-four",
+            35 => thirty + "-five",
+            36 => thirty + "-six",
+            37 => thirty + "-seven",
+            38 => thirty + "-eight",
+            39 => thirty + "-nine",
+            _ => ThrowException(number)
+        };
+    }
 
     private static string CreateTenToNineTeen(long number) =>
         number switch
