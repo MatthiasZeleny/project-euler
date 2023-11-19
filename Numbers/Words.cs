@@ -5,6 +5,13 @@ public static class Words
     public static string ToWord(long number) =>
         number switch
         {
+            < 10 => CreateSingleDigit(number),
+            _ => CreateDoubleDigit(number),
+        };
+
+    private static string CreateSingleDigit(long number) =>
+        number switch
+        {
             1 => "one",
             2 => "two",
             3 => "three",
@@ -14,23 +21,13 @@ public static class Words
             7 => "seven",
             8 => "eight",
             9 => "nine",
-            > 9 => CreateDoubleDigit(number),
-            _ => throw new ArgumentException("Number cannot be handled.", nameof(number))
+            _ => ThrowException(number)
         };
 
     private static string CreateDoubleDigit(long number) =>
         number switch
         {
-            10 => "ten",
-            11 => "eleven",
-            12 => "twelve",
-            13 => "thirteen",
-            14 => "fourteen",
-            15 => "fifteen",
-            16 => "sixteen",
-            17 => "seventeen",
-            18 => "eighteen",
-            19 => "nineteen",
+            < 20 => CreateTenToNineTeen(number),
             20 => "twenty",
             21 => "twenty-one",
             22 => "twenty-two",
@@ -51,6 +48,25 @@ public static class Words
             37 => "thirty-seven",
             38 => "thirty-eight",
             39 => "thirty-nine",
-            _ => throw new ArgumentException("Number cannot be handled.", nameof(number))
+            _ => ThrowException(number)
         };
+
+    private static string CreateTenToNineTeen(long number) =>
+        number switch
+        {
+            10 => "ten",
+            11 => "eleven",
+            12 => "twelve",
+            13 => "thirteen",
+            14 => "fourteen",
+            15 => "fifteen",
+            16 => "sixteen",
+            17 => "seventeen",
+            18 => "eighteen",
+            19 => "nineteen",
+            _ => ThrowException(number)
+        };
+
+    private static string ThrowException(long number) =>
+        throw new ArgumentException($"Number {number} cannot be handled.", nameof(number));
 }
