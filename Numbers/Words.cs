@@ -34,6 +34,16 @@ public static class Words
             27 => "twenty-seven",
             28 => "twenty-eight",
             29 => "twenty-nine",
+            30 => "thirty",
+            31 => "thirty-one",
+            32 => "thirty-two",
+            33 => "thirty-three",
+            34 => "thirty-four",
+            35 => "thirty-five",
+            36 => "thirty-six",
+            37 => "thirty-seven",
+            38 => "thirty-eight",
+            39 => "thirty-nine",
             _ => throw new ArgumentException("Number cannot be handled.", nameof(number))
         };
 }
