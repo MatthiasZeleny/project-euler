@@ -2,7 +2,8 @@
 Trying to get some of the problems on https://projecteuler.net/ solved.
 
 This project was created with the goal to let people know what code I create looks like, what I focus on and what people whose projects I join can expect.
-Important: In order to actually understand how I work, try to have a look at the commit history of this project.
+In order to actually understand how I work, try to have a look at the commits and their size in this project.
+And since there are no deadlines, I am going to take my sweet time and rather try to work on it regularly.
 
 Since this is not about creating an Enterprise Solution, there is not going to be an architecture besides the one naturally emerging from refactorings.
 I am probably focusing on DRY and making the usage of extracted methods and classes feel natural.
