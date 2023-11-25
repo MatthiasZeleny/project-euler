@@ -6,7 +6,7 @@ public static class Words
         number switch
         {
             < 10 => CreateSingleDigit(number),
-            _ => CreateDoubleDigit(number),
+            _ => CreateDoubleDigit(number)
         };
 
     private static string CreateSingleDigit(long number) =>

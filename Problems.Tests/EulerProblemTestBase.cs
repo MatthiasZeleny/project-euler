@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 namespace Problems.Tests;
 
 [UsedImplicitly(ImplicitUseTargetFlags.WithInheritors)]
-public abstract class EulerProblemTestBase<TEulerProblem,TUnit> where TEulerProblem : IEulerProblem<TUnit>, new()
+public abstract class EulerProblemTestBase<TEulerProblem, TUnit> where TEulerProblem : IEulerProblem<TUnit>, new()
 {
     protected abstract TUnit ExampleResult { get; }
     protected abstract TUnit ProblemResult { get; }

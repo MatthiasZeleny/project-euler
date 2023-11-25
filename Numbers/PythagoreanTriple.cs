@@ -2,9 +2,6 @@
 
 public record PythagoreanTriple
 {
-    public int A { get; }
-    public int B { get; }
-    public int C { get; }
 
     private PythagoreanTriple(int a, int b, int c)
     {
@@ -12,6 +9,10 @@ public record PythagoreanTriple
         B = b;
         C = c;
     }
+
+    public int A { get; }
+    public int B { get; }
+    public int C { get; }
 
     public static PythagoreanTriple CreateTripledWithSum(long sum) =>
         GetTripletsUpTill(sum).First(tuple => tuple.A + tuple.B + tuple.C == sum);

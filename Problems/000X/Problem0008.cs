@@ -4,16 +4,6 @@ namespace Problems._000X;
 
 public class Problem0008 : IEulerProblem<long>
 {
-    public long Example() => GetLargestProductInMatrixUsingNDigits(4);
-
-    public long Solution() => GetLargestProductInMatrixUsingNDigits(13);
-
-    private static long GetLargestProductInMatrixUsingNDigits(int numberOfDigits) =>
-        ThousandDigitNumber
-            .ToDigitList()
-            .GetConsecutiveDigitsOfLength(numberOfDigits)
-            .Select(digits => digits.MultiplyToSingleNumber())
-            .Max();
 
     private const string ThousandDigitNumber =
         "73167176531330624919225119674426574742355349194934" +
@@ -36,4 +26,15 @@ public class Problem0008 : IEulerProblem<long>
         "84580156166097919133875499200524063689912560717606" +
         "05886116467109405077541002256983155200055935729725" +
         "71636269561882670428252483600823257530420752963450";
+
+    public long Example() => GetLargestProductInMatrixUsingNDigits(4);
+
+    public long Solution() => GetLargestProductInMatrixUsingNDigits(13);
+
+    private static long GetLargestProductInMatrixUsingNDigits(int numberOfDigits) =>
+        ThousandDigitNumber
+            .ToDigitList()
+            .GetConsecutiveDigitsOfLength(numberOfDigits)
+            .Select(digits => digits.MultiplyToSingleNumber())
+            .Max();
 }

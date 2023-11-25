@@ -5,27 +5,6 @@ namespace Problems._001X;
 
 public class Problem0013 : IEulerProblem<BigInteger>
 {
-    public BigInteger Example() => GetFirstTenDigitsOfSum(list => list.Take(2));
-
-    public BigInteger Solution() => GetFirstTenDigitsOfSum(list => list);
-
-    private static BigInteger GetFirstTenDigitsOfSum(Func<IEnumerable<BigInteger>, IEnumerable<BigInteger>> filter) =>
-        GetNumbers()
-            .Then(filter)
-            .Then(Sum)
-            .Then(TakeFirstTenDigits);
-
-    private static IEnumerable<BigInteger> GetNumbers() =>
-        NumbersAsString
-            .Select(BigInteger.Parse);
-
-    private static BigInteger TakeFirstTenDigits(BigInteger result) =>
-        result
-            .ToString()[..10]
-            .Then(BigInteger.Parse);
-
-    private static BigInteger Sum(IEnumerable<BigInteger> numbers) =>
-        numbers.Aggregate(BigInteger.Zero, (sum, next) => sum + next);
 
     private static readonly List<string> NumbersAsString = new()
     {
@@ -130,4 +109,26 @@ public class Problem0013 : IEulerProblem<BigInteger>
         "20849603980134001723930671666823555245252804609722",
         "53503534226472524250874054075591789781264330331690"
     };
+
+    public BigInteger Example() => GetFirstTenDigitsOfSum(list => list.Take(2));
+
+    public BigInteger Solution() => GetFirstTenDigitsOfSum(list => list);
+
+    private static BigInteger GetFirstTenDigitsOfSum(Func<IEnumerable<BigInteger>, IEnumerable<BigInteger>> filter) =>
+        GetNumbers()
+            .Then(filter)
+            .Then(Sum)
+            .Then(TakeFirstTenDigits);
+
+    private static IEnumerable<BigInteger> GetNumbers() =>
+        NumbersAsString
+            .Select(BigInteger.Parse);
+
+    private static BigInteger TakeFirstTenDigits(BigInteger result) =>
+        result
+            .ToString()[..10]
+            .Then(BigInteger.Parse);
+
+    private static BigInteger Sum(IEnumerable<BigInteger> numbers) =>
+        numbers.Aggregate(BigInteger.Zero, (sum, next) => sum + next);
 }

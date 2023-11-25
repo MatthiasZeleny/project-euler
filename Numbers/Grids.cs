@@ -16,10 +16,8 @@ public static class Grids
         return dictionary.Values.Sum();
     }
 
-    private static bool HasMoreThanOnePath((long EdgeCountWidth, long EdgeCountHeight) tuple)
-    {
-        return tuple is { EdgeCountWidth: > 0, EdgeCountHeight: > 0 };
-    }
+    private static bool HasMoreThanOnePath((long EdgeCountWidth, long EdgeCountHeight) tuple) =>
+        tuple is { EdgeCountWidth: > 0, EdgeCountHeight: > 0 };
 
     private static void SplitIntoTwoSubGrids(
         Dictionary<(long edgeCountWidth, long edgeCoundHeight), long> dictionary,
@@ -47,5 +45,4 @@ public static class Grids
             dictionary[value.NormalizedSize] += count;
         }
     }
-
 }

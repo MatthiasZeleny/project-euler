@@ -4,7 +4,8 @@ public class PrimeFactorRepresentation
 {
     private readonly Dictionary<long, int> _primeFactors;
 
-    private PrimeFactorRepresentation(Dictionary<long, int> primeFactors) => _primeFactors = primeFactors;
+    private PrimeFactorRepresentation(Dictionary<long, int> primeFactors) =>
+        _primeFactors = primeFactors;
 
     public static PrimeFactorRepresentation For(long number)
     {

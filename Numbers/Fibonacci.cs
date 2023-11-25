@@ -31,6 +31,8 @@ public static class Fibonacci
             }
         }
 
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
         private void ComputeNext()
         {
             var next = _previous + _current;
@@ -41,7 +43,5 @@ public static class Fibonacci
         private int GetCurrent() => _current;
 
         private bool StillNotAboveThreshold() => _current <= _threshold;
-
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }
