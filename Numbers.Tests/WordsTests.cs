@@ -56,7 +56,19 @@ public class WordsTests
     [TestCase(36, "thirty-six")]
     [TestCase(37, "thirty-seven")]
     [TestCase(38, "thirty-eight")]
-    [TestCase(39, "thirty-nine")]
+    [TestCase(39, "thirty-nine")] 
+    [TestCase(40, "forty")]
+    [TestCase(49, "forty-nine")]
+    [TestCase(50, "fifty")]
+    [TestCase(59, "fifty-nine")]
+    [TestCase(60, "sixty")]
+    [TestCase(69, "sixty-nine")]
+    [TestCase(70, "seventy")]
+    [TestCase(79, "seventy-nine")]
+    [TestCase(80, "eighty")]
+    [TestCase(89, "eighty-nine")]
+    [TestCase(90, "ninety")]
+    [TestCase(99, "ninety-nine")]
     public void ToWord_DoubleDigitsTwentyAndAbove_ShouldReturnCorrectString(int number, string expectedWord)
     {
         var word = Words.ToWord(number);
