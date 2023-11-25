@@ -24,20 +24,24 @@ public static class Words
             _ => ThrowException(number)
         };
 
-    private static string CreateDoubleDigit(long number) =>
-        number switch
+    private static string CreateDoubleDigit(long number)
+    {
+        var secondToLastDigit = number % 100 / 10;
+
+        return secondToLastDigit switch
         {
-            < 20 => CreateTenToNineTeen(number),
-            < 30 => "twenty" + CreateSingleDigitAsSuffix(number),
-            < 40 => "thirty" + CreateSingleDigitAsSuffix(number),
-            < 50 => "forty" + CreateSingleDigitAsSuffix(number),
-            < 60 => "fifty" + CreateSingleDigitAsSuffix(number),
-            < 70 => "sixty" + CreateSingleDigitAsSuffix(number),
-            < 80 => "seventy" + CreateSingleDigitAsSuffix(number),
-            < 90 => "eighty" + CreateSingleDigitAsSuffix(number),
-            < 100 => "ninety" + CreateSingleDigitAsSuffix(number),
+            1L => CreateTenToNineTeen(number),
+            2L => "twenty" + CreateSingleDigitAsSuffix(number),
+            3L => "thirty" + CreateSingleDigitAsSuffix(number),
+            4L => "forty" + CreateSingleDigitAsSuffix(number),
+            5L => "fifty" + CreateSingleDigitAsSuffix(number),
+            6L => "sixty" + CreateSingleDigitAsSuffix(number),
+            7L => "seventy" + CreateSingleDigitAsSuffix(number),
+            8L => "eighty" + CreateSingleDigitAsSuffix(number),
+            9L => "ninety" + CreateSingleDigitAsSuffix(number),
             _ => ThrowException(number)
         };
+    }
 
 
     private static string CreateSingleDigitAsSuffix(long number)
