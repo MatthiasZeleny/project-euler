@@ -31,17 +31,24 @@ public static class Words
         return secondToLastDigit switch
         {
             1L => CreateTenToNineTeen(number),
-            2L => "twenty" + CreateSingleDigitAsSuffix(number),
-            3L => "thirty" + CreateSingleDigitAsSuffix(number),
-            4L => "forty" + CreateSingleDigitAsSuffix(number),
-            5L => "fifty" + CreateSingleDigitAsSuffix(number),
-            6L => "sixty" + CreateSingleDigitAsSuffix(number),
-            7L => "seventy" + CreateSingleDigitAsSuffix(number),
-            8L => "eighty" + CreateSingleDigitAsSuffix(number),
-            9L => "ninety" + CreateSingleDigitAsSuffix(number),
-            _ => ThrowException(number)
+            _ => CreateSecondToLastDigitAsSuffix(secondToLastDigit)
+                 + CreateSingleDigitAsSuffix(number)
         };
     }
+
+    private static string CreateSecondToLastDigitAsSuffix(long secondToLastDigit) =>
+        secondToLastDigit switch
+        {
+            2L => "twenty",
+            3L => "thirty",
+            4L => "forty",
+            5L => "fifty",
+            6L => "sixty",
+            7L => "seventy",
+            8L => "eighty",
+            9L => "ninety",
+            _ => ThrowException(secondToLastDigit)
+        };
 
 
     private static string CreateSingleDigitAsSuffix(long number)
