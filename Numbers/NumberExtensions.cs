@@ -3,6 +3,7 @@
 public static class NumberExtensions
 {
     private const int TenBase = 10;
+
     public static bool IsDivisibleBy(this long number, long divisor) => number % divisor == 0;
 
     public static bool IsEven(this long number) => number.IsDivisibleBy(2);

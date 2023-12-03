@@ -6,6 +6,7 @@ public static class Primes
     {
         var naturals = NumberList.NaturalNumbers()
             .Skip(1);
+
         var primes = new List<long>();
 
         foreach (var natural in naturals)
