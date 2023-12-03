@@ -26,7 +26,7 @@ public static class Words
 
     private static string CreateDoubleDigit(long number)
     {
-        var secondToLastDigit = number % 100 / 10;
+        var secondToLastDigit = GetSecondToLastDigit(number);
 
         return secondToLastDigit switch
         {
@@ -35,6 +35,8 @@ public static class Words
                  + CreateSingleDigitAsSuffix(number)
         };
     }
+
+    private static long GetSecondToLastDigit(long number) => number % 100 / 10;
 
     private static string CreateSecondToLastDigitAsSuffix(long secondToLastDigit) =>
         secondToLastDigit switch
