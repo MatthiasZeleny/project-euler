@@ -7,7 +7,8 @@ public static class Words
         {
             < 10 => CreateSingleDigit(number),
             < 100 => CreateDoubleDigit(number),
-            _ => "one hundred"
+            100 => "one hundred",
+            _ => "one hundred and one"
         };
 
     private static string CreateSingleDigit(long number) =>

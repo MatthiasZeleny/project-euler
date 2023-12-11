@@ -77,6 +77,7 @@ public class WordsTests
     }
 
     [TestCase(100, "one hundred")]
+    [TestCase(101, "one hundred and one")]
     public void ToWord_TripleDigits_ShouldReturnCorrectString(int number, string expectedWord)
     {
         var word = Words.ToWord(number);
