@@ -2,13 +2,15 @@
 
 public static class Words
 {
+    private const string OneHundred = "one hundred";
+
     public static string ToWord(long number) =>
         number switch
         {
-            < 10 => CreateSingleDigit(number),
-            < 100 => CreateDoubleDigit(number),
-            100 => "one hundred",
-            _ => "one hundred and one"
+            < 10L => CreateSingleDigit(number),
+            < 100L => CreateDoubleDigit(number),
+            100L => OneHundred,
+            _ => OneHundred + " and " + ToWord(number % 100L)
         };
 
     private static string CreateSingleDigit(long number) =>
