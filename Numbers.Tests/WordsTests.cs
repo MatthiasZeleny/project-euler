@@ -75,4 +75,12 @@ public class WordsTests
 
         word.Should().Be(expectedWord);
     }
+
+    [TestCase(100, "one hundred")]
+    public void ToWord_TripleDigits_ShouldReturnCorrectString(int number, string expectedWord)
+    {
+        var word = Words.ToWord(number);
+
+        word.Should().Be(expectedWord);
+    }
 }

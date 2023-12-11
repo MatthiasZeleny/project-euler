@@ -6,7 +6,8 @@ public static class Words
         number switch
         {
             < 10 => CreateSingleDigit(number),
-            _ => CreateDoubleDigit(number)
+            < 100 => CreateDoubleDigit(number),
+            _ => "one hundred"
         };
 
     private static string CreateSingleDigit(long number) =>
@@ -51,7 +52,6 @@ public static class Words
             9L => "ninety",
             _ => ThrowException(secondToLastDigit)
         };
-
 
     private static string CreateSingleDigitAsSuffix(long number)
     {
