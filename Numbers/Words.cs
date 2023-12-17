@@ -1,10 +1,14 @@
-﻿namespace Numbers;
+﻿using JetBrains.Annotations;
+
+// ReSharper disable UnreachableSwitchArmDueToIntegerAnalysis - The exhaustive switch cases are used in case of bugs.
+
+namespace Numbers;
 
 public static class Words
 {
     private const string OneHundred = "one hundred";
 
-    public static string ToWord(long number) =>
+    public static string ToWord([ValueRange(1, 199)] long number) =>
         number switch
         {
             < 10L => CreateSingleDigit(number),
@@ -13,7 +17,7 @@ public static class Words
             _ => OneHundred + " and " + ToWord(number % 100L)
         };
 
-    private static string CreateSingleDigit(long number) =>
+    private static string CreateSingleDigit([ValueRange(1, 9)] long number) =>
         number switch
         {
             1 => "one",
@@ -28,7 +32,7 @@ public static class Words
             _ => ThrowException(number)
         };
 
-    private static string CreateDoubleDigit(long number)
+    private static string CreateDoubleDigit([ValueRange(10, 99)] long number)
     {
         var secondToLastDigit = GetSecondToLastDigit(number);
 
@@ -42,7 +46,7 @@ public static class Words
 
     private static long GetSecondToLastDigit(long number) => number % 100 / 10;
 
-    private static string CreateSecondToLastDigitAsSuffix(long secondToLastDigit) =>
+    private static string CreateSecondToLastDigitAsSuffix([ValueRange(2, 9)] long secondToLastDigit) =>
         secondToLastDigit switch
         {
             2L => "twenty",
@@ -67,7 +71,7 @@ public static class Words
         };
     }
 
-    private static string CreateTenToNineTeen(long number) =>
+    private static string CreateTenToNineTeen([ValueRange(10, 19)] long number) =>
         number switch
         {
             10 => "ten",
