@@ -7,15 +7,15 @@ public static class Words
     private const string OneHundred = "one hundred";
     private const string EmptySuffix = "";
 
-    public static string ToWord([ValueRange(1, 199)] long number) =>
+    public static string ToWord([ValueRange(1, 199)] this long number) =>
         number switch
         {
-            < 10L => CreateSingleDigit(number),
-            < 100L => CreateDoubleDigit(number),
-            _ => CreateTripleDigits(number)
+            < 10L => number.CreateSingleDigit(),
+            < 100L => number.CreateDoubleDigit(),
+            _ => number.CreateTripleDigits()
         };
 
-    private static string CreateSingleDigit([ValueRange(0, 9)] long number) =>
+    private static string CreateSingleDigit([ValueRange(0, 9)] this long number) =>
         number switch
         {
             0 => EmptySuffix,
@@ -32,28 +32,28 @@ public static class Words
             _ => ThrowException(number)
         };
 
-    private static string CreateDoubleDigit([ValueRange(10, 99)] long number)
+    private static string CreateDoubleDigit([ValueRange(10, 99)] this long number)
     {
-        var secondToLastDigit = GetSecondToLastDigit(number);
+        var secondToLastDigit = number.GetSecondToLastDigit();
 
         return secondToLastDigit switch
         {
-            1L => CreateTenToNineTeen(number),
-            _ => CreateSecondToLastDigitAsSuffix(secondToLastDigit)
-                 + CreateSingleDigitAsSuffix(number)
+            1L => number.CreateTenToNineTeen(),
+            _ => secondToLastDigit.CreateSecondToLastDigitAsSuffix()
+                 + number.CreateSingleDigitAsSuffix()
         };
     }
 
-    private static string CreateTripleDigits([ValueRange(100, 199)] long number)
+    private static string CreateTripleDigits([ValueRange(100, 199)] this long number)
     {
         var lastTwoDigits = number % 100;
 
-        return OneHundred + ToWord(lastTwoDigits).AddGlueForSuffix(" and ");
+        return OneHundred + lastTwoDigits.ToWord().AddGlueForSuffix(" and ");
     }
 
-    private static long GetSecondToLastDigit(long number) => number % 100 / 10;
+    private static long GetSecondToLastDigit(this long number) => number % 100 / 10;
 
-    private static string CreateSecondToLastDigitAsSuffix([ValueRange(2, 9)] long secondToLastDigit) =>
+    private static string CreateSecondToLastDigitAsSuffix([ValueRange(2, 9)] this long secondToLastDigit) =>
         secondToLastDigit switch
         {
             2L => "twenty",
@@ -68,17 +68,17 @@ public static class Words
             _ => ThrowException(secondToLastDigit)
         };
 
-    private static string CreateSingleDigitAsSuffix(long number)
+    private static string CreateSingleDigitAsSuffix(this long number)
     {
         var singleDigit = number % 10;
 
-        return CreateSingleDigit(singleDigit).AddGlueForSuffix("-");
+        return singleDigit.CreateSingleDigit().AddGlueForSuffix("-");
     }
 
     private static string AddGlueForSuffix(this string suffix, string glue) =>
         suffix is not EmptySuffix ? glue + suffix : EmptySuffix;
 
-    private static string CreateTenToNineTeen([ValueRange(10, 19)] long number) =>
+    private static string CreateTenToNineTeen([ValueRange(10, 19)] this long number) =>
         number switch
         {
             10 => "ten",

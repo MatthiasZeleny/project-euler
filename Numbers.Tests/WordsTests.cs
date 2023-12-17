@@ -13,9 +13,9 @@ public class WordsTests
     [TestCase(7, "seven")]
     [TestCase(8, "eight")]
     [TestCase(9, "nine")]
-    public void ToWord_SingleDigit_ShouldReturnCorrectString(int number, string expectedWord)
+    public void ToWord_SingleDigit_ShouldReturnCorrectString(long number, string expectedWord)
     {
-        var word = Words.ToWord(number);
+        var word = number.ToWord();
 
         word.Should().Be(expectedWord);
     }
@@ -30,9 +30,9 @@ public class WordsTests
     [TestCase(17, "seventeen")]
     [TestCase(18, "eighteen")]
     [TestCase(19, "nineteen")]
-    public void ToWord_DoubleDigitsBelowTwenty_ShouldReturnCorrectString(int number, string expectedWord)
+    public void ToWord_DoubleDigitsBelowTwenty_ShouldReturnCorrectString(long number, string expectedWord)
     {
-        var word = Words.ToWord(number);
+        var word = number.ToWord();
 
         word.Should().Be(expectedWord);
     }
@@ -69,9 +69,9 @@ public class WordsTests
     [TestCase(89, "eighty-nine")]
     [TestCase(90, "ninety")]
     [TestCase(99, "ninety-nine")]
-    public void ToWord_DoubleDigitsTwentyAndAbove_ShouldReturnCorrectString(int number, string expectedWord)
+    public void ToWord_DoubleDigitsTwentyAndAbove_ShouldReturnCorrectString(long number, string expectedWord)
     {
-        var word = Words.ToWord(number);
+        var word = number.ToWord();
 
         word.Should().Be(expectedWord);
     }
@@ -81,9 +81,9 @@ public class WordsTests
     [TestCase(102, "one hundred and two")]
     [TestCase(110, "one hundred and ten")]
     [TestCase(199, "one hundred and ninety-nine")]
-    public void ToWord_TripleDigits_ShouldReturnCorrectString(int number, string expectedWord)
+    public void ToWord_TripleDigits_ShouldReturnCorrectString(long number, string expectedWord)
     {
-        var word = Words.ToWord(number);
+        var word = number.ToWord();
 
         word.Should().Be(expectedWord);
     }
