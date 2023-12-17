@@ -1,12 +1,11 @@
 ﻿using JetBrains.Annotations;
 
-// ReSharper disable UnreachableSwitchArmDueToIntegerAnalysis - The exhaustive switch cases are used in case of bugs.
-
 namespace Numbers;
 
 public static class Words
 {
     private const string OneHundred = "one hundred";
+    private const string EmptySuffix = "";
 
     public static string ToWord([ValueRange(1, 199)] long number) =>
         number switch
@@ -17,9 +16,10 @@ public static class Words
             _ => OneHundred + " and " + ToWord(number % 100L)
         };
 
-    private static string CreateSingleDigit([ValueRange(1, 9)] long number) =>
+    private static string CreateSingleDigit([ValueRange(0, 9)] long number) =>
         number switch
         {
+            0 => EmptySuffix,
             1 => "one",
             2 => "two",
             3 => "three",
@@ -29,6 +29,7 @@ public static class Words
             7 => "seven",
             8 => "eight",
             9 => "nine",
+            // ReSharper disable once UnreachableSwitchArmDueToIntegerAnalysis - The exhaustive switch cases are used in case of bugs.
             _ => ThrowException(number)
         };
 
@@ -57,6 +58,7 @@ public static class Words
             7L => "seventy",
             8L => "eighty",
             9L => "ninety",
+            // ReSharper disable once UnreachableSwitchArmDueToIntegerAnalysis - The exhaustive switch cases are used in case of bugs.
             _ => ThrowException(secondToLastDigit)
         };
 
@@ -64,12 +66,10 @@ public static class Words
     {
         var singleDigit = number % 10;
 
-        return singleDigit switch
-        {
-            0 => "",
-            _ => "-" + CreateSingleDigit(singleDigit)
-        };
+        return AddGlueForSuffix(CreateSingleDigit(singleDigit), "-");
     }
+
+    private static string AddGlueForSuffix(string suffix, string glue) => suffix is not EmptySuffix ? glue + suffix : EmptySuffix;
 
     private static string CreateTenToNineTeen([ValueRange(10, 19)] long number) =>
         number switch
@@ -84,6 +84,7 @@ public static class Words
             17 => "seventeen",
             18 => "eighteen",
             19 => "nineteen",
+            // ReSharper disable once UnreachableSwitchArmDueToIntegerAnalysis - The exhaustive switch cases are used in case of bugs.
             _ => ThrowException(number)
         };
 
