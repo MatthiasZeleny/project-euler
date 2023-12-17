@@ -12,8 +12,7 @@ public static class Words
         {
             < 10L => CreateSingleDigit(number),
             < 100L => CreateDoubleDigit(number),
-            100L => OneHundred,
-            _ => OneHundred + " and " + ToWord(number % 100L)
+            _ => CreateTripleDigits(number)
         };
 
     private static string CreateSingleDigit([ValueRange(0, 9)] long number) =>
@@ -45,6 +44,13 @@ public static class Words
         };
     }
 
+    private static string CreateTripleDigits(long number)
+    {
+        var lastTwoDigits = number % 100;
+
+        return OneHundred + AddGlueForSuffix(ToWord(lastTwoDigits), " and ");
+    }
+
     private static long GetSecondToLastDigit(long number) => number % 100 / 10;
 
     private static string CreateSecondToLastDigitAsSuffix([ValueRange(2, 9)] long secondToLastDigit) =>
@@ -69,7 +75,8 @@ public static class Words
         return AddGlueForSuffix(CreateSingleDigit(singleDigit), "-");
     }
 
-    private static string AddGlueForSuffix(string suffix, string glue) => suffix is not EmptySuffix ? glue + suffix : EmptySuffix;
+    private static string AddGlueForSuffix(string suffix, string glue) =>
+        suffix is not EmptySuffix ? glue + suffix : EmptySuffix;
 
     private static string CreateTenToNineTeen([ValueRange(10, 19)] long number) =>
         number switch
