@@ -81,6 +81,10 @@ public class WordsTests
     [TestCase(102, "one hundred and two")]
     [TestCase(110, "one hundred and ten")]
     [TestCase(199, "one hundred and ninety-nine")]
+    [TestCase(200, "two hundred")]
+    [TestCase(201, "two hundred and one")]
+    [TestCase(300, "three hundred")]
+    [TestCase(999, "nine hundred and ninety-nine")]
     public void ToWord_TripleDigits_ShouldReturnCorrectString(long number, string expectedWord)
     {
         var word = number.ToWord();
