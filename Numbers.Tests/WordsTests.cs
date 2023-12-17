@@ -91,4 +91,12 @@ public class WordsTests
 
         word.Should().Be(expectedWord);
     }
+
+    [Test]
+    public void ToWord_OneThousand_ShouldReturnCorrectString()
+    {
+        var word = 1000L.ToWord();
+
+        word.Should().Be("one thousand");
+    }
 }

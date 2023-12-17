@@ -7,12 +7,13 @@ public static class Words
     private const string Hundred = " hundred";
     private const string EmptySuffix = "";
 
-    public static string ToWord([ValueRange(1, 199)] this long number) =>
+    public static string ToWord([ValueRange(1, 1000)] this long number) =>
         number switch
         {
             < 10L => number.CreateSingleDigit(),
             < 100L => number.CreateDoubleDigit(),
-            _ => number.CreateTripleDigits()
+            < 1000L => number.CreateTripleDigits(),
+            _ => "one thousand"
         };
 
     private static string CreateSingleDigit([ValueRange(0, 9)] this long number) =>
