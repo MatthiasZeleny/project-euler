@@ -4,7 +4,7 @@ namespace Numbers;
 
 public static class Words
 {
-    private const string OneHundred = "one hundred";
+    private const string Hundred = " hundred";
     private const string EmptySuffix = "";
 
     public static string ToWord([ValueRange(1, 199)] this long number) =>
@@ -44,11 +44,12 @@ public static class Words
         };
     }
 
-    private static string CreateTripleDigits([ValueRange(100, 199)] this long number)
+    private static string CreateTripleDigits([ValueRange(100, 999)] this long number)
     {
         var lastTwoDigits = number % 100;
+        var thirdDigit = number / 100;
 
-        return OneHundred + lastTwoDigits.ToWord().AddGlueForSuffix(" and ");
+        return thirdDigit.ToWord() + Hundred + lastTwoDigits.ToWord().AddGlueForSuffix(" and ");
     }
 
     private static long GetSecondToLastDigit(this long number) => number % 100 / 10;
