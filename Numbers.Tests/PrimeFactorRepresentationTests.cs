@@ -28,7 +28,6 @@ public class PrimeFactorRepresentationTests
         list.Should().BeEquivalentTo(new List<int> { 2, 2 });
     }
 
-
     [Test]
     public void AsList_Problem0003Example_ShouldReturnCorrectValue()
     {
@@ -46,7 +45,6 @@ public class PrimeFactorRepresentationTests
 
         readOnlyDictionary.Should().Equal(dictionary);
     }
-
 
     [Test]
     public void LeastCommonMultiple_SameNumber_ShouldReturnSame()

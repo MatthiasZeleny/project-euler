@@ -13,7 +13,6 @@ public class PythagoreanTripleTests
         triplet.Should().Be(PythagoreanTriple.Create(a, b, c));
     }
 
-
     [Test]
     public void GetTripletsUpTill_Four_ReturnsEmptyList()
     {
@@ -27,8 +26,9 @@ public class PythagoreanTripleTests
     {
         var triplet = PythagoreanTriple.GetTripletsUpTill(5);
 
-        triplet.Should().BeEquivalentToWithStrictOrdering(new List<PythagoreanTriple>
-            { PythagoreanTriple.Create(3, 4, 5) });
+        triplet.Should().BeEquivalentToWithStrictOrdering(
+            new List<PythagoreanTriple>
+                { PythagoreanTriple.Create(3, 4, 5) });
     }
 
     [Test]
@@ -36,12 +36,13 @@ public class PythagoreanTripleTests
     {
         var triplet = PythagoreanTriple.GetTripletsUpTill(13);
 
-        triplet.Should().BeEquivalentToWithStrictOrdering(new List<PythagoreanTriple>
-        {
-            PythagoreanTriple.Create(3, 4, 5),
-            PythagoreanTriple.Create(5, 12, 13),
-            PythagoreanTriple.Create(6, 8, 10)
-        });
+        triplet.Should().BeEquivalentToWithStrictOrdering(
+            new List<PythagoreanTriple>
+            {
+                PythagoreanTriple.Create(3, 4, 5),
+                PythagoreanTriple.Create(5, 12, 13),
+                PythagoreanTriple.Create(6, 8, 10)
+            });
     }
 
     [Test]
@@ -49,14 +50,15 @@ public class PythagoreanTripleTests
     {
         var triplet = PythagoreanTriple.GetTripletsUpTill(17);
 
-        triplet.Should().BeEquivalentToWithStrictOrdering(new List<PythagoreanTriple>
-        {
-            PythagoreanTriple.Create(3, 4, 5),
-            PythagoreanTriple.Create(5, 12, 13),
-            PythagoreanTriple.Create(6, 8, 10),
-            PythagoreanTriple.Create(8, 15, 17),
-            PythagoreanTriple.Create(9, 12, 15)
-        });
+        triplet.Should().BeEquivalentToWithStrictOrdering(
+            new List<PythagoreanTriple>
+            {
+                PythagoreanTriple.Create(3, 4, 5),
+                PythagoreanTriple.Create(5, 12, 13),
+                PythagoreanTriple.Create(6, 8, 10),
+                PythagoreanTriple.Create(8, 15, 17),
+                PythagoreanTriple.Create(9, 12, 15)
+            });
     }
 
     [TestCase(1)]

@@ -12,7 +12,6 @@ public class Problem0004 : IEulerProblem<long>
     private static long LargestPossiblePalindromeGeneratedByAProductOfTwoNumbersWithDigitCount(int digitCount) =>
         NumberList.NumbersWithDigitCount(digitCount).ToList().Then(FindLargestPalindromeGeneratedByTwoOf);
 
-
     private static long FindLargestPalindromeGeneratedByTwoOf(IReadOnlyCollection<long> possibleNumbers) =>
         EveryPossibleCombinationOf(possibleNumbers)
             .Where(number => number.IsPalindrome())
@@ -20,7 +19,8 @@ public class Problem0004 : IEulerProblem<long>
 
     private static IEnumerable<long> EveryPossibleCombinationOf(IReadOnlyCollection<long> possibleNumbers) =>
         possibleNumbers
-            .SelectMany(first =>
-                possibleNumbers
-                    .Select(second => first * second));
+            .SelectMany(
+                first =>
+                    possibleNumbers
+                        .Select(second => first * second));
 }
