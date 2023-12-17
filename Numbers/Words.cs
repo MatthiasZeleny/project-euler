@@ -44,11 +44,11 @@ public static class Words
         };
     }
 
-    private static string CreateTripleDigits(long number)
+    private static string CreateTripleDigits([ValueRange(100, 199)] long number)
     {
         var lastTwoDigits = number % 100;
 
-        return OneHundred + AddGlueForSuffix(ToWord(lastTwoDigits), " and ");
+        return OneHundred + ToWord(lastTwoDigits).AddGlueForSuffix(" and ");
     }
 
     private static long GetSecondToLastDigit(long number) => number % 100 / 10;
@@ -72,10 +72,10 @@ public static class Words
     {
         var singleDigit = number % 10;
 
-        return AddGlueForSuffix(CreateSingleDigit(singleDigit), "-");
+        return CreateSingleDigit(singleDigit).AddGlueForSuffix("-");
     }
 
-    private static string AddGlueForSuffix(string suffix, string glue) =>
+    private static string AddGlueForSuffix(this string suffix, string glue) =>
         suffix is not EmptySuffix ? glue + suffix : EmptySuffix;
 
     private static string CreateTenToNineTeen([ValueRange(10, 19)] long number) =>
