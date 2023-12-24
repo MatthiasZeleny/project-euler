@@ -2,7 +2,7 @@
 
 public class Problem0018 : IEulerProblem<long>
 {
-    public long Example() => 23;
+    public long Example() => 3 + 7 + 4 + 9;
 
     public long Solution() => 0;
 }
