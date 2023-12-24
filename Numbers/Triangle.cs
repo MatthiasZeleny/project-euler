@@ -10,6 +10,14 @@ public class Triangle
     {
         var list = input.Split('\r').Select(row => row.Split(' ').Select(int.Parse).ToList()).ToList();
 
+        foreach (var (rowSize, expectedSize) in list.Select(((row, index) => (row.Count, index + 1))))
+        {
+            if ((rowSize == expectedSize) is false)
+            {
+                throw new ArgumentException($"Expected {expectedSize}, but got {rowSize}.");
+            }
+        }
+
         return new Triangle(list);
     }
 
