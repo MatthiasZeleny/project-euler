@@ -13,4 +13,19 @@ public class TriangleTests
 
         triangle.AsList().Should().BeEquivalentToWithStrictOrdering(new[] { new List<int> { expected } });
     }
+
+    [TestCase("1\r2 3", 1, 2, 3)]
+    [TestCase("4\r5 6", 4, 5, 6)]
+    public void MultipleElements_ShouldReturnCorrectList(string input, int expectedFirstRow, params int[] expectedSecondRow)
+    {
+        var triangle = Triangle.FromString(input);
+
+        triangle.AsList().Should().BeEquivalentToWithStrictOrdering(
+            new[]
+            {
+                new List<int> { expectedFirstRow },
+                expectedSecondRow.ToList()
+            }
+        );
+    }
 }

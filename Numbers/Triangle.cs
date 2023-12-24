@@ -2,16 +2,17 @@
 
 public class Triangle
 {
-    private int _number;
+    private readonly List<List<int>> _numbers;
 
-    private Triangle(int number) => _number = number;
+    private Triangle(List<List<int>> numbers) => _numbers = numbers;
 
-    public static Triangle FromString(string input) => new(int.Parse(input));
+    public static Triangle FromString(string input)
+    {
+        var list = input.Split('\r').Select(row => row.Split(' ').Select(int.Parse).ToList()).ToList();
 
-    public List<List<int>> AsList() =>
-        new()
-        {
-            new List<int>
-                { _number }
-        };
+        return new Triangle(list);
+    }
+
+    public IReadOnlyList<IReadOnlyList<int>> AsList() =>
+        _numbers;
 }
