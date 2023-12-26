@@ -47,4 +47,11 @@ public class TriangleTests
         action.Should().Throw<Exception>().WithMessage(expectedMessage);
     }
 
+    [TestCase("1", 1)]
+    public void BiggestPath_ShouldReturnCorrectValue(string input, int expectedValue)
+    {
+        var biggestPath = Triangle.FromString(input).BiggestPath;
+
+        biggestPath.Should().Be(expectedValue);
+    }
 }

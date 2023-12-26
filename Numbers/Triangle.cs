@@ -6,6 +6,8 @@ public class Triangle
 
     private Triangle(List<List<int>> numbers) => _numbers = numbers;
 
+    public int BiggestPath => 1;
+
     public static Triangle FromString(string input)
     {
         var list = input.Split('\r').Select(row => row.Split(' ').Select(int.Parse).ToList()).ToList();
