@@ -6,7 +6,7 @@ public class Triangle
 
     private Triangle(List<List<int>> numbers) => _numbers = numbers;
 
-    public int BiggestPath => 1;
+    public int BiggestPath => _numbers.First().First();
 
     public static Triangle FromString(string input)
     {

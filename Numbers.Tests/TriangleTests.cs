@@ -48,6 +48,7 @@ public class TriangleTests
     }
 
     [TestCase("1", 1)]
+    [TestCase("2", 2)]
     public void BiggestPath_ShouldReturnCorrectValue(string input, int expectedValue)
     {
         var biggestPath = Triangle.FromString(input).BiggestPath;
