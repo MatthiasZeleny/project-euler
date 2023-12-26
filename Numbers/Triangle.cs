@@ -34,7 +34,7 @@ public class Triangle
 
     public static Triangle FromString(string input)
     {
-        var list = input.Split('\r').Select(row => row.Split(' ').Select(int.Parse).ToList()).ToList();
+        var list = input.Split('\n').Select(row => row.Split(' ').Select(int.Parse).ToList()).ToList();
 
         foreach (var (rowSize, expectedSize) in list.Select(((row, index) => (row.Count, index + 1))))
         {
