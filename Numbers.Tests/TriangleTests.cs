@@ -9,7 +9,7 @@ public class TriangleTests
     [TestCase("0", 0)]
     [TestCase("1", 1)]
     [TestCase("23", 23)]
-    public void FromSingleElement_ShouldReturnCorrectList(string input, int expected)
+    public void FromString_SingleElement_ShouldReturnCorrectList(string input, int expected)
     {
         var triangle = Triangle.FromString(input);
 
@@ -18,7 +18,8 @@ public class TriangleTests
 
     [TestCase("1\r2 3", 1, 2, 3)]
     [TestCase("4\r5 6", 4, 5, 6)]
-    public void MultipleElements_ShouldReturnCorrectList(string input, int expectedFirstRow, params int[] expectedSecondRow)
+    public void FromString_MultipleElements_ShouldReturnCorrectList(string input, int expectedFirstRow,
+        params int[] expectedSecondRow)
     {
         var triangle = Triangle.FromString(input);
 
@@ -39,10 +40,11 @@ public class TriangleTests
     [TestCase("1\r2 ", InputStringWasNotInACorrectFormat)]
     [TestCase("1\r2 3 ", InputStringWasNotInACorrectFormat)]
     [TestCase("1 \r2 3", InputStringWasNotInACorrectFormat)]
-    public void InvalidSetup_ShouldThrowException(string input, string expectedMessage)
+    public void FromString_InvalidSetup_ShouldThrowException(string input, string expectedMessage)
     {
         var action = () => Triangle.FromString(input);
 
         action.Should().Throw<Exception>().WithMessage(expectedMessage);
     }
+
 }
