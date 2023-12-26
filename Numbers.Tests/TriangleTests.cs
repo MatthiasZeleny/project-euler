@@ -47,14 +47,14 @@ public class TriangleTests
         action.Should().Throw<Exception>().WithMessage(expectedMessage);
     }
 
-    [TestCase("1", 1)]
-    [TestCase("2", 2)]
-    [TestCase("1\r2 3", 1 + 3)]
-    [TestCase("1\r3 2", 1 + 3)]
-    public void BiggestPath_ShouldReturnCorrectValue(string input, int expectedValue)
+    [TestCase("1", 1, "trivial case")]
+    [TestCase("2", 2, "different value")]
+    [TestCase("1\r2 3", 1 + 3, "right path")]
+    [TestCase("1\r3 2", 1 + 3, "left path")]
+    public void BiggestPath_ShouldReturnCorrectValue(string input, int expectedValue, string hint)
     {
         var biggestPath = Triangle.FromString(input).BiggestPath;
 
-        biggestPath.Should().Be(expectedValue);
+        biggestPath.Should().Be(expectedValue, hint);
     }
 }
