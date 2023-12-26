@@ -6,7 +6,31 @@ public class Triangle
 
     private Triangle(List<List<int>> numbers) => _numbers = numbers;
 
-    public int BiggestPath => _numbers.Select(row => row.Max()).Sum();
+    public int ComputeBiggestPath()
+    {
+        var copy = _numbers.Select(row => row.ToList()).ToList();
+
+        copy.Reverse();
+
+        var biggestPath = copy.Aggregate(CombineParentWithBiggerChild).Single();
+
+        return biggestPath;
+    }
+
+    private List<int> CombineParentWithBiggerChild(List<int> childRow, List<int> parentRow) =>
+        TakeBigger(childRow)
+            .Zip(parentRow, (biggerDirection, parent) => biggerDirection + parent)
+            .ToList();
+
+    private List<int> TakeBigger(List<int> childRow)
+    {
+        var stepToRight = childRow.Skip(1);
+        var stepToLeft = childRow.SkipLast(1);
+
+        var biggerOneTaken = stepToLeft.Zip(stepToRight, Math.Max);
+
+        return biggerOneTaken.ToList();
+    }
 
     public static Triangle FromString(string input)
     {

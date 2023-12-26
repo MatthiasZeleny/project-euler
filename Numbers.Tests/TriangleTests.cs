@@ -51,9 +51,10 @@ public class TriangleTests
     [TestCase("2", 2, "different value")]
     [TestCase("1\r2 3", 1 + 3, "right path")]
     [TestCase("1\r3 2", 1 + 3, "left path")]
+    [TestCase("1\r2 3\r100 1 1", 1 + 2 + 100, "just taking row maximum is wrong")]
     public void BiggestPath_ShouldReturnCorrectValue(string input, int expectedValue, string hint)
     {
-        var biggestPath = Triangle.FromString(input).BiggestPath;
+        var biggestPath = Triangle.FromString(input).ComputeBiggestPath();
 
         biggestPath.Should().Be(expectedValue, hint);
     }
