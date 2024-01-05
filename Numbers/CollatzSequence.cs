@@ -10,16 +10,11 @@ public static class CollatzSequence
         {
             yield return current;
 
-            if (current.IsEven())
-            {
-                current /= 2;
-            }
-            else
-            {
-                current = 3 * current + 1;
-            }
+            current = ComputeNextElement(current);
         }
 
         yield return 1;
     }
+
+    private static long ComputeNextElement(long current) => current.IsEven() ? current / 2 : 3 * current + 1;
 }
