@@ -6,7 +6,6 @@ public static class CollatzSequence
     {
         var current = start;
 
-
         while (current != 1)
         {
             yield return current;

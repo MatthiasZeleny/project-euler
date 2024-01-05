@@ -55,7 +55,6 @@ public static class Matrix
             }
         }
 
-
         foreach (var m in throughReducedHeight)
         {
             foreach (var n in throughReducedWidth)
@@ -68,11 +67,11 @@ public static class Matrix
         {
             foreach (var n in throughReducedWidth)
             {
-                list.Add(stepsThroughMatrix.Select(step => digitMatrix[m + numberOfDigits - 1 - step, n + step])
-                    .ToList());
+                list.Add(
+                    stepsThroughMatrix.Select(step => digitMatrix[m + numberOfDigits - 1 - step, n + step])
+                        .ToList());
             }
         }
-
 
         return list;
     }
