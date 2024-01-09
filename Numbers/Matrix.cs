@@ -18,13 +18,13 @@ public static class Matrix
 
         var list = new List<List<long>>();
 
-        CreateHorizontalLines(searchableMatrix, list);
+        list.AddRange(CreateHorizontalLines(searchableMatrix));
 
-        CreateVerticalLines(searchableMatrix, list);
+        list.AddRange(CreateVerticalLines(searchableMatrix));
 
-        CreateOriginDiagonalLines(searchableMatrix, list);
+        list.AddRange(CreateOriginDiagonalLines(searchableMatrix));
 
-        CreatePerpendicularDiagonalLines(searchableMatrix, list);
+        list.AddRange(CreatePerpendicularDiagonalLines(searchableMatrix));
 
         return list;
     }
@@ -66,53 +66,33 @@ public static class Matrix
         };
     }
 
-    private static void CreatePerpendicularDiagonalLines(SearchableMatrix searchableMatrix, List<List<long>> list)
-    {
-        foreach (var m in searchableMatrix.ThroughReducedHeight)
-        {
-            foreach (var n in searchableMatrix.ThroughReducedWidth)
-            {
-                list.Add(
-                    searchableMatrix.StepsThroughMatrix.Select(
-                            step => searchableMatrix.Matrix[m + searchableMatrix.ArrayLength - 1 - step, n + step])
-                        .ToList());
-            }
-        }
-    }
+    private static IEnumerable<List<long>> CreatePerpendicularDiagonalLines(SearchableMatrix searchableMatrix) =>
+        searchableMatrix.ThroughReducedHeight.SelectMany(
+                m => searchableMatrix.ThroughReducedWidth.Select(
+                    n => searchableMatrix.StepsThroughMatrix.Select(
+                        step => searchableMatrix.Matrix[m + searchableMatrix.ArrayLength - 1 - step, n + step]).ToList()))
+            .ToList();
 
-    private static void CreateOriginDiagonalLines(SearchableMatrix searchableMatrix, List<List<long>> list)
-    {
-        foreach (var m in searchableMatrix.ThroughReducedHeight)
-        {
-            foreach (var n in searchableMatrix.ThroughReducedWidth)
-            {
-                list.Add(
-                    searchableMatrix.StepsThroughMatrix.Select(step => searchableMatrix.Matrix[m + step, n + step]).ToList());
-            }
-        }
-    }
+    private static List<List<long>> CreateOriginDiagonalLines(SearchableMatrix searchableMatrix) =>
+        searchableMatrix.ThroughReducedHeight.SelectMany(
+                m => searchableMatrix.ThroughReducedWidth.Select(
+                    n => searchableMatrix.StepsThroughMatrix.Select(
+                        step => searchableMatrix.Matrix[m + step, n + step]).ToList()))
+            .ToList();
 
-    private static void CreateVerticalLines(SearchableMatrix searchableMatrix, List<List<long>> list)
-    {
-        foreach (var m in searchableMatrix.ThroughReducedHeight)
-        {
-            foreach (var n in searchableMatrix.ThroughWidth)
-            {
-                list.Add(searchableMatrix.StepsThroughMatrix.Select(step => searchableMatrix.Matrix[m + step, n]).ToList());
-            }
-        }
-    }
+    private static List<List<long>> CreateVerticalLines(SearchableMatrix searchableMatrix) =>
+        searchableMatrix.ThroughReducedHeight.SelectMany(
+                m => searchableMatrix.ThroughWidth.Select(
+                    n => searchableMatrix.StepsThroughMatrix.Select(
+                        step => searchableMatrix.Matrix[m + step, n]).ToList()))
+            .ToList();
 
-    private static void CreateHorizontalLines(SearchableMatrix searchableMatrix, List<List<long>> list)
-    {
-        foreach (var m in searchableMatrix.ThroughHeight)
-        {
-            foreach (var n in searchableMatrix.ThroughReducedWidth)
-            {
-                list.Add(searchableMatrix.StepsThroughMatrix.Select(step => searchableMatrix.Matrix[m, n + step]).ToList());
-            }
-        }
-    }
+    private static IEnumerable<List<long>> CreateHorizontalLines(SearchableMatrix searchableMatrix) =>
+        searchableMatrix.ThroughHeight.SelectMany(
+                m => searchableMatrix.ThroughReducedWidth.Select(
+                    n => searchableMatrix.StepsThroughMatrix.Select(
+                        step => searchableMatrix.Matrix[m, n + step]).ToList()))
+            .ToList();
 
     private class SearchableMatrix
     {
