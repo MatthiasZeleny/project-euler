@@ -5,11 +5,11 @@ namespace Numbers;
 
 public static class Matrix
 {
-    public static IEnumerable<List<long>> GetAllPossibleCombinationsOfLength(int numberOfDigits, string matrix)
+    public static IEnumerable<List<long>> GetAllPossibleCombinationsOfLength(int combinationLength, string matrix)
     {
-        return TrySingleEntryMatrix(numberOfDigits, matrix, out var singleEntryList)
-            ? singleEntryList
-            : CreateMultipleEntryList(numberOfDigits, matrix);
+        return TryLengthOneCase(combinationLength, matrix, out var listOfAllMatrixEntries)
+            ? listOfAllMatrixEntries
+            : CreateMultipleEntryList(combinationLength, matrix);
     }
 
     private static IEnumerable<List<long>> CreateMultipleEntryList(int numberOfDigits, string matrix)
@@ -29,7 +29,7 @@ public static class Matrix
         return list;
     }
 
-    private static SearchableMatrix CreateSearchableMatrix(int numberOfDigits, string matrix)
+    private static SearchableMatrix CreateSearchableMatrix(int combinationLength, string matrix)
     {
         var listOfList = matrix.Split('\n')
             .Select(ToNumberList)
@@ -40,8 +40,8 @@ public static class Matrix
 
         var throughWidth = Enumerable.Range(0, width).ToList().AsReadOnly();
         var throughHeight = Enumerable.Range(0, height).ToList().AsReadOnly();
-        var throughReducedWidth = throughWidth.Take(width - numberOfDigits + 1).ToList().AsReadOnly();
-        var throughReducedHeight = throughHeight.Take(height - numberOfDigits + 1).ToList().AsReadOnly();
+        var throughReducedWidth = throughWidth.Take(width - combinationLength + 1).ToList().AsReadOnly();
+        var throughReducedHeight = throughHeight.Take(height - combinationLength + 1).ToList().AsReadOnly();
 
         var digitMatrix = new long[height, width];
         foreach (var m in throughHeight)
@@ -52,7 +52,7 @@ public static class Matrix
             }
         }
 
-        var stepsThroughMatrix = Enumerable.Range(0, numberOfDigits).ToList();
+        var stepsThroughMatrix = Enumerable.Range(0, combinationLength).ToList();
 
         return new SearchableMatrix
         {
@@ -61,7 +61,7 @@ public static class Matrix
             ThroughHeight = throughHeight,
             ThroughReducedWidth = throughReducedWidth,
             ThroughReducedHeight = throughReducedHeight,
-            ArrayLength = numberOfDigits,
+            ArrayLength = combinationLength,
             StepsThroughMatrix = stepsThroughMatrix
         };
     }
@@ -106,11 +106,11 @@ public static class Matrix
     }
 
     [ContractAnnotation("=> true, list: notnull; => false, list: null")]
-    private static bool TrySingleEntryMatrix(int numberOfDigits, string matrix, out IEnumerable<List<long>> list)
+    private static bool TryLengthOneCase(int combinationLength, string matrix, out IEnumerable<List<long>> list)
     {
-        var isSingleEntry = numberOfDigits == 1;
+        var isLengthOne = combinationLength == 1;
 
-        if (isSingleEntry)
+        if (isLengthOne)
         {
             list = matrix
                 .Split('\n')
@@ -122,7 +122,7 @@ public static class Matrix
             list = null!;
         }
 
-        return isSingleEntry;
+        return isLengthOne;
     }
 
     private static List<long> ToNumberList(this string line)
