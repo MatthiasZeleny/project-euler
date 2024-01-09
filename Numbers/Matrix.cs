@@ -16,17 +16,10 @@ public static class Matrix
     {
         var searchableMatrix = CreateSearchableMatrix(numberOfDigits, matrix);
 
-        var list = new List<List<long>>();
-
-        list.AddRange(CreateHorizontalLines(searchableMatrix));
-
-        list.AddRange(CreateVerticalLines(searchableMatrix));
-
-        list.AddRange(CreateOriginDiagonalLines(searchableMatrix));
-
-        list.AddRange(CreatePerpendicularDiagonalLines(searchableMatrix));
-
-        return list;
+        return CreateHorizontalLines(searchableMatrix)
+            .Concat(CreateVerticalLines(searchableMatrix))
+            .Concat(CreateOriginDiagonalLines(searchableMatrix))
+            .Concat(CreatePerpendicularDiagonalLines(searchableMatrix));
     }
 
     private static SearchableMatrix CreateSearchableMatrix(int combinationLength, string matrix)
