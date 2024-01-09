@@ -1,17 +1,18 @@
-﻿namespace Numbers;
+﻿using JetBrains.Annotations;
+
+namespace Numbers;
 
 public static class Matrix
 {
     public static IEnumerable<List<long>> GetAllPossibleCombinationsOfLength(int numberOfDigits, string matrix)
     {
-        if (numberOfDigits == 1)
-        {
-            return matrix
-                .Split('\n')
-                .SelectMany(ToNumberList)
-                .Select(digit => new List<long> { digit });
-        }
+        return TrySingleEntryMatrix(numberOfDigits, matrix, out var singleEntryList)
+            ? singleEntryList
+            : CreateMultipleEntryList(numberOfDigits, matrix);
+    }
 
+    private static IEnumerable<List<long>> CreateMultipleEntryList(int numberOfDigits, string matrix)
+    {
         var listOfList = matrix.Split('\n')
             .Select(ToNumberList)
             .ToList();
@@ -21,8 +22,8 @@ public static class Matrix
 
         var digitMatrix = new long[height, width];
 
-        var throughWidth = Enumerable.Range(0, width).ToList();
-        var throughHeight = Enumerable.Range(0, height).ToList();
+        var throughWidth = Enumerable.Range(0, width).ToList().AsReadOnly();
+        var throughHeight = Enumerable.Range(0, height).ToList().AsReadOnly();
 
         foreach (var m in throughHeight)
         {
@@ -74,6 +75,26 @@ public static class Matrix
         }
 
         return list;
+    }
+
+    [ContractAnnotation("=> true, list: notnull; => false, list: null")]
+    private static bool TrySingleEntryMatrix(int numberOfDigits, string matrix, out IEnumerable<List<long>> list)
+    {
+        var isSingleEntry = numberOfDigits == 1;
+
+        if (isSingleEntry)
+        {
+            list = matrix
+                .Split('\n')
+                .SelectMany(ToNumberList)
+                .Select(digit => new List<long> { digit });
+        }
+        else
+        {
+            list = null!;
+        }
+
+        return isSingleEntry;
     }
 
     private static List<long> ToNumberList(this string line)
