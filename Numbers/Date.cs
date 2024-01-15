@@ -29,5 +29,20 @@ public class Date
         }
     }
 
-    private Date GetNext() => new(Year, Month, DayInMonth + 1, DayOfWeek.Tuesday);
+    private Date GetNext() => new(Year, Month, DayInMonth + 1, GetNextDayOfWeek());
+
+    private DayOfWeek GetNextDayOfWeek()
+    {
+        return DayOfWeek switch
+        {
+            DayOfWeek.Sunday => DayOfWeek.Monday,
+            DayOfWeek.Monday => DayOfWeek.Tuesday,
+            DayOfWeek.Tuesday => DayOfWeek.Wednesday,
+            DayOfWeek.Wednesday => DayOfWeek.Thursday,
+            DayOfWeek.Thursday => DayOfWeek.Friday,
+            DayOfWeek.Friday => DayOfWeek.Saturday,
+            DayOfWeek.Saturday => DayOfWeek.Sunday,
+            _ => throw new ArgumentOutOfRangeException()
+        };
+    }
 }
