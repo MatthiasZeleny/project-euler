@@ -1,4 +1,4 @@
-﻿namespace Problems.Tests._001X;
+﻿namespace Problems._001X;
 
 public class Problem0019 : IEulerProblem<long>
 {
