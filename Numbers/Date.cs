@@ -31,13 +31,53 @@ public class Date
 
     private Date GetNext()
     {
-        var lastDayInMonth = DayInMonth == 31;
+        var isLastDayInMonth = IsLastDayInMonth();
 
         return new Date(
             Year,
-            lastDayInMonth ? Month.February : Month.January,
-            lastDayInMonth ? 1 : DayInMonth + 1,
+            isLastDayInMonth ? GetNextMonth() : Month,
+            isLastDayInMonth ? 1 : DayInMonth + 1,
             GetNextDayOfWeek());
+    }
+
+    private Month GetNextMonth() =>
+        Month switch
+        {
+            Month.January => Month.February,
+            Month.February => Month.March,
+            Month.March => Month.April,
+            Month.April => Month.May,
+            Month.May => Month.June,
+            Month.June => Month.July,
+            Month.July => Month.August,
+            Month.August => Month.September,
+            Month.September => Month.October,
+            Month.October => Month.November,
+            Month.November => Month.December,
+            Month.December => Month.January,
+            _ => throw new ArgumentOutOfRangeException()
+        };
+
+    private bool IsLastDayInMonth() => DayInMonth == GetLastDayInMonth();
+
+    private int GetLastDayInMonth()
+    {
+        return Month switch
+        {
+            Month.January => 31,
+            Month.February => 28,
+            Month.March => 31,
+            Month.April => 30,
+            Month.May => 31,
+            Month.June => 30,
+            Month.July => 31,
+            Month.August => 31,
+            Month.September => 30,
+            Month.October => 31,
+            Month.November => 30,
+            Month.December => 31,
+            _ => throw new ArgumentOutOfRangeException()
+        };
     }
 
     private DayOfWeek GetNextDayOfWeek()
