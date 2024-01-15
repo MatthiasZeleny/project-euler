@@ -34,7 +34,7 @@ public class Date
         var isLastDayInMonth = IsLastDayInMonth();
 
         return new Date(
-            Year,
+            isLastDayInMonth && Month == Month.December ? Year + 1 : Year,
             isLastDayInMonth ? GetNextMonth() : Month,
             isLastDayInMonth ? 1 : DayInMonth + 1,
             GetNextDayOfWeek());

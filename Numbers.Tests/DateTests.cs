@@ -33,6 +33,7 @@ public class DateTests
     [TestCase(31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30, 1900, Month.October, 1, DayOfWeek.Monday)]
     [TestCase(31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31, 1900, Month.November, 1, DayOfWeek.Thursday)]
     [TestCase(31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30, 1900, Month.December, 1, DayOfWeek.Saturday)]
+    [TestCase(31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30+31, 1901, Month.January, 1, DayOfWeek.Tuesday)]
     public void FollowingDays_ShouldBeCorrect(int steps, int year, Month month, int dayInMonth, DayOfWeek dayOfWeek)
     {
         var day = Date.GetDaysStartingFromFirstDayOf1900().Skip(steps).First();
