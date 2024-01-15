@@ -29,7 +29,16 @@ public class Date
         }
     }
 
-    private Date GetNext() => new(Year, Month, DayInMonth + 1, GetNextDayOfWeek());
+    private Date GetNext()
+    {
+        var lastDayInMonth = DayInMonth == 31;
+
+        return new Date(
+            Year,
+            lastDayInMonth ? Month.February : Month.January,
+            lastDayInMonth ? 1 : DayInMonth + 1,
+            GetNextDayOfWeek());
+    }
 
     private DayOfWeek GetNextDayOfWeek()
     {

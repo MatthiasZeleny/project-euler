@@ -22,6 +22,7 @@ public class DateTests
     [TestCase(5, 1900, Month.January, 6, DayOfWeek.Saturday)]
     [TestCase(6, 1900, Month.January, 7, DayOfWeek.Sunday)]
     [TestCase(7, 1900, Month.January, 8, DayOfWeek.Monday)]
+    [TestCase(31, 1900, Month.February, 1, DayOfWeek.Thursday)]
     public void FollowingDays_ShouldBeCorrect(int steps, int year, Month month, int dayInMonth, DayOfWeek dayOfWeek)
     {
         var day = Date.GetDaysStartingFromFirstDayOf1900().Skip(steps).First();
