@@ -4,6 +4,9 @@ namespace Numbers.Tests;
 
 public class DateTests
 {
+    private const int NumberOfDaysInANonLeapYear = 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30 + 31;
+    private const int NumberOfDaysInALeapYear = NumberOfDaysInANonLeapYear + 1;
+
     [Test]
     public void FirstDayOf1990_ShouldBeCorrect()
     {
@@ -33,7 +36,15 @@ public class DateTests
     [TestCase(31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30, 1900, Month.October, 1, DayOfWeek.Monday)]
     [TestCase(31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31, 1900, Month.November, 1, DayOfWeek.Thursday)]
     [TestCase(31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30, 1900, Month.December, 1, DayOfWeek.Saturday)]
-    [TestCase(31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30+31, 1901, Month.January, 1, DayOfWeek.Tuesday)]
+    [TestCase(NumberOfDaysInANonLeapYear, 1901, Month.January, 1, DayOfWeek.Tuesday)]
+    [TestCase(4 * NumberOfDaysInANonLeapYear + 31 + 28, 1904, Month.February, 29, DayOfWeek.Monday)]
+    [TestCase(4 * NumberOfDaysInANonLeapYear + 31 + 29, 1904, Month.March, 1, DayOfWeek.Tuesday)]
+    [TestCase(4 * NumberOfDaysInANonLeapYear + NumberOfDaysInALeapYear + 31 + 28, 1905, Month.March, 1, DayOfWeek.Wednesday)]
+    [TestCase(
+        7 * NumberOfDaysInANonLeapYear + NumberOfDaysInALeapYear + 31 + 28, 1908, Month.February, 29, DayOfWeek.Saturday)]
+    [TestCase(7 * NumberOfDaysInANonLeapYear + NumberOfDaysInALeapYear + 31 + 29, 1908, Month.March, 1, DayOfWeek.Sunday)]
+    [TestCase(100 * NumberOfDaysInANonLeapYear + 24 + 31 + 28, 2000, Month.February, 29, DayOfWeek.Tuesday)]
+    [TestCase(100 * NumberOfDaysInANonLeapYear + 24 + 31 + 29, 2000, Month.March, 1, DayOfWeek.Wednesday)]
     public void FollowingDays_ShouldBeCorrect(int steps, int year, Month month, int dayInMonth, DayOfWeek dayOfWeek)
     {
         var day = Date.GetDaysStartingFromFirstDayOf1900().Skip(steps).First();

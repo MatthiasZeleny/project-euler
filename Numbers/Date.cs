@@ -2,12 +2,12 @@
 
 public class Date
 {
-    public int Year { get; }
+    public long Year { get; }
     public Month Month { get; }
     public int DayInMonth { get; }
     public DayOfWeek DayOfWeek { get; }
 
-    private Date(int year, Month month, int dayInMonth, DayOfWeek dayOfWeek)
+    private Date(long year, Month month, int dayInMonth, DayOfWeek dayOfWeek)
     {
         Year = year;
         Month = month;
@@ -27,6 +27,7 @@ public class Date
 
             day = day.GetNext();
         }
+        // ReSharper disable once IteratorNeverReturns
     }
 
     private Date GetNext()
@@ -65,7 +66,7 @@ public class Date
         return Month switch
         {
             Month.January => 31,
-            Month.February => 28,
+            Month.February => IsLeapYear() ? 29 : 28,
             Month.March => 31,
             Month.April => 30,
             Month.May => 31,
@@ -79,6 +80,10 @@ public class Date
             _ => throw new ArgumentOutOfRangeException()
         };
     }
+
+    private bool IsLeapYear() =>
+        Year.IsDivisibleBy(4)
+        && (Year.IsDivisibleBy(100) is false || Year.IsDivisibleBy(400));
 
     private DayOfWeek GetNextDayOfWeek()
     {
