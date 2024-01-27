@@ -12,5 +12,5 @@ public class Problem0019 : IEulerProblem<long>
         Date
             .GetDaysStartingFromFirstDayOf1900()
             .TakeWhile(date => date.Year <= lastYear)
-            .Count(date => date.DayOfWeek == DayOfWeek.Sunday && date.DayInMonth == 1);
+            .Count(date => date is { DayOfWeek: DayOfWeek.Sunday, DayInMonth: 1 });
 }
