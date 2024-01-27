@@ -4,7 +4,7 @@ namespace Numbers.Tests;
 
 public class TriangleTests
 {
-    private const string InputStringWasNotInACorrectFormat = "Input string was not in a correct format.";
+    private const string InputStringWasNotInACorrectFormatWildCartPattern = "* was not in a correct format.";
 
     [TestCase("0", 0)]
     [TestCase("1", 1)]
@@ -32,19 +32,21 @@ public class TriangleTests
         );
     }
 
-    [TestCase("", InputStringWasNotInACorrectFormat)]
-    [TestCase("1 ", InputStringWasNotInACorrectFormat)]
-    [TestCase(" 1 ", InputStringWasNotInACorrectFormat)]
+    [TestCase("", InputStringWasNotInACorrectFormatWildCartPattern)]
+    [TestCase("1 ", InputStringWasNotInACorrectFormatWildCartPattern)]
+    [TestCase(" 1 ", InputStringWasNotInACorrectFormatWildCartPattern)]
     [TestCase("1 2", "Expected 1, but got 2.")]
     [TestCase("1\n2", "Expected 2, but got 1.")]
-    [TestCase("1\n2 ", InputStringWasNotInACorrectFormat)]
-    [TestCase("1\n2 3 ", InputStringWasNotInACorrectFormat)]
-    [TestCase("1 \n2 3", InputStringWasNotInACorrectFormat)]
+    [TestCase("1\n2 ", InputStringWasNotInACorrectFormatWildCartPattern)]
+    [TestCase("1\n2 3 ", InputStringWasNotInACorrectFormatWildCartPattern)]
+    [TestCase("1 \n2 3", InputStringWasNotInACorrectFormatWildCartPattern)]
     public void FromString_InvalidSetup_ShouldThrowException(string input, string expectedMessage)
     {
         var action = () => Triangle.FromString(input);
 
-        action.Should().Throw<Exception>().WithMessage(expectedMessage);
+        var exceptionAssertions = action.Should().Throw<Exception>();
+        exceptionAssertions.Which.Message.Should().NotBeEmpty();
+        exceptionAssertions.WithMessage(expectedMessage);
     }
 
     [TestCase("1", 1, "trivial case")]
