@@ -9,5 +9,5 @@ public class Problem0021 : IEulerProblem<long>
     public long Solution() => 0;
 
     private static long GetSumOfAmicableNumbersBelow(long below) =>
-        NumberList.Below(below).Where(AmicableNumbersExtensions.IsAmicableNumber).Sum();
+        NumberList.Below(below).Where(number => number.IsAmicableNumber()).Sum();
 }
