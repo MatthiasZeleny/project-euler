@@ -20,14 +20,14 @@ public static class DivisorExtensions
                 55,
                 110
             ],
-            284 => new List<long>
-            {
+            284 =>
+            [
                 1,
                 2,
                 4,
                 71,
                 142
-            },
+            ],
             _ => new List<long>()
         };
     }
