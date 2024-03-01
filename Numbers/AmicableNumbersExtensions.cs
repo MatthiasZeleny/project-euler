@@ -4,14 +4,23 @@ public static class AmicableNumbersExtensions
 {
     public static bool IsAmicableNumber(this long number)
     {
+        var amicablePartner = GetAmicablePartner(number);
+
+        var partnerOfPartner = GetAmicablePartner(amicablePartner);
+
+        return TheyAreEachOthersPartner(number, partnerOfPartner) && TheyAreDifferent(number, amicablePartner);
+    }
+
+    private static long GetAmicablePartner(long number)
+    {
         var divisors = number.GetProperDivisors();
 
-        var sumOfDivisors = divisors.Sum();
+        var amicablePartner = divisors.Sum();
 
-        var divisorsOfSumOfDivisors = sumOfDivisors.GetProperDivisors();
-
-        var sumOfDivisorsOfSumOfDivisor = divisorsOfSumOfDivisors.Sum();
-
-        return sumOfDivisorsOfSumOfDivisor == number;
+        return amicablePartner;
     }
+
+    private static bool TheyAreDifferent(long number, long amicablePartner) => (number == amicablePartner) is false;
+
+    private static bool TheyAreEachOthersPartner(long number, long partnerOfPartner) => partnerOfPartner == number;
 }
