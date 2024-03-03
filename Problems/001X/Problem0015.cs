@@ -1,4 +1,4 @@
-﻿using Numbers;
+﻿using Numbers.Structures;
 
 namespace Problems._001X;
 

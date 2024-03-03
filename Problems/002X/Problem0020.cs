@@ -1,5 +1,5 @@
 ﻿using System.Numerics;
-using Numbers;
+using Numbers.BasicMath;
 
 namespace Problems._002X;
 

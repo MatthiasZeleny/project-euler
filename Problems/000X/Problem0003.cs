@@ -1,4 +1,4 @@
-﻿using Numbers;
+﻿using Numbers.SpecialNumbers.Primes;
 
 namespace Problems._000X;
 

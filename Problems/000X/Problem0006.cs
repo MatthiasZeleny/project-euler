@@ -1,4 +1,4 @@
-﻿using Numbers;
+﻿using Numbers.BasicMath;
 
 namespace Problems._000X;
 

@@ -1,4 +1,4 @@
-﻿using Numbers;
+﻿using Numbers.SpecialNumbers.Primes;
 
 namespace Problems._001X;
 
@@ -10,7 +10,7 @@ public class Problem0010 : IEulerProblem<long>
 
     private static long GetSumOfPrimesBelow(long threshold)
     {
-        return Primes.Create()
+        return Prime.Create()
             .TakeWhile(prime => prime < threshold)
             .Sum();
     }

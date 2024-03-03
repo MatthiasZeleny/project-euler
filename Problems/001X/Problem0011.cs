@@ -1,4 +1,5 @@
-﻿using Numbers;
+﻿using Numbers.BasicMath;
+using Numbers.Structures;
 
 namespace Problems._001X;
 

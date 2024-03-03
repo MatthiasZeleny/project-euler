@@ -1,4 +1,5 @@
-﻿using Numbers;
+﻿using Numbers.BasicMath;
+using Numbers.SpecialNumbers;
 
 namespace Problems._002X;
 
