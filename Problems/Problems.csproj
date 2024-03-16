@@ -11,4 +11,10 @@
         <ProjectReference Include="..\Utils\Utils.csproj"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="002X\0022_Names.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>
