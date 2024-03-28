@@ -1,4 +1,5 @@
-﻿using Utils;
+﻿using Numbers.Texts;
+using Utils;
 
 namespace Problems._002X;
 
@@ -24,18 +25,6 @@ public class Problem0022 : IEulerProblem<long>
     }
 
     private static long GetWordValueTimesPosition((string Name, int Position) tuple) =>
-        WordToSumOfPositionInAlphabet(tuple.Name) * tuple.Position;
+        Words.WordToSumOfPositionInAlphabet(tuple.Name) * tuple.Position;
 
-    private static long WordToSumOfPositionInAlphabet(string word) =>
-        word
-            .ToList()
-            .Select(CharacterToNumber)
-            .Sum();
-
-    private static long CharacterToNumber(char character) =>
-        character switch
-        {
-            >= 'A' and <= 'Z' => (long)character - 'A' + 1,
-            _ => throw new ArgumentException($"Character not valid: {{{character}}}")
-        };
 }
