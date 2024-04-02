@@ -25,6 +25,6 @@ public class Problem0022 : IEulerProblem<long>
     }
 
     private static long GetWordValueTimesPosition((string Name, int Position) tuple) =>
-        Words.WordToSumOfPositionInAlphabet(tuple.Name) * tuple.Position;
+        Words.WordToSumOfPositionsInAlphabet(tuple.Name) * tuple.Position;
 
 }
