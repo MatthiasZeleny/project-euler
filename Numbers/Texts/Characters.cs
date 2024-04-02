@@ -2,7 +2,7 @@
 
 public static class Characters
 {
-    public static long CharacterToNumber(char character) =>
+    public static long ToNumber(this char character) =>
         character switch
         {
             >= 'A' and <= 'Z' => (long)character - 'A' + 1,

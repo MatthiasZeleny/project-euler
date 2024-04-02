@@ -10,7 +10,7 @@ public class CharactersTests
     [TestCase('Z', 26)]
     public void CharacterToNumber(char character, int expected)
     {
-        var number = Characters.CharacterToNumber(character);
+        var number = character.ToNumber();
 
         number.Should().Be(expected);
     }

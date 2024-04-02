@@ -103,6 +103,6 @@ public static class Words
     public static long WordToSumOfPositionInAlphabet(string word) =>
         word
             .ToList()
-            .Select(Characters.CharacterToNumber)
+            .Select(Characters.ToNumber)
             .Sum();
 }
