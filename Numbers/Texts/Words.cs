@@ -100,7 +100,7 @@ public static class Words
     private static string ThrowException(long number) =>
         throw new ArgumentException($"Number {number} cannot be handled.", nameof(number));
 
-    public static long WordToSumOfPositionsInAlphabet(string word) =>
+    public static long ToSumOfPositionsInAlphabet(this string word) =>
         word
             .ToList()
             .Select(Characters.ToNumber)
