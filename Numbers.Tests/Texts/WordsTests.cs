@@ -100,4 +100,14 @@ public class WordsTests
 
         word.Should().Be("one thousand");
     }
+
+    [TestCase("A", 1)]
+    [TestCase("B", 2)]
+    [TestCase("AB", 1 + 2)]
+    public void ToSumOfPositionsInAlphabet_ShouldReturnCorrectValue(string word, int number)
+    {
+        var sumOfPositionsInAlphabet = word.ToSumOfPositionsInAlphabet();
+
+        sumOfPositionsInAlphabet.Should().Be(number);
+    }
 }
