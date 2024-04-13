@@ -4,7 +4,11 @@ namespace Problems._002X;
 
 public class Problem0023 : IEulerProblem<long>
 {
-    public long Example() => NumberList.NumbersUpTo(24-1).Sum();
+    private const int SmallestNumberWhichCannotBeWrittenAsTheSumOfTwoAbundantNumbers = 24;
+
+    public long Example() => SumOfAllWhichCannotBeWrittenAsTheSumOfTwoAbundantNumbers(SmallestNumberWhichCannotBeWrittenAsTheSumOfTwoAbundantNumbers);
 
     public long Solution() => 0;
+
+    private static long SumOfAllWhichCannotBeWrittenAsTheSumOfTwoAbundantNumbers(int maximumNumber) => NumberList.NumbersUpTo(maximumNumber - 1).Sum();
 }
