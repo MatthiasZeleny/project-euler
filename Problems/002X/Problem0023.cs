@@ -6,19 +6,21 @@ namespace Problems._002X;
 public class Problem0023 : IEulerProblem<long>
 {
     private const int SmallestNumberWhichCannotBeWrittenAsTheSumOfTwoAbundantNumbers = 24;
+    private const int ThresholdForNumbersWhichCannotBeWrittenAsTheSumOfTwoAbundantNumbers = 28123;
 
     public long Example() =>
         SumOfAllWhichCannotBeWrittenAsTheSumOfTwoAbundantNumbers(
             SmallestNumberWhichCannotBeWrittenAsTheSumOfTwoAbundantNumbers);
 
-    public long Solution() => 0;
+    public long Solution() => SumOfAllWhichCannotBeWrittenAsTheSumOfTwoAbundantNumbers(
+        ThresholdForNumbersWhichCannotBeWrittenAsTheSumOfTwoAbundantNumbers);
 
     private static long SumOfAllWhichCannotBeWrittenAsTheSumOfTwoAbundantNumbers(int maximumNumber)
     {
         var numbersUpTo = NumberList.NumbersUpTo(maximumNumber).ToList();
 
         var abundantNumbers = numbersUpTo.Where(number => number.IsAbundantNumber()).ToList();
-        var possibleSums = abundantNumbers.Zip(abundantNumbers, (first, second) => first + second).Distinct().ToList();
+        var possibleSums = abundantNumbers.SelectMany(first=>abundantNumbers.Select(second=>first+second)).Distinct().ToList();
 
         return numbersUpTo.Where(number => possibleSums.Contains(number) is false).Sum();
     }
