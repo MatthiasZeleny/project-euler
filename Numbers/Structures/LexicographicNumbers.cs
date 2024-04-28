@@ -6,6 +6,7 @@ public static class LexicographicNumbers
         highestDigit switch
         {
             0 => [0],
+            1 => [01, 10],
             _ =>
             [
                 012,
