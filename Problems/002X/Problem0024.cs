@@ -9,6 +9,6 @@ public class Problem0024 : IEulerProblem<long>
     public long Solution() => 0;
 
     private static long GetNthElementOfLexicographicOrderOfDigitsUpTill(int position, int highestDigit) =>
-        LexicographicNumbers.GetLexicographicOrderedUpTo(highestDigit)[position - 1];
+        LexicographicNumbers.GetLexicographicOrderedUpTo(highestDigit).Skip(position - 1).First();
 
 }
