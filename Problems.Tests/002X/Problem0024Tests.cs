@@ -6,5 +6,5 @@ public class Problem0024Tests : EulerProblemTestBase<Problem0024, long>
 {
     protected override long ExampleResult => 120;
 
-    protected override long ProblemResult => 0x0;
+    protected override long ProblemResult => 0xA5EF2DC4;
 }
