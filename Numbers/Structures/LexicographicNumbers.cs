@@ -8,38 +8,33 @@ public static class LexicographicNumbers
     {
         var digits = CreateDigits(highestDigit);
 
-        int? maybeIndexToMove;
+        bool nextNumberExists;
 
         do
         {
             yield return CreateNumber(digits);
 
-            maybeIndexToMove = ReorderAndReturnIndexOfNextDigitToMove(digits);
-        } while (maybeIndexToMove != null);
+            nextNumberExists = TryReorderDigitsForNextDigitCombination(digits);
+        } while (nextNumberExists);
     }
 
-    private static int? ReorderAndReturnIndexOfNextDigitToMove(List<long> digits)
+    private static bool TryReorderDigitsForNextDigitCombination(List<long> digits)
     {
-        int? maybeIndexToMove = null;
+        var candidates = digits
+            .SkipLast(1)
+            .Select((digit, index) => (SmallerThanNext: digit < digits[index + 1], Index: index))
+            .Where(result => result.SmallerThanNext)
+            .Select(result => result.Index)
+            .ToList();
 
-        for (var index = 0; index < digits.Count - 1; index++)
+        var nextNumberExists = candidates.Any();
+
+        if (nextNumberExists)
         {
-            var nextDigitIsBigger = digits[index] < digits[index + 1];
-
-            if (nextDigitIsBigger)
-            {
-                maybeIndexToMove = index;
-            }
+            ReorderDigits(digits, candidates.Last());
         }
 
-        if (maybeIndexToMove is not { } indexToMove)
-        {
-            return null;
-        }
-
-        ReorderDigits(digits, indexToMove);
-
-        return maybeIndexToMove;
+        return nextNumberExists;
     }
 
     private static List<long> CreateDigits(int highestDigit)
