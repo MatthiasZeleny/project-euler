@@ -6,9 +6,7 @@ public static class LexicographicNumbers
 {
     public static IEnumerable<long> GetLexicographicOrderedUpTo(int highestDigit)
     {
-        var startingWithOne = NumberList.NumbersUpTo(highestDigit).ToList();
-        var digits = new List<long> { 0 };
-        digits.AddRange(startingWithOne);
+        var digits = CreateDigits(highestDigit);
 
         int? maybeIndexToMove;
 
@@ -16,25 +14,41 @@ public static class LexicographicNumbers
         {
             yield return CreateNumber(digits);
 
-            maybeIndexToMove = null;
-
-            for (var index = 0; index < digits.Count - 1; index++)
-            {
-                var nextDigitIsBigger = digits[index] < digits[index + 1];
-
-                if (nextDigitIsBigger)
-                {
-                    maybeIndexToMove = index;
-                }
-            }
-
-            if (maybeIndexToMove is not { } indexToMove)
-            {
-                continue;
-            }
-
-            ReorderDigits(digits, indexToMove);
+            maybeIndexToMove = ReorderAndReturnIndexOfNextDigitToMove(digits);
         } while (maybeIndexToMove != null);
+    }
+
+    private static int? ReorderAndReturnIndexOfNextDigitToMove(List<long> digits)
+    {
+        int? maybeIndexToMove = null;
+
+        for (var index = 0; index < digits.Count - 1; index++)
+        {
+            var nextDigitIsBigger = digits[index] < digits[index + 1];
+
+            if (nextDigitIsBigger)
+            {
+                maybeIndexToMove = index;
+            }
+        }
+
+        if (maybeIndexToMove is not { } indexToMove)
+        {
+            return null;
+        }
+
+        ReorderDigits(digits, indexToMove);
+
+        return maybeIndexToMove;
+    }
+
+    private static List<long> CreateDigits(int highestDigit)
+    {
+        var startingWithOne = NumberList.NumbersUpTo(highestDigit).ToList();
+        var digits = new List<long> { 0 };
+        digits.AddRange(startingWithOne);
+
+        return digits;
     }
 
     private static void ReorderDigits(List<long> digits, int lastIndex)
