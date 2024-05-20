@@ -10,7 +10,12 @@ public class Problem0002 : IEulerProblem<long>
     public long Solution() => GetSumOfEvenFibonacciNumbersUpTo(4_000_000);
 
     private static long GetSumOfEvenFibonacciNumbersUpTo(int threshold) =>
-        Fibonacci.GetAllLessOrEqual(threshold)
+        GetFibunacciNumbersStartingWithOneTwoSinceThisProblemsDefinesThemLikeThis(threshold)
             .Where(NumberExtensions.IsEven)
             .Sum();
+
+    private static IEnumerable<long>
+        GetFibunacciNumbersStartingWithOneTwoSinceThisProblemsDefinesThemLikeThis(int threshold) =>
+        Fibonacci.GetAllLessOrEqualStartingWithOneOne(threshold)
+            .Skip(1);
 }

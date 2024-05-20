@@ -4,7 +4,7 @@ namespace Numbers.SpecialNumbers;
 
 public static class Fibonacci
 {
-    public static IEnumerable<long> GetAllLessOrEqual(long threshold)
+    public static IEnumerable<long> GetAllLessOrEqualStartingWithOneOne(long threshold)
     {
         var fibonacciProvider = new FibonacciProvider(threshold);
 
@@ -15,7 +15,7 @@ public static class Fibonacci
     {
         private readonly long _threshold;
         private int _current = 1;
-        private int _previous = 1;
+        private int _previous;
 
         public FibonacciProvider(long threshold)
         {

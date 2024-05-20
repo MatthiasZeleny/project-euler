@@ -5,43 +5,45 @@ namespace Numbers.Tests.SpecialNumbers;
 
 public class FibonacciTests
 {
-    [Test]
-    public void GetAllLessOrEqual_One_ShouldReturnCorrectList()
-    {
-        var list = Fibonacci.GetAllLessOrEqual(1);
 
-        list.Should().BeEquivalentTo(new List<int> { 1 });
+    [Test]
+    public void GetAllLessOrEqualStartingWithOneOne_One_ShouldReturnCorrectList()
+    {
+        var list = Fibonacci.GetAllLessOrEqualStartingWithOneOne(1);
+
+        list.Should().BeEquivalentTo(new List<int> { 1, 1 });
     }
 
     [Test]
-    public void GetAllLessOrEqual_Two_ShouldReturnCorrectList()
+    public void GetAllLessOrEqualStartingWithOneOne_Two_ShouldReturnCorrectList()
     {
-        var list = Fibonacci.GetAllLessOrEqual(2);
+        var list = Fibonacci.GetAllLessOrEqualStartingWithOneOne(2);
 
-        list.Should().BeEquivalentTo(new List<int> { 1, 2 });
+        list.Should().BeEquivalentTo(new List<int> { 1, 1, 2 });
     }
 
     [Test]
-    public void GetAllLessOrEqual_Three_ShouldReturnCorrectList()
+    public void GetAllLessOrEqualStartingWithOneOne_Three_ShouldReturnCorrectList()
     {
-        var list = Fibonacci.GetAllLessOrEqual(3);
+        var list = Fibonacci.GetAllLessOrEqualStartingWithOneOne(3);
 
-        list.Should().BeEquivalentTo(new List<int> { 1, 2, 3 });
+        list.Should().BeEquivalentTo(new List<int> { 1, 1, 2, 3 });
     }
 
     [Test]
-    public void GetAllLessOrEqual_Four_ShouldReturnCorrectList()
+    public void GetAllLessOrEqualStartingWithOneOne_Four_ShouldReturnCorrectList()
     {
-        var list = Fibonacci.GetAllLessOrEqual(4);
+        var list = Fibonacci.GetAllLessOrEqualStartingWithOneOne(4);
 
-        list.Should().BeEquivalentTo(new List<int> { 1, 2, 3 });
+        list.Should().BeEquivalentTo(new List<int> { 1, 1, 2, 3 });
     }
 
     [Test]
-    public void GetAllLessOrEqual_Eight_ShouldReturnCorrectList()
+    public void GetAllLessOrEqualStartingWithOneOne_Eight_ShouldReturnCorrectList()
     {
-        var list = Fibonacci.GetAllLessOrEqual(8);
+        var list = Fibonacci.GetAllLessOrEqualStartingWithOneOne(8);
 
-        list.Should().BeEquivalentTo(new List<int> { 1, 2, 3, 5, 8 });
+        list.Should().BeEquivalentTo(new List<int> { 1, 1, 2, 3, 5, 8 });
     }
+
 }
