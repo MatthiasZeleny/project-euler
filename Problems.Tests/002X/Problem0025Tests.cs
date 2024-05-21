@@ -1,10 +1,11 @@
-﻿using Problems._002X;
+﻿using System.Numerics;
+using Problems._002X;
 
 namespace Problems.Tests._002X;
 
-public class Problem0025Tests : EulerProblemTestBase<Problem0025, long>
+public class Problem0025Tests : EulerProblemTestBase<Problem0025, BigInteger>
 {
-    protected override long ExampleResult => 12;
+    protected override BigInteger ExampleResult => 12;
 
-    protected override long ProblemResult => 0;
+    protected override BigInteger ProblemResult => 0;
 }

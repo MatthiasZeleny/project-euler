@@ -46,4 +46,13 @@ public class FibonacciTests
         list.Should().BeEquivalentTo(new List<int> { 1, 1, 2, 3, 5, 8 });
     }
 
+    [Test]
+    public void GetAllLessOrEqualStartingWithOneOneBigInteger_ShouldBeSameValuesAsNormal()
+    {
+        var expected = Fibonacci.GetAllLessOrEqualStartingWithOneOne(8);
+        var list = Fibonacci.GetAllLessOrEqualStartingWithOneOneBigInteger().TakeWhile(number => number <= 8);
+
+        list.Select(big => big.ToString()).Should().BeEquivalentTo(expected.Select(longNumber => longNumber.ToString()));
+    }
+
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Numerics;
 
 namespace Numbers.SpecialNumbers;
 
@@ -7,35 +8,43 @@ public static class Fibonacci
     public static IEnumerable<long> GetAllLessOrEqualStartingWithOneOne(long threshold)
     {
         var fibonacciProvider = new FibonacciProvider<long>(
-            threshold,
             0,
             1,
             (left, right) => left + right,
-            (left, right) => left <= right);
+            current => current <= threshold
+        );
+
+        return fibonacciProvider;
+    }
+
+    public static IEnumerable<BigInteger> GetAllLessOrEqualStartingWithOneOneBigInteger()
+    {
+        var fibonacciProvider = new FibonacciProvider<BigInteger>(
+            0,
+            1,
+            (left, right) => left + right,
+            _ => true);
 
         return fibonacciProvider;
     }
 
     private class FibonacciProvider<TNumberType> : IEnumerable<TNumberType>
     {
-        private readonly TNumberType _threshold;
-        private TNumberType _current;
         private TNumberType _previous;
+        private TNumberType _current;
         private readonly Func<TNumberType, TNumberType, TNumberType> _addition;
-        private readonly Func<TNumberType, TNumberType, bool> _leftIsSmallerOrEqual;
+        private readonly Func<TNumberType, bool> _keepGoing;
 
-        public FibonacciProvider(
-            TNumberType threshold,
+        internal FibonacciProvider(
             TNumberType zero,
-            TNumberType one
-            , Func<TNumberType, TNumberType, TNumberType> addition,
-            Func<TNumberType, TNumberType, bool> leftIsSmallerOrEqual)
+            TNumberType one,
+            Func<TNumberType, TNumberType, TNumberType> addition,
+            Func<TNumberType, bool> keepGoing)
         {
-            _leftIsSmallerOrEqual = leftIsSmallerOrEqual;
             _addition = addition;
-            _current = one;
+            _keepGoing = keepGoing;
             _previous = zero;
-            _threshold = threshold;
+            _current = one;
         }
 
         public IEnumerator<TNumberType> GetEnumerator()
@@ -58,6 +67,6 @@ public static class Fibonacci
 
         private TNumberType GetCurrent() => _current;
 
-        private bool StillNotAboveThreshold() => _leftIsSmallerOrEqual(_current, _threshold);
+        private bool StillNotAboveThreshold() => _keepGoing(_current);
     }
 }
