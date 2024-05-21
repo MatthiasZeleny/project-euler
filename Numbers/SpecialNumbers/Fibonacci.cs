@@ -6,23 +6,39 @@ public static class Fibonacci
 {
     public static IEnumerable<long> GetAllLessOrEqualStartingWithOneOne(long threshold)
     {
-        var fibonacciProvider = new FibonacciProvider(threshold);
+        var fibonacciProvider = new FibonacciProvider<long>(
+            threshold,
+            0,
+            1,
+            (left, right) => left + right,
+            (left, right) => left <= right);
 
         return fibonacciProvider;
     }
 
-    private class FibonacciProvider : IEnumerable<long>
+    private class FibonacciProvider<TNumberType> : IEnumerable<TNumberType>
     {
-        private readonly long _threshold;
-        private int _current = 1;
-        private int _previous;
+        private readonly TNumberType _threshold;
+        private TNumberType _current;
+        private TNumberType _previous;
+        private readonly Func<TNumberType, TNumberType, TNumberType> _addition;
+        private readonly Func<TNumberType, TNumberType, bool> _leftIsSmallerOrEqual;
 
-        public FibonacciProvider(long threshold)
+        public FibonacciProvider(
+            TNumberType threshold,
+            TNumberType zero,
+            TNumberType one
+            , Func<TNumberType, TNumberType, TNumberType> addition,
+            Func<TNumberType, TNumberType, bool> leftIsSmallerOrEqual)
         {
+            _leftIsSmallerOrEqual = leftIsSmallerOrEqual;
+            _addition = addition;
+            _current = one;
+            _previous = zero;
             _threshold = threshold;
         }
 
-        public IEnumerator<long> GetEnumerator()
+        public IEnumerator<TNumberType> GetEnumerator()
         {
             while (StillNotAboveThreshold())
             {
@@ -35,13 +51,13 @@ public static class Fibonacci
 
         private void ComputeNext()
         {
-            var next = _previous + _current;
+            var next = _addition(_previous, _current);
             _previous = _current;
             _current = next;
         }
 
-        private int GetCurrent() => _current;
+        private TNumberType GetCurrent() => _current;
 
-        private bool StillNotAboveThreshold() => _current <= _threshold;
+        private bool StillNotAboveThreshold() => _leftIsSmallerOrEqual(_current, _threshold);
     }
 }
