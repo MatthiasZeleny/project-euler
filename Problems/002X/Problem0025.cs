@@ -8,7 +8,7 @@ public class Problem0025 : IEulerProblem<BigInteger>
 {
     public BigInteger Example() => GetPositionOfFirstFibonacciNumberWithNDigits(3);
 
-    public BigInteger Solution() => 0;
+    public BigInteger Solution() => GetPositionOfFirstFibonacciNumberWithNDigits(1_000);
 
     private static BigInteger GetPositionOfFirstFibonacciNumberWithNDigits(int numberOfDigits) =>
         Fibonacci.GetAllLessOrEqualStartingWithOneOneBigInteger()
