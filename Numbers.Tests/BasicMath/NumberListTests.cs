@@ -38,7 +38,8 @@ public class NumberListTests
     [Test]
     public void MultiplyToSingleNumber_EmptyList_ShouldReturnOne()
     {
-        var longs = new List<long>();
+        // ReSharper disable once CollectionNeverUpdated.Local - This is for a test.
+        List<long> longs = [];
 
         var product = longs.MultiplyToSingleNumber();
 
