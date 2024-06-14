@@ -2,8 +2,8 @@
 
 namespace Problems.Tests._002X;
 
-public class Problem0026Tests : EulerProblemTestBase<Problem0026, int>
+public class Problem0026Tests : EulerProblemTestBase<Problem0026, long>
 {
-    protected override int ExampleResult => 6;
-    protected override int ProblemResult => 0;
+    protected override long ExampleResult => 6;
+    protected override long ProblemResult => 0;
 }

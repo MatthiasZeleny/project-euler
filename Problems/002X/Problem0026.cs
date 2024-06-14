@@ -1,8 +1,11 @@
-﻿namespace Problems._002X;
+﻿using Numbers.BasicMath;
 
-public class Problem0026 : IEulerProblem<int>
+namespace Problems._002X;
+
+public class Problem0026 : IEulerProblem<long>
 {
-    public int Example() => new List<int> { 0, 1, 0, 0, 1, 6, 0, 1, 0 }.Max();
+    public long Example() => NumberList.NumbersUpTo(10)
+        .Select(DenominatorExtensions.GetLengthOfRecurringCycleForOneDividedBy).Max();
 
-    public int Solution() => 0;
+    public long Solution() => 0;
 }
