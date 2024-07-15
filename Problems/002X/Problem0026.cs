@@ -6,7 +6,7 @@ public class Problem0026 : IEulerProblem<long>
 {
     public long Example() => GetNumberCreatingLongestRecurringCycleUpTo(10);
 
-    public long Solution() => 0;
+    public long Solution() => GetNumberCreatingLongestRecurringCycleUpTo(999);
 
     private static long GetNumberCreatingLongestRecurringCycleUpTo(int maxDivisor) =>
         NumberList.NumbersUpTo(maxDivisor)
