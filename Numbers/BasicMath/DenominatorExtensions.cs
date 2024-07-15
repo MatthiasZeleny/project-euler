@@ -3,9 +3,9 @@
 public static class DenominatorExtensions
 {
     public static long GetLengthOfRecurringCycleForOneDividedBy(this long number) =>
-        GetRecurringCycleForOneDividedByThis(number).Count;
+        GetRecurringCycleForOneDividedBy(number).Count;
 
-    public static List<long> GetRecurringCycleForOneDividedByThis(this long divisor)
+    private static List<long> GetRecurringCycleForOneDividedBy(long divisor)
     {
         long remainder = 1;
         var digitsOfResult = new List<(long division, long remainder)>();
@@ -19,7 +19,7 @@ public static class DenominatorExtensions
             {
                 var indexOfCycleStart = digitsOfResult.IndexOf(stepResult);
 
-                return digitsOfResult.Skip(indexOfCycleStart).Select(steps => steps.division).ToList();
+                return digitsOfResult.Skip(indexOfCycleStart).Select(steps => steps.remainder).ToList();
             }
 
             digitsOfResult.Add(stepResult);
