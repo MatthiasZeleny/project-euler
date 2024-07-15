@@ -1,26 +1,32 @@
-﻿using Numbers.SpecialNumbers.Primes;
-
-namespace Numbers.BasicMath;
+﻿namespace Numbers.BasicMath;
 
 public static class DenominatorExtensions
 {
     public static long GetLengthOfRecurringCycleForOneDividedBy(this long number) =>
         GetRecurringCycleForOneDividedBy(number).Count;
 
-    private static List<int> GetRecurringCycleForOneDividedBy(long number)
+    private static List<long> GetRecurringCycleForOneDividedBy(long divisor)
     {
-        if (PrimeFactorRepresentation.For(number).AsList().All(primeFactor => primeFactor is 2 or 5))
+        long remainder = 1;
+        var digitsOfResult = new List<(long division, long remainder)>();
+
+        while (remainder is not 0)
         {
-            return [];
+            var stepResult = (division: remainder / divisor, remainder: remainder % divisor);
+
+            var cycleFound = digitsOfResult.Contains(stepResult);
+            if (cycleFound)
+            {
+                var indexOfCycleStart = digitsOfResult.IndexOf(stepResult);
+
+                return digitsOfResult.Skip(indexOfCycleStart).Select(steps => steps.remainder).ToList();
+            }
+
+            digitsOfResult.Add(stepResult);
+
+            remainder = digitsOfResult.Last().remainder * 10;
         }
 
-        return number switch
-        {
-            3 => [3],
-            6 => [6],
-            7 => [1, 4, 2, 8, 5, 7],
-            9 => [1],
-            _ => throw new ArgumentOutOfRangeException(nameof(number), number, null)
-        };
+        return new List<long>();
     }
 }
