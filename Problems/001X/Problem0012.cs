@@ -13,7 +13,7 @@ public class Problem0012 : IEulerProblem<long>
     {
         foreach (var naturalNumber in NumberList.NaturalNumbers())
         {
-            var triangleNumber = NumberList.NumbersUpTo(naturalNumber).Sum();
+            var triangleNumber = NumberList.NumbersFromZeroUpTo(naturalNumber).Sum();
             var maximumPowerOfEachPrimeFactor = PrimeFactorRepresentation.For(triangleNumber).AsDictionary().Values;
 
             var numberOfPossibilitiesForEachPower = maximumPowerOfEachPrimeFactor.Select(maxPower => maxPower + 1L);

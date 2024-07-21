@@ -14,6 +14,6 @@ public class Problem0017 : IEulerProblem<long>
 
     private static IEnumerable<string> CreateWordListUpTo(int highestNumber) =>
         NumberList
-            .NumbersUpTo(highestNumber)
+            .NumbersFromZeroUpTo(highestNumber)
             .Select(Words.ToWord);
 }

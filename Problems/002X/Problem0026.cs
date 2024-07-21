@@ -9,7 +9,7 @@ public class Problem0026 : IEulerProblem<long>
     public long Solution() => GetNumberCreatingLongestRecurringCycleUpTo(999);
 
     private static long GetNumberCreatingLongestRecurringCycleUpTo(int maxDivisor) =>
-        NumberList.NumbersUpTo(maxDivisor)
+        NumberList.NumbersFromZeroUpTo(maxDivisor)
             .Skip(1)
             .Select(
                 candidate => (candidate: candidate,
