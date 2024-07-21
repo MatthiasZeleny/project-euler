@@ -12,7 +12,7 @@ public class Problem0026 : IEulerProblem<long>
         NumberList.NumbersFromZeroUpTo(maxDivisor)
             .Skip(1)
             .Select(
-                candidate => (candidate: candidate,
+                candidate => (candidate,
                     length: candidate.GetLengthOfRecurringCycleForOneDividedBy()))
             .MaxBy(tuple => tuple.length)
             .candidate;
