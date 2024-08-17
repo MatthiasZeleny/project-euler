@@ -30,4 +30,18 @@ public class CachingEnumeratorTests
 
         reusableEnumeratorList.GetElements().Take(2).ToList().Should().BeEquivalentTo([1, 2]);
     }
+
+    [Test]
+    public void GetEnumerable_TakeOneAndThenAgain_ShouldBeFirstAgain()
+    {
+        var source = new List<long>
+        {
+            1
+        };
+
+        var reusableEnumeratorList = new CachingEnumerator(source);
+
+        reusableEnumeratorList.GetElements().First().Should().Be(1);
+        reusableEnumeratorList.GetElements().First().Should().Be(1);
+    }
 }
