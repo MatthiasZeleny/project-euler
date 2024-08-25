@@ -49,11 +49,7 @@ public class CachingEnumeratorTests
     [Test]
     public void GetEnumerable_TakeOneAndThenAgain_ShouldCallEnumeratorOnlyOnce()
     {
-        var source = new CountingEnumerableMock(
-            new List<long>
-            {
-                1
-            });
+        var source = new CountingEnumerableMock([1]);
 
         var reusableEnumeratorList = new CachingEnumerator(source);
 
