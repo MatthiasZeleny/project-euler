@@ -60,6 +60,17 @@ public class CachingEnumeratorTests
         source.EnumeratorCallsCount.Should().Be(1);
     }
 
+    [Test]
+    public void GetEnumerable_TakeTwoAndThenAgain_ShouldReturnSameSequence()
+    {
+        var source = new CountingEnumerableMock([1, 2]);
+
+        var reusableEnumeratorList = new CachingEnumerator(source);
+
+        reusableEnumeratorList.GetElements().Should().BeEquivalentTo([1, 2]);
+        reusableEnumeratorList.GetElements().Should().BeEquivalentTo([1, 2]);
+    }
+
     private class CountingEnumerableMock(List<long> source) : IEnumerable<long>
     {
 
