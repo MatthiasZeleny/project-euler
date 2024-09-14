@@ -9,7 +9,7 @@ public class Problem0027 : IEulerProblem<long>
 
     public long Example() => ProductOfCombinationCreatingMostConsecutivePrimes(0, 41);
 
-    public long Solution() => 0;
+    public long Solution() => ProductOfCombinationCreatingMostConsecutivePrimes(-1000, 1000);
 
     private static long ProductOfCombinationCreatingMostConsecutivePrimes(int minimum, int maximum)
     {
