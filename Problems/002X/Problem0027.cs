@@ -7,16 +7,17 @@ namespace Problems._002X;
 public class Problem0027 : IEulerProblem<long>
 {
 
-    public long Example() => ProductOfCombinationCreatingMostConsecutivePrimes(0, 41);
+    public long Example() => ProductOfCombinationCreatingMostConsecutivePrimes(0, 1, 0, 41);
 
-    public long Solution() => ProductOfCombinationCreatingMostConsecutivePrimes(-1000, 1000);
+    public long Solution() => ProductOfCombinationCreatingMostConsecutivePrimes(-999, 999, -1000, 1000);
 
-    private static long ProductOfCombinationCreatingMostConsecutivePrimes(int minimum, int maximum)
+    private static long ProductOfCombinationCreatingMostConsecutivePrimes(int aMin, int aMax, int bMin, int bMax)
     {
-        var fullRange = Enumerable.Range(minimum, maximum - minimum + 1);
+        var aRange = Enumerable.Range(aMin, aMax - aMin + 1).ToList();
+        var bRange = Enumerable.Range(bMin, bMax - bMin + 1).ToList();
         var cachedPrimes = new CachingEnumerator(Prime.Create());
 
-        var allCombinations = CreateAllCombinations(fullRange);
+        var allCombinations = CreateAllCombinations(aRange, bRange);
         var (a, b) = GetAllMaxNsBySize(allCombinations, cachedPrimes).aAndB;
 
         return a * b;
@@ -58,10 +59,11 @@ public class Problem0027 : IEulerProblem<long>
         return formulaIsPrime;
     }
 
-    private static IEnumerable<(int a, int b)> CreateAllCombinations(IEnumerable<int> enumerable)
+    private static IEnumerable<(int a, int b)> CreateAllCombinations(IReadOnlyCollection<int> aRange,
+        IReadOnlyCollection<int> bRange)
     {
-        var candidates = enumerable.ToList();
-        var allCombinations = candidates.SelectMany(a => candidates.Select(b => (a, b)));
+        var candidates = aRange.ToList();
+        var allCombinations = candidates.SelectMany(a => bRange.Select(b => (a, b)));
 
         return allCombinations;
     }
