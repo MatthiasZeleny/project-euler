@@ -15,22 +15,25 @@ public class Problem0027 : IEulerProblem<long>
     {
         var aRange = Enumerable.Range(aMin, aMax - aMin + 1).ToList();
         var bRange = Enumerable.Range(bMin, bMax - bMin + 1).ToList();
-        var cachedPrimes = new CachingEnumerator(Prime.Create());
 
         var allCombinations = aRange.CreateAllCombinationsWith(bRange);
-        var (a, b) = GetAllMaxNsBySize(allCombinations, cachedPrimes).aAndB;
+
+        var (a, b) = FindCombinationWithHighestNumberOfConsecutiveNsCreatingPrimes(allCombinations);
 
         return a * b;
     }
 
-    private static ((int a, int b) aAndB, int maxN) GetAllMaxNsBySize(IEnumerable<(int a, int b)> allCombinations,
-        CachingEnumerator cachedPrimes)
+    private static (int a, int b) FindCombinationWithHighestNumberOfConsecutiveNsCreatingPrimes(
+        IEnumerable<(int a, int b)> allCombinations)
     {
+        var cachedPrimes = new CachingEnumerator(Prime.Create());
         var allMaxNsBySize = allCombinations
             .Select(AddNumberOfConsecutivePrimes(cachedPrimes))
             .OrderByDescending(tuple => tuple.maxN);
 
-        return allMaxNsBySize.First();
+        var (a, b) = allMaxNsBySize.First().aAndB;
+
+        return (a, b);
     }
 
     private static Func<(int a, int b), ((int a, int b) aAndB, int maxN)> AddNumberOfConsecutivePrimes(
@@ -50,7 +53,10 @@ public class Problem0027 : IEulerProblem<long>
         var formulaResult = n * n + tuple.a * n + tuple.b;
 
         var primesSmallerOrEqualFormulaResult =
-            cachedPrimes.GetElements().TakeWhile(prime => prime <= formulaResult).ToList();
+            cachedPrimes
+                .GetElements()
+                .TakeWhile(prime => prime <= formulaResult)
+                .ToList();
 
         var formulaIsPrime = primesSmallerOrEqualFormulaResult.Any() &&
                              primesSmallerOrEqualFormulaResult.Last() ==
