@@ -17,7 +17,7 @@ public class Problem0027 : IEulerProblem<long>
         var bRange = Enumerable.Range(bMin, bMax - bMin + 1).ToList();
         var cachedPrimes = new CachingEnumerator(Prime.Create());
 
-        var allCombinations = CreateAllCombinations(aRange, bRange);
+        var allCombinations = aRange.CreateAllCombinationsWith(bRange);
         var (a, b) = GetAllMaxNsBySize(allCombinations, cachedPrimes).aAndB;
 
         return a * b;
@@ -57,15 +57,6 @@ public class Problem0027 : IEulerProblem<long>
                              formulaResult;
 
         return formulaIsPrime;
-    }
-
-    private static IEnumerable<(int a, int b)> CreateAllCombinations(IReadOnlyCollection<int> aRange,
-        IReadOnlyCollection<int> bRange)
-    {
-        var candidates = aRange.ToList();
-        var allCombinations = candidates.SelectMany(a => bRange.Select(b => (a, b)));
-
-        return allCombinations;
     }
 
 }
