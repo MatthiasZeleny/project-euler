@@ -52,17 +52,20 @@ public class Problem0027 : IEulerProblem<long>
     {
         var formulaResult = n * n + tuple.a * n + tuple.b;
 
-        var primesSmallerOrEqualFormulaResult =
-            cachedPrimes
-                .GetElements()
-                .TakeWhile(prime => prime <= formulaResult)
-                .ToList();
+        var onlyViablePrimeCandidate =
+            GetPrimesLesserOrEqual(cachedPrimes, formulaResult)
+                .LastOrDefault();
 
-        var formulaIsPrime = primesSmallerOrEqualFormulaResult.Any() &&
-                             primesSmallerOrEqualFormulaResult.Last() ==
-                             formulaResult;
+        var formulaIsPrime = onlyViablePrimeCandidate == formulaResult;
 
         return formulaIsPrime;
+    }
+
+    private static IEnumerable<long> GetPrimesLesserOrEqual(CachingEnumerator cachedPrimes, long formulaResult)
+    {
+        return cachedPrimes
+            .GetElements()
+            .TakeWhile(prime => prime <= formulaResult);
     }
 
 }
