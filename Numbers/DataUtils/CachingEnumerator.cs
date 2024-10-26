@@ -3,7 +3,7 @@
 public class CachingEnumerator(IEnumerable<long> source)
 {
     private readonly IEnumerator<long> _enumerator = source.GetEnumerator();
-    private readonly List<long> _list = new List<long>();
+    private readonly List<long> _list = [];
 
     public IEnumerable<long> GetElements()
     {
