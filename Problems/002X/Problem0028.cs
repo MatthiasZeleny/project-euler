@@ -35,7 +35,7 @@ public class Problem0028 : IEulerProblem<long>
     {
         var rounds = gridSize / 2;
         var skips =
-            NumberList.NumbersFromZeroUpTo(rounds)
+            NumberList.NaturalNumbersUpTo(rounds)
                 .Select(roundNumber => roundNumber * 2)
                 .SelectMany(skipSize => Enumerable.Repeat(skipSize, FourDirections));
 

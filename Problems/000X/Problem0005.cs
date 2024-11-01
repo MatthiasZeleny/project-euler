@@ -11,7 +11,7 @@ public class Problem0005 : IEulerProblem<long>
     public long Solution() => GetLeastCommonMultipleOfNumbersUpTo(20);
 
     private static long GetLeastCommonMultipleOfNumbersUpTo(int maxValue) =>
-        NumberList.NumbersFromZeroUpTo(maxValue)
+        NumberList.NaturalNumbersUpTo(maxValue)
             .Then(GetLeastCommonMultiple);
 
     private static long GetLeastCommonMultiple(IEnumerable<long> numbers) => PrimeFactorRepresentation

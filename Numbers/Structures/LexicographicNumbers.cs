@@ -39,7 +39,7 @@ public static class LexicographicNumbers
 
     private static List<long> CreateDigits(int highestDigit)
     {
-        var startingWithOne = NumberList.NumbersFromZeroUpTo(highestDigit).ToList();
+        var startingWithOne = NumberList.NaturalNumbersUpTo(highestDigit).ToList();
         var digits = new List<long> { 0 };
         digits.AddRange(startingWithOne);
 

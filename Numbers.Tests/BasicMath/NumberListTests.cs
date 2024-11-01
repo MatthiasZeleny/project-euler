@@ -71,4 +71,12 @@ public class NumberListTests
 
         product.Should().Be(expectedResult);
     }
+
+    [Test]
+    public void NaturalNumbersUpTo_ShouldStartWithOne()
+    {
+        var should = NumberList.NaturalNumbersUpTo(1);
+
+        should.Should().StartWith(1);
+    }
 }
