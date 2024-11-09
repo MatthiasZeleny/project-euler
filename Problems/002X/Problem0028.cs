@@ -6,9 +6,9 @@ public class Problem0028 : IEulerProblem<long>
 {
     private const int FourDirections = 4;
 
-    public long Example() => GetSumOfCornerValuesFor5X5();
+    public long Example() => GetSumOfCornerValuesForNxN(5);
 
-    private static long GetSumOfCornerValuesFor5X5() => CreateListOfCornerValuesForNxN(5).Sum();
+    private static long GetSumOfCornerValuesForNxN(int gridSize) => CreateListOfCornerValuesForNxN(gridSize).Sum();
 
     private static IEnumerable<long> CreateCornerValuesBasedOnSkips(IEnumerable<long> skips)
     {
