@@ -8,6 +8,8 @@ public class Problem0028 : IEulerProblem<long>
 
     public long Example() => GetSumOfCornerValuesForNxN(5);
 
+    public long Solution() => GetSumOfCornerValuesForNxN(1001);
+
     private static long GetSumOfCornerValuesForNxN(int gridSize) => CreateListOfCornerValuesForNxN(gridSize).Sum();
 
     private static IEnumerable<long> CreateCornerValuesBasedOnSkips(IEnumerable<long> skips)
@@ -42,5 +44,4 @@ public class Problem0028 : IEulerProblem<long>
         return skips;
     }
 
-    public long Solution() => 0;
 }
