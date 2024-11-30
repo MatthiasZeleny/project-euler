@@ -1,4 +1,4 @@
-﻿namespace Numbers.DataUtils;
+﻿namespace Utils.Data;
 
 public static class CombinationsExtensions
 {

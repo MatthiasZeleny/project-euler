@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using FluentAssertions;
-using Numbers.DataUtils;
+﻿using Utils.Data;
 
-namespace Numbers.Tests.DataUtils;
+namespace Utils.Tests.Data;
 
 public class CachingEnumeratorTests
 {

@@ -1,6 +1,6 @@
 ﻿using Numbers.BasicMath;
-using Numbers.DataUtils;
 using Numbers.SpecialNumbers.Primes;
+using Utils.Data;
 
 namespace Problems._002X;
 
