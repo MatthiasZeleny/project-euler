@@ -4,7 +4,10 @@ public class Problem0029 : IEulerProblem<int>
 {
     public int Example()
     {
-        var numbers = Enumerable.Range(2, 5 - 2 + 1).ToList();
+        var upperLimit = 5;
+        var lowerLimit = 2;
+
+        var numbers = Enumerable.Range(lowerLimit, upperLimit - lowerLimit + 1).ToList();
 
         var set = new HashSet<int>();
 
