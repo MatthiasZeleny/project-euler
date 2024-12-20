@@ -1,4 +1,6 @@
-﻿namespace Problems._002X;
+﻿using System.Numerics;
+
+namespace Problems._002X;
 
 public class Problem0029 : IEulerProblem<int>
 {
@@ -12,13 +14,13 @@ public class Problem0029 : IEulerProblem<int>
 
         var numbers = Enumerable.Range(lowerLimit, upperLimit - lowerLimit + 1).ToList();
 
-        var set = new HashSet<int>();
+        var set = new HashSet<BigInteger>();
 
         foreach (var baseNumber in numbers)
         {
             foreach (var exponent in numbers)
             {
-                var result = Enumerable.Repeat(baseNumber, exponent).Aggregate(1, (product, factor) => product * factor);
+                var result = Enumerable.Repeat(baseNumber, exponent).Aggregate(BigInteger.One, (product, factor) => product * factor);
 
                 set.Add(result);
             }
