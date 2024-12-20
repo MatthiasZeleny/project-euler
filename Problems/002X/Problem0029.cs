@@ -2,9 +2,12 @@
 
 public class Problem0029 : IEulerProblem<int>
 {
-    public int Example()
+    public int Example() => ComputeNumberOfPowerAndBaseCombinationsForTwoUpTo(5);
+
+    public int Solution() => 0;
+
+    private static int ComputeNumberOfPowerAndBaseCombinationsForTwoUpTo(int upperLimit)
     {
-        var upperLimit = 5;
         var lowerLimit = 2;
 
         var numbers = Enumerable.Range(lowerLimit, upperLimit - lowerLimit + 1).ToList();
@@ -23,6 +26,4 @@ public class Problem0029 : IEulerProblem<int>
 
         return set.Count;
     }
-
-    public int Solution() => 0;
 }
