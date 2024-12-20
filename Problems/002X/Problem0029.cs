@@ -6,7 +6,7 @@ public class Problem0029 : IEulerProblem<int>
 {
     public int Example() => ComputeNumberOfPowerAndBaseCombinationsForTwoUpTo(5);
 
-    public int Solution() => 0;
+    public int Solution() => ComputeNumberOfPowerAndBaseCombinationsForTwoUpTo(100);
 
     private static int ComputeNumberOfPowerAndBaseCombinationsForTwoUpTo(int upperLimit)
     {
