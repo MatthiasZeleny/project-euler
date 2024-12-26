@@ -17,22 +17,10 @@ public class Problem0029 : IEulerProblem<int>
         return set.Count;
     }
 
-    private static HashSet<BigInteger> CreateAllPossibleCombinationsOfBaseAndExponent(List<int> numbers)
-    {
-        var set = new HashSet<BigInteger>();
-
-        foreach (var baseNumber in numbers)
-        {
-            foreach (var exponent in numbers)
-            {
-                var result = ComputePower(baseNumber, exponent);
-
-                set.Add(result);
-            }
-        }
-
-        return set;
-    }
+    private static HashSet<BigInteger> CreateAllPossibleCombinationsOfBaseAndExponent(List<int> numbers) =>
+        numbers
+            .SelectMany(baseNumber => numbers.Select(exponent => ComputePower(baseNumber, exponent)))
+            .ToHashSet();
 
     private static BigInteger ComputePower(int baseNumber, int exponent)
     {
