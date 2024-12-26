@@ -25,14 +25,19 @@ public class Problem0029 : IEulerProblem<int>
         {
             foreach (var exponent in numbers)
             {
-                var result = Enumerable.Repeat(baseNumber, exponent).Aggregate(
-                    BigInteger.One, (product, factor) => product * factor);
+                var result = ComputePower(baseNumber, exponent);
 
                 set.Add(result);
             }
         }
 
         return set;
+    }
+
+    private static BigInteger ComputePower(int baseNumber, int exponent)
+    {
+        return Enumerable.Repeat(baseNumber, exponent).Aggregate(
+            BigInteger.One, (product, factor) => product * factor);
     }
 
     private static List<int> GetAvailableNumbers(int upperLimit)
