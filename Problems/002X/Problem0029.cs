@@ -1,4 +1,5 @@
 ﻿using System.Numerics;
+using Numbers.BasicMath;
 
 namespace Problems._002X;
 
@@ -19,14 +20,8 @@ public class Problem0029 : IEulerProblem<int>
 
     private static HashSet<BigInteger> CreateAllPossibleCombinationsOfBaseAndExponent(List<int> numbers) =>
         numbers
-            .SelectMany(baseNumber => numbers.Select(exponent => ComputePower(baseNumber, exponent)))
+            .SelectMany(baseNumber => numbers.Select(exponent => baseNumber.ToThePowerOf(exponent)))
             .ToHashSet();
-
-    private static BigInteger ComputePower(int baseNumber, int exponent)
-    {
-        return Enumerable.Repeat(baseNumber, exponent).Aggregate(
-            BigInteger.One, (product, factor) => product * factor);
-    }
 
     private static List<int> GetAvailableNumbers(int upperLimit)
     {
