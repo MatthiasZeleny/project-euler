@@ -5,16 +5,22 @@ namespace Problems._003X;
 
 public class Problem0030 : IEulerProblem<BigInteger>
 {
-    public BigInteger Example() =>
-        NumberList.NaturalNumbersUpTo(9999)
+    public BigInteger Example()
+    {
+        var exponent = 4;
+
+        return NumberList.NaturalNumbersUpTo(9999)
             .Skip(1)
-            .Where(
-                IsSumOfFourthPowerOfDigits())
+            .Where(IsSumOfNPowerOfDigits(exponent))
             .Sum();
+    }
 
     public BigInteger Solution() => 0;
 
-    private static Func<long, bool> IsSumOfFourthPowerOfDigits() =>
-        number => number.ToDigitList().Select(digit => digit.ToThePowerOf(4))
+    private static Func<long, bool> IsSumOfNPowerOfDigits(int exponent)
+    {
+        return number => number.ToDigitList().Select(
+                digit => digit.ToThePowerOf(exponent))
             .BigSum() == new BigInteger(number);
+    }
 }
