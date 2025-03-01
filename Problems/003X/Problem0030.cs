@@ -7,7 +7,7 @@ public class Problem0030 : IEulerProblem<BigInteger>
 {
     public BigInteger Example() => ComputeSumOfAllNumberWhichAreTheSumOfTheirDigitsToThePowerOfN(4);
 
-    public BigInteger Solution() => 0;
+    public BigInteger Solution() => ComputeSumOfAllNumberWhichAreTheSumOfTheirDigitsToThePowerOfN(5);
 
     private static BigInteger ComputeSumOfAllNumberWhichAreTheSumOfTheirDigitsToThePowerOfN(int exponent)
     {
