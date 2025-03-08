@@ -17,13 +17,16 @@ public class Problem0030 : IEulerProblem<BigInteger>
 
         var maxValue = NNinesAsNumber(maximumNumberOfDigitsNeeded);
 
-        var candidatesStartingWithTwo = NumberList.NaturalNumbersUpTo(maxValue)
-            .Skip(1);
+        var candidatesStartingWithTwo = GetCandidates(maxValue);
 
         return candidatesStartingWithTwo
             .Where(IsSumOfNPowerOfDigits(exponent))
             .Sum();
     }
+
+    private static IEnumerable<long> GetCandidates(int maxValue) =>
+        NumberList.NaturalNumbersUpTo(maxValue)
+            .Skip(1);
 
     private static int NNinesAsNumber(long numberOfDigits)
     {
