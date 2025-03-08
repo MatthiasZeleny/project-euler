@@ -24,9 +24,13 @@ public class Problem0030 : IEulerProblem<BigInteger>
             .Sum();
     }
 
-    private static IEnumerable<long> GetCandidates(int maxValue) =>
-        NumberList.NaturalNumbersUpTo(maxValue)
-            .Skip(1);
+    private static IEnumerable<long> GetCandidates(int maxValue)
+    {
+        var naturalNumbersUpTo = NumberList.NaturalNumbersUpTo(maxValue);
+
+        // 1 ist skipped as it is not considered a (true) sum. https://projecteuler.net/problem=30
+        return naturalNumbersUpTo.Skip(1);
+    }
 
     private static int NNinesAsNumber(long numberOfDigits)
     {
