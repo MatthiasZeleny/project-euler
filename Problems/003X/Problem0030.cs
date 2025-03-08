@@ -11,11 +11,11 @@ public class Problem0030 : IEulerProblem<BigInteger>
 
     private static BigInteger ComputeSumOfAllNumberWhichAreTheSumOfTheirDigitsToThePowerOfN(int exponent)
     {
-        var numbersOfDigitsNeeded = NumberList.NaturalNumbers().First(
+        var maximumNumberOfDigitsNeeded = NumberList.NaturalNumbers().First(
             numberOfDigits => numberOfDigits * 9.ToThePowerOf(exponent) <
                               NNinesAsNumber(numberOfDigits));
 
-        var maxValue = NNinesAsNumber(numbersOfDigitsNeeded);
+        var maxValue = NNinesAsNumber(maximumNumberOfDigitsNeeded);
 
         return NumberList.NaturalNumbersUpTo(maxValue)
             .Skip(1)
