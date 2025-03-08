@@ -17,8 +17,10 @@ public class Problem0030 : IEulerProblem<BigInteger>
 
         var maxValue = NNinesAsNumber(maximumNumberOfDigitsNeeded);
 
-        return NumberList.NaturalNumbersUpTo(maxValue)
-            .Skip(1)
+        var candidatesStartingWithTwo = NumberList.NaturalNumbersUpTo(maxValue)
+            .Skip(1);
+
+        return candidatesStartingWithTwo
             .Where(IsSumOfNPowerOfDigits(exponent))
             .Sum();
     }
