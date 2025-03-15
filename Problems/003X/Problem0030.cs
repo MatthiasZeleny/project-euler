@@ -11,6 +11,15 @@ public class Problem0030 : IEulerProblem<BigInteger>
 
     private static BigInteger ComputeSumOfAllNumberWhichAreTheSumOfTheirDigitsToThePowerOfN(int exponent)
     {
+        var candidatesStartingWithTwo = GetCandidates(exponent);
+
+        return candidatesStartingWithTwo
+            .Where(IsSumOfNPowerOfDigits(exponent))
+            .Sum();
+    }
+
+    private static IEnumerable<long> GetCandidates(int exponent)
+    {
         var maximumNumberOfDigitsNeeded = NumberList.NaturalNumbers().First(
             numberOfDigits => numberOfDigits * 9.ToThePowerOf(exponent) <
                               NNinesAsNumber(numberOfDigits));
@@ -19,9 +28,7 @@ public class Problem0030 : IEulerProblem<BigInteger>
 
         var candidatesStartingWithTwo = GetNumbersUpTo(biggestCandidate);
 
-        return candidatesStartingWithTwo
-            .Where(IsSumOfNPowerOfDigits(exponent))
-            .Sum();
+        return candidatesStartingWithTwo;
     }
 
     private static IEnumerable<long> GetNumbersUpTo(int maxValue)
