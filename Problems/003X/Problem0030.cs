@@ -15,9 +15,9 @@ public class Problem0030 : IEulerProblem<BigInteger>
             numberOfDigits => numberOfDigits * 9.ToThePowerOf(exponent) <
                               NNinesAsNumber(numberOfDigits));
 
-        var maxValue = NNinesAsNumber(maximumNumberOfDigitsNeeded);
+        var biggestCandidate = NNinesAsNumber(maximumNumberOfDigitsNeeded);
 
-        var candidatesStartingWithTwo = GetCandidates(maxValue);
+        var candidatesStartingWithTwo = GetCandidates(biggestCandidate);
 
         return candidatesStartingWithTwo
             .Where(IsSumOfNPowerOfDigits(exponent))
