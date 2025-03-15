@@ -17,14 +17,14 @@ public class Problem0030 : IEulerProblem<BigInteger>
 
         var biggestCandidate = NNinesAsNumber(maximumNumberOfDigitsNeeded);
 
-        var candidatesStartingWithTwo = GetCandidates(biggestCandidate);
+        var candidatesStartingWithTwo = GetNumbersUpTo(biggestCandidate);
 
         return candidatesStartingWithTwo
             .Where(IsSumOfNPowerOfDigits(exponent))
             .Sum();
     }
 
-    private static IEnumerable<long> GetCandidates(int maxValue)
+    private static IEnumerable<long> GetNumbersUpTo(int maxValue)
     {
         var naturalNumbersUpTo = NumberList.NaturalNumbersUpTo(maxValue);
 
