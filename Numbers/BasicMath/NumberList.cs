@@ -52,7 +52,7 @@ public static class NumberList
     public static IEnumerable<long> GetAListOf(long digit, int digitCount) =>
         Enumerable.Repeat(digit, digitCount);
 
-    private static IEnumerable<long> NumbersBetween(long lowest, long highest)
+    public static IEnumerable<long> NumbersBetween(long lowest, long highest)
     {
         for (var number = lowest; number <= highest; number++)
         {
