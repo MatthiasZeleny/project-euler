@@ -13,14 +13,18 @@ public class Problem0031 : IEulerProblem<int>
             1, 2
         };
 
-        return currencyValues
+        var possibleMonoCurrencyCombinations = currencyValues
             .Select(
-                value => NumberList.NumbersBetween(0, targetValue / value)).Aggregate<IEnumerable<long>, IEnumerable<long>>(
-                new List<long>(),
-                (uniqueSums, singleValuePossibilities) => uniqueSums.SelectMany(
-                        uniqueSum =>
-                            singleValuePossibilities.Select(singleValueSum => uniqueSum + singleValueSum))
-                    .Where(sum => sum <= targetValue).ToList())
+                value => NumberList.NumbersBetween(0, targetValue / value).Select(count => count * value).ToList()).ToList();
+
+        var combinationsValidOrNot = possibleMonoCurrencyCombinations.Aggregate<IEnumerable<long>, IEnumerable<long>>(
+            new List<long>{0},
+            (uniqueSums, monoCurrencyCombinations) => uniqueSums.SelectMany(
+                    uniqueSum =>
+                        monoCurrencyCombinations.Select(singleValueSum => uniqueSum + singleValueSum))
+                .ToList()).ToList();
+
+        return combinationsValidOrNot
             .Count(sum => sum == targetValue);
     }
 
