@@ -10,7 +10,7 @@ public class Problem0031 : IEulerProblem<int>
 
         var currencyValues = new List<int>
         {
-            1, 2
+            1, 2, 5, 10, 20, 100, 200
         };
 
         var possibleMonoCurrencyCombinations = CreateMonoCurrencyCombinationsBotAbove(currencyValues, targetValue).ToList();
