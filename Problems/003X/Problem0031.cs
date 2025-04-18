@@ -30,10 +30,14 @@ public class Problem0031 : IEulerProblem<int>
     private static List<long> CreateCombinationsValidOrNot(List<List<long>> possibleMonoCurrencyCombinations) =>
         possibleMonoCurrencyCombinations.Aggregate<IEnumerable<long>, IEnumerable<long>>(
             new List<long> { 0 },
-            (uniqueSums, monoCurrencyCombinations) => uniqueSums.SelectMany(
-                    uniqueSum =>
-                        monoCurrencyCombinations.Select(singleValueSum => uniqueSum + singleValueSum))
+            (uniqueSums, monoCurrencyCombinations) => CreatePossibleCombinations(uniqueSums, monoCurrencyCombinations)
                 .ToList()).ToList();
+
+    private static IEnumerable<long> CreatePossibleCombinations(IEnumerable<long> uniqueSums,
+        IEnumerable<long> monoCurrencyCombinations) =>
+        uniqueSums.SelectMany(
+            uniqueSum =>
+                monoCurrencyCombinations.Select(singleValueSum => uniqueSum + singleValueSum));
 
     public int Solution() => 0;
 }
