@@ -4,7 +4,7 @@ namespace Problems._003X;
 
 public class Problem0031 : IEulerProblem<int>
 {
-    private readonly IReadOnlyList<int> _currencyValues = new List<int>
+    private readonly IReadOnlyList<int> _britishCountValuesInPence = new List<int>
     {
         1, 2, 5, 10, 20, 100, 200
     };
@@ -15,7 +15,7 @@ public class Problem0031 : IEulerProblem<int>
 
     private int CountPossibleCurrencyCombinationsLeadingToExact(int targetValue)
     {
-        var possibleMonoCurrencyCombinations = CreateMonoCurrencyCombinationsBotAbove(_currencyValues, targetValue).ToList();
+        var possibleMonoCurrencyCombinations = CreateMonoCurrencyCombinationsBotAbove(_britishCountValuesInPence, targetValue).ToList();
 
         var combinationsValidOrNot = CreateCombinationsValidOrNot(possibleMonoCurrencyCombinations);
 
