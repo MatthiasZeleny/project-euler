@@ -9,10 +9,10 @@ public class Problem0031 : IEulerProblem<int>
         1, 2, 5, 10, 20, 100, 200
     };
 
-    public int Example()
-    {
-        var targetValue = 2;
+    public int Example() => CountPossibleCurrencyCombinationsLeadingToExact(2);
 
+    private int CountPossibleCurrencyCombinationsLeadingToExact(int targetValue)
+    {
         var possibleMonoCurrencyCombinations = CreateMonoCurrencyCombinationsBotAbove(_currencyValues, targetValue).ToList();
 
         var combinationsValidOrNot = CreateCombinationsValidOrNot(possibleMonoCurrencyCombinations);
