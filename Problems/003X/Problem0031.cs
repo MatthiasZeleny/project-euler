@@ -11,6 +11,8 @@ public class Problem0031 : IEulerProblem<int>
 
     public int Example() => CountPossibleCurrencyCombinationsLeadingToExact(2);
 
+    public int Solution() => 0;
+
     private int CountPossibleCurrencyCombinationsLeadingToExact(int targetValue)
     {
         var possibleMonoCurrencyCombinations = CreateMonoCurrencyCombinationsBotAbove(_currencyValues, targetValue).ToList();
@@ -39,5 +41,4 @@ public class Problem0031 : IEulerProblem<int>
             uniqueSum =>
                 monoCurrencyCombinations.Select(singleValueSum => uniqueSum + singleValueSum));
 
-    public int Solution() => 0;
 }
