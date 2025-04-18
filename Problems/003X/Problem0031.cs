@@ -15,9 +15,10 @@ public class Problem0031 : IEulerProblem<int>
 
     private int CountPossibleCoinCombinationsLeadingToExact(int targetValue)
     {
-        var possibleMonoCoinCombinations = CreateMonoCoinCombinationsNotAbove(_britishCountValuesInPence, targetValue).ToList();
+        var possibleMonoCoinCombinations =
+            CreateMonoCoinCombinationsNotAbove(_britishCountValuesInPence, targetValue).ToList();
 
-        var combinationsValidOrNot = CreateCombinationsValidOrNot(possibleMonoCoinCombinations);
+        var combinationsValidOrNot = CreateCombinationsWhichAreNotTooMuch(possibleMonoCoinCombinations, targetValue);
 
         return combinationsValidOrNot
             .Count(sum => sum == targetValue);
@@ -29,10 +30,11 @@ public class Problem0031 : IEulerProblem<int>
             .Select(
                 value => NumberList.NumbersBetween(0, targetValue / value).Select(count => count * value).ToList());
 
-    private static IEnumerable<long> CreateCombinationsValidOrNot(List<List<long>> possibleMonoCoinCombinations) =>
+    private static IEnumerable<long> CreateCombinationsWhichAreNotTooMuch(List<List<long>> possibleMonoCoinCombinations,
+        int targetValue) =>
         possibleMonoCoinCombinations.Aggregate<IEnumerable<long>, IEnumerable<long>>(
             new List<long> { 0 },
-            CreatePossibleCombinations);
+            (longs, enumerable) => CreatePossibleCombinations(longs, enumerable).Where(sum => sum <= targetValue));
 
     private static IEnumerable<long> CreatePossibleCombinations(IEnumerable<long> uniqueSums,
         IEnumerable<long> monoCoinCombinations) =>
