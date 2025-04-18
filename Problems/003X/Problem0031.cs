@@ -4,16 +4,16 @@ namespace Problems._003X;
 
 public class Problem0031 : IEulerProblem<int>
 {
+    private readonly IReadOnlyList<int> _currencyValues = new List<int>
+    {
+        1, 2, 5, 10, 20, 100, 200
+    };
+
     public int Example()
     {
         var targetValue = 2;
 
-        var currencyValues = new List<int>
-        {
-            1, 2, 5, 10, 20, 100, 200
-        };
-
-        var possibleMonoCurrencyCombinations = CreateMonoCurrencyCombinationsBotAbove(currencyValues, targetValue).ToList();
+        var possibleMonoCurrencyCombinations = CreateMonoCurrencyCombinationsBotAbove(_currencyValues, targetValue).ToList();
 
         var combinationsValidOrNot = CreateCombinationsValidOrNot(possibleMonoCurrencyCombinations);
 
@@ -21,7 +21,7 @@ public class Problem0031 : IEulerProblem<int>
             .Count(sum => sum == targetValue);
     }
 
-    private static IEnumerable<List<long>> CreateMonoCurrencyCombinationsBotAbove(List<int> currencyValues, int targetValue)
+    private static IEnumerable<List<long>> CreateMonoCurrencyCombinationsBotAbove(IReadOnlyList<int> currencyValues, int targetValue)
     {
         return currencyValues
             .Select(
