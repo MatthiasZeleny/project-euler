@@ -29,11 +29,10 @@ public class Problem0031 : IEulerProblem<int>
             .Select(
                 value => NumberList.NumbersBetween(0, targetValue / value).Select(count => count * value).ToList());
 
-    private static List<long> CreateCombinationsValidOrNot(List<List<long>> possibleMonoCurrencyCombinations) =>
+    private static IEnumerable<long> CreateCombinationsValidOrNot(List<List<long>> possibleMonoCurrencyCombinations) =>
         possibleMonoCurrencyCombinations.Aggregate<IEnumerable<long>, IEnumerable<long>>(
             new List<long> { 0 },
-            (uniqueSums, monoCurrencyCombinations) => CreatePossibleCombinations(uniqueSums, monoCurrencyCombinations)
-                .ToList()).ToList();
+            CreatePossibleCombinations);
 
     private static IEnumerable<long> CreatePossibleCombinations(IEnumerable<long> uniqueSums,
         IEnumerable<long> monoCurrencyCombinations) =>
