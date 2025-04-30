@@ -6,12 +6,12 @@ public class Problem0031 : IEulerProblem<int>
 {
     private readonly IReadOnlyList<int> _britishCountValuesInPence = new List<int>
     {
-        1, 2, 5, 10, 20, 100, 200
+        1, 2, 5, 10, 20, 50, 100, 200
     };
 
     public int Example() => CountPossibleCoinCombinationsLeadingToExact(2);
 
-    public int Solution() => 0;
+    public int Solution() => CountPossibleCoinCombinationsLeadingToExact(200);
 
     private int CountPossibleCoinCombinationsLeadingToExact(int targetValue)
     {
