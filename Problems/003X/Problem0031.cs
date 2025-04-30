@@ -1,4 +1,4 @@
-﻿using Numbers.BasicMath;
+﻿using Utils.Data;
 
 namespace Problems._003X;
 
@@ -24,13 +24,15 @@ public class Problem0031 : IEulerProblem<int>
             .Count(sum => sum == targetValue);
     }
 
-    private static IEnumerable<List<long>> CreateMonoCoinCombinationsNotAbove(IReadOnlyList<int> currencyValues,
+    private static IEnumerable<IEnumerable<long>> CreateMonoCoinCombinationsNotAbove(IReadOnlyList<int> currencyValues,
         int targetValue) =>
         currencyValues
             .Select(
-                value => NumberList.NumbersBetween(0, targetValue / value).Select(count => count * value).ToList());
+                value => new Generator<long>(0, current => current + value).CreateEnumerable()
+                    .TakeWhile(sum => sum <= targetValue));
 
-    private static IEnumerable<long> CreateCombinationsWhichAreNotTooMuch(List<List<long>> possibleMonoCoinCombinations,
+    private static IEnumerable<long> CreateCombinationsWhichAreNotTooMuch(
+        List<IEnumerable<long>> possibleMonoCoinCombinations,
         int targetValue) =>
         possibleMonoCoinCombinations.Aggregate<IEnumerable<long>, IEnumerable<long>>(
             new List<long> { 0 },
