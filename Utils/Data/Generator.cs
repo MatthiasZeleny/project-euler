@@ -1,8 +1,8 @@
 ﻿namespace Utils.Data;
 
-public class Generator(string first, Func<string, string> step)
+public class Generator<T>(T first, Func<T, T> step)
 {
-    public IEnumerable<string> CreateEnumerable()
+    public IEnumerable<T> CreateEnumerable()
     {
         var current = first;
 

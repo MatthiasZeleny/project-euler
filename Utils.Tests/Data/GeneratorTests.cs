@@ -9,7 +9,7 @@ public class GeneratorTests
     public void First_ShouldReturnFirst()
     {
         var input = "first";
-        var generator = new Generator(input, s => throw new Exception());
+        var generator = new Generator<string>(input, s => throw new Exception());
 
         var enumerable = generator.CreateEnumerable();
 
@@ -20,7 +20,7 @@ public class GeneratorTests
     public void Second_ShouldBeCreatedByUsingStepOnFirst()
     {
         var input = "first";
-        var generator = new Generator(input, s => s + "->next");
+        var generator = new Generator<string>(input, s => s + "->next");
 
         var enumerable = generator.CreateEnumerable();
 
@@ -31,7 +31,7 @@ public class GeneratorTests
     public void Third_ShouldBeCreatedByUsingStepOnFirstTwoTimes()
     {
         var input = "first";
-        var generator = new Generator(input, s => s + "->next");
+        var generator = new Generator<string>(input, s => s + "->next");
 
         var enumerable = generator.CreateEnumerable();
 
