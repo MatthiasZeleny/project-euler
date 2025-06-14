@@ -10,6 +10,21 @@ public class Permutations(ISet<int> hashSet)
             yield break;
         }
 
-        yield return hashSet.ToArray();
+        var array = hashSet.ToArray();
+
+        yield return array;
+
+        if (array.Length == 1)
+        {
+            yield break;
+        }
+
+        var tempOne = array[0];
+        var tempTwo = array[1];
+
+        array[1] = tempOne;
+        array[0] = tempTwo;
+
+        yield return array;
     }
 }

@@ -29,4 +29,36 @@ public class PermutationsTests
             });
     }
 
+    [Test]
+    public void GetAsVolatile_TwoElements_ShouldReturnBothCombinations()
+    {
+        var permutations = new Permutations(new HashSet<int> { 1, 2 });
+
+        var list = permutations.GetAsVolatile()
+            .Select(array => array.ToList()).ToList();
+
+        list.Should().BeEquivalentTo(
+            new List<List<int>>
+            {
+                new() { 1, 2 },
+                new() { 2, 1 }
+            });
+    }
+
+    [Test]
+    public void GetAsVolatile_TwoElementsAndNotCopyingTheArrays_ShouldReturnLasCombination()
+    {
+        var permutations = new Permutations(new HashSet<int> { 1, 2 });
+
+        var list = permutations.GetAsVolatile()
+            .Select(array => array).ToList();
+
+        list.Should().BeEquivalentTo(
+            new List<List<int>>
+            {
+                new() { 2, 1 },
+                new() { 2, 1 }
+            });
+    }
+
 }
