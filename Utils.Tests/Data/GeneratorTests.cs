@@ -9,7 +9,7 @@ public class GeneratorTests
     public void First_ShouldReturnFirst()
     {
         var input = "first";
-        var generator = new Generator<string>(input, s => throw new Exception());
+        var generator = new Generator<string>(input, _ => throw new Exception());
 
         var enumerable = generator.CreateEnumerable();
 

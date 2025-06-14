@@ -17,12 +17,12 @@ public class Triangle
         return biggestPath;
     }
 
-    private List<int> CombineParentWithBiggerChild(List<int> childRow, List<int> parentRow) =>
+    private static List<int> CombineParentWithBiggerChild(List<int> childRow, List<int> parentRow) =>
         TakeBigger(childRow)
             .Zip(parentRow, (biggerDirection, parent) => biggerDirection + parent)
             .ToList();
 
-    private List<int> TakeBigger(List<int> childRow)
+    private static List<int> TakeBigger(List<int> childRow)
     {
         var stepToRight = childRow.Skip(1);
         var stepToLeft = childRow.SkipLast(1);
