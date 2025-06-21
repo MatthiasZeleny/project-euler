@@ -10,21 +10,38 @@ public class Permutations(ISet<int> hashSet)
             yield break;
         }
 
-        var array = hashSet.ToArray();
+        var mutatedArray = hashSet.ToArray();
+        var setSize = mutatedArray.Length;
 
-        yield return array;
+        var controlArray = mutatedArray.Select(_ => 0).ToArray();
 
-        if (array.Length == 1)
+        yield return mutatedArray;
+
+        var stackPointer = 1;
+        while (stackPointer < setSize)
         {
-            yield break;
+            if (controlArray[stackPointer] < stackPointer)
+            {
+                if (stackPointer % 2 == 0)
+                {
+                    (mutatedArray[0], mutatedArray[stackPointer]) = (mutatedArray[stackPointer], mutatedArray[0]);
+                }
+                else
+                {
+                    (mutatedArray[controlArray[stackPointer]], mutatedArray[stackPointer]) = (mutatedArray[stackPointer],
+                        mutatedArray[controlArray[stackPointer]]);
+                }
+
+                yield return mutatedArray;
+
+                controlArray[stackPointer] += 1;
+                stackPointer = 1;
+            }
+            else
+            {
+                controlArray[stackPointer] = 0;
+                stackPointer += 1;
+            }
         }
-
-        var tempOne = array[0];
-        var tempTwo = array[1];
-
-        array[1] = tempOne;
-        array[0] = tempTwo;
-
-        yield return array;
     }
 }
