@@ -23,4 +23,17 @@ public class ListSplittingTest
             new ListSplitIntoTwoParts<int>([1], [])
         ]);
     }
+
+    [Test]
+    public void GetEverySplit_TwoElements_ShouldContainBothPossibleCombinations()
+    {
+        var everySplit = ListSplitting.GetEverySplit(new List<int> { 1, 2 });
+
+        everySplit.Should().BeEquivalentTo(
+        [
+            new ListSplitIntoTwoParts<int>([], [1, 2]),
+            new ListSplitIntoTwoParts<int>([1], [2]),
+            new ListSplitIntoTwoParts<int>([1, 2], [])
+        ]);
+    }
 }
