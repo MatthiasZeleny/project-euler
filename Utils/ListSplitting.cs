@@ -3,7 +3,7 @@
 public static class ListSplitting
 {
 
-    public static IEnumerable<ListSplitIntoTwoParts<T>> GetEverySplit<T>(IReadOnlyCollection<T> list)
+    public static IEnumerable<ListSplitIntoTwoParts<T>> GetEverySplit<T>(this IReadOnlyCollection<T> list)
     {
         var listCount = list.Count;
         var elementsInFirstSubListOptions = listCount.Then(count => Enumerable.Range(0, count + 1));

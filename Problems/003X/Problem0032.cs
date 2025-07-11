@@ -11,12 +11,21 @@ public class Problem0032 : IEulerProblem<int>
         var list = new List<int> { 3, 9, 1, 8, 6, 7, 2, 5, 4 };
         var hit = permutations.GetAsVolatile().Where(ints => ints.SequenceEqual(list)).Select(ints => ints.ToList()).Single();
 
-        var aggregate = hit.TakeLast(4).Aggregate(0, (current, nextDigit) => current * 10 + nextDigit);
+        var potentialCandidates = hit.GetEverySplit().SelectMany(parts => parts.Second.GetEverySplit().Select(secondSplit =>
+            (Multiplicand: DigitsToNumber(parts.First), Multiplier: DigitsToNumber(secondSplit.First),
+                Product: DigitsToNumber(secondSplit.Second))));
 
-        return GetSumOfProducts([aggregate]);
+        var candidates = potentialCandidates
+            .Where(candidate => candidate.Multiplicand * candidate.Multiplier == candidate.Product).ToList();
+
+        return candidates.Select(candidate => candidate.Product).Sum();
+    }
+
+    private static int DigitsToNumber(IEnumerable<int> takeLast)
+    {
+        return takeLast.Aggregate(0, (current, nextDigit) => current * 10 + nextDigit);
     }
 
     public int Solution() => 0;
 
-    private static int GetSumOfProducts(HashSet<int> products) => products.ToList().Sum();
 }

@@ -5,7 +5,7 @@ public class ListSplittingTest
     [Test]
     public void GetEverySplit_EmptyList_ShouldContainSingleEmptyElement()
     {
-        var everySplit = ListSplitting.GetEverySplit(new List<int>());
+        var everySplit = new List<int>().GetEverySplit();
 
         var splitList = everySplit.Should().ContainSingle().Subject;
         splitList.First.Should().BeEmpty();
@@ -15,7 +15,7 @@ public class ListSplittingTest
     [Test]
     public void GetEverySplit_SingleElement_ShouldContainBothPossibleCombinations()
     {
-        var everySplit = ListSplitting.GetEverySplit(new List<int> { 1 });
+        var everySplit = new List<int> { 1 }.GetEverySplit();
 
         everySplit.Should().BeEquivalentTo(
         [
@@ -27,7 +27,7 @@ public class ListSplittingTest
     [Test]
     public void GetEverySplit_TwoElements_ShouldContainBothPossibleCombinations()
     {
-        var everySplit = ListSplitting.GetEverySplit(new List<int> { 1, 2 });
+        var everySplit = new List<int> { 1, 2 }.GetEverySplit();
 
         everySplit.Should().BeEquivalentTo(
         [
