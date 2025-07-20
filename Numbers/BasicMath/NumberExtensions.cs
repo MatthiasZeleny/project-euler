@@ -38,4 +38,6 @@ public static class NumberExtensions
     }
 
     public static long Squared(this long number) => number * number;
+
+    public static int DigitsToNumber(this IEnumerable<int> digits) => digits.Aggregate(0, (current, nextDigit) => current * 10 + nextDigit);
 }

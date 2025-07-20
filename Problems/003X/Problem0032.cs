@@ -1,4 +1,5 @@
-﻿using Utils;
+﻿using Numbers.BasicMath;
+using Utils;
 
 namespace Problems._003X;
 
@@ -12,16 +13,15 @@ public class Problem0032 : IEulerProblem<int>
         var hit = permutations.GetAsVolatile().Where(ints => ints.SequenceEqual(list)).Select(ints => ints.ToList()).Single();
 
         var potentialCandidates = hit.GetEverySplit().SelectMany(parts => parts.Second.GetEverySplit().Select(secondSplit =>
-            (Multiplicand: DigitsToNumber(parts.First), Multiplier: DigitsToNumber(secondSplit.First),
-                Product: DigitsToNumber(secondSplit.Second))));
+            (Multiplicand: parts.First.DigitsToNumber(),
+                Multiplier: secondSplit.First.DigitsToNumber(),
+                Product: secondSplit.Second.DigitsToNumber())));
 
         var candidates = potentialCandidates
             .Where(candidate => candidate.Multiplicand * candidate.Multiplier == candidate.Product).ToList();
 
         return candidates.Select(candidate => candidate.Product).Sum();
     }
-
-    private static int DigitsToNumber(IEnumerable<int> digits) => digits.Aggregate(0, (current, nextDigit) => current * 10 + nextDigit);
 
     public int Solution() => 0;
 
