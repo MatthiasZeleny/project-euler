@@ -21,10 +21,7 @@ public class Problem0032 : IEulerProblem<int>
         return candidates.Select(candidate => candidate.Product).Sum();
     }
 
-    private static int DigitsToNumber(IEnumerable<int> takeLast)
-    {
-        return takeLast.Aggregate(0, (current, nextDigit) => current * 10 + nextDigit);
-    }
+    private static int DigitsToNumber(IEnumerable<int> digits) => digits.Aggregate(0, (current, nextDigit) => current * 10 + nextDigit);
 
     public int Solution() => 0;
 
