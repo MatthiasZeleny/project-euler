@@ -22,10 +22,10 @@ public class Problem0032 : IEulerProblem<int>
                 Multiplier: secondSplit.First.DigitsToNumber(),
                 Product: secondSplit.Second.DigitsToNumber())));
 
-        var candidates = potentialCandidates
+        var pandigitalProduct = potentialCandidates
             .Where(candidate => candidate.Multiplicand * candidate.Multiplier == candidate.Product).ToList();
 
-        return candidates.Select(candidate => candidate.Product).Sum();
+        return pandigitalProduct.Select(candidate => candidate.Product).Sum();
     }
 
     public int Solution() => 0;
