@@ -7,7 +7,7 @@ public class Problem0032 : IEulerProblem<int>
 {
     public int Example() => GetSumOfPandigitalProducts(product => product == 7254);
 
-    public int Solution() => 0;
+    public int Solution() => GetSumOfPandigitalProducts(_ => true);
 
     private static int GetSumOfPandigitalProducts(Func<int, bool> allowedProducts)
     {
