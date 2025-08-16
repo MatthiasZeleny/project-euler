@@ -61,7 +61,7 @@ public class NumberListTests
     [TestCase(2, 1, 2)]
     [TestCase(6, 2, 3)]
     [TestCase(30, 2, 3, 5)]
-    public void MultiplyToSingleNumber_SingleElement_ShouldReturnSingleElement(
+    public void MultiplyToSingleNumber_MultipleElements_ShouldReturnSingleElement(
         long expectedResult,
         params long[] numbers)
     {
