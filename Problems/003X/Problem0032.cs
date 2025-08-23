@@ -9,7 +9,7 @@ public class Problem0032 : IEulerProblem<int>
 
     public int Solution() => GetSumOfPandigitalProducts(_ => true);
 
-    private static int GetSumOfPandigitalProducts(Func<int, bool> allowedProducts)
+    private static int GetSumOfPandigitalProducts(Func<int, bool> filter)
     {
         var permutations = GetAllPermutationsFromOneToNine();
 
@@ -17,7 +17,9 @@ public class Problem0032 : IEulerProblem<int>
 
         var pandigitalProduct = potentialCandidates.Where(IsValidProduct).ToList();
 
-        return pandigitalProduct.Select(candidate => candidate.Product).Distinct().Where(allowedProducts).Sum();
+        var allowedProducts = pandigitalProduct.Where(product => filter(product.Product)).ToList();
+
+        return allowedProducts.Select(candidate => candidate.Product).Distinct().Sum();
     }
 
     private static IEnumerable<IReadOnlyCollection<int>> GetAllPermutationsFromOneToNine() =>
