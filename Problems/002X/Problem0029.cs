@@ -3,6 +3,9 @@ using Numbers.BasicMath;
 
 namespace Problems._002X;
 
+/// <summary>
+/// <a href="https://projecteuler.net/problem=29"/>
+/// </summary>
 public class Problem0029 : IEulerProblem<int>
 {
     public int Example() => ComputeNumberOfPowerAndBaseCombinationsForTwoUpTo(5);

@@ -3,6 +3,9 @@ using Utils;
 
 namespace Problems._000X;
 
+/// <summary>
+/// <a href="https://projecteuler.net/problem=4"/>
+/// </summary>
 public class Problem0004 : IEulerProblem<long>
 {
     public long Example() => LargestPossiblePalindromeGeneratedByAProductOfTwoNumbersWithDigitCount(2);

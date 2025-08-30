@@ -3,6 +3,9 @@ using Numbers.BasicMath;
 
 namespace Problems._001X;
 
+/// <summary>
+/// <a href="https://projecteuler.net/problem=16"/>
+/// </summary>
 public class Problem0016 : IEulerProblem<long>
 {
     public long Example() => GetDigitSumOfTwoToThePowerOf(15);

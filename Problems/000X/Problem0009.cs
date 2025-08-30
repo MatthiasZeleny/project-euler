@@ -2,6 +2,9 @@
 
 namespace Problems._000X;
 
+/// <summary>
+/// <a href="https://projecteuler.net/problem=9"/>
+/// </summary>
 public class Problem0009 : IEulerProblem<long>
 {
     public long Example() => GetProductOfPythagoreanTripletWithSum(3 + 4 + 5);

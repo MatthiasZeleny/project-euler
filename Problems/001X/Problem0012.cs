@@ -3,6 +3,9 @@ using Numbers.SpecialNumbers.Primes;
 
 namespace Problems._001X;
 
+/// <summary>
+/// <a href="https://projecteuler.net/problem=12"/>
+/// </summary>
 public class Problem0012 : IEulerProblem<long>
 {
     public long Example() => GetSmallestTriangleNumberWithNFactors(5);

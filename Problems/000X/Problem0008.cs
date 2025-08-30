@@ -2,6 +2,9 @@
 
 namespace Problems._000X;
 
+/// <summary>
+/// <a href="https://projecteuler.net/problem=8"/>
+/// </summary>
 public class Problem0008 : IEulerProblem<long>
 {
 

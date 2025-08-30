@@ -2,6 +2,9 @@
 
 namespace Problems._000X;
 
+/// <summary>
+/// <a href="https://projecteuler.net/problem=7"/>
+/// </summary>
 public class Problem0007 : IEulerProblem<long>
 {
     public long Example() => GetPrimeNumber(6);

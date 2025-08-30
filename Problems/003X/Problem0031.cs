@@ -2,6 +2,9 @@
 
 namespace Problems._003X;
 
+/// <summary>
+/// <a href="https://projecteuler.net/problem=31"/>
+/// </summary>
 public class Problem0031 : IEulerProblem<int>
 {
     private readonly IReadOnlyList<int> _britishCountValuesInPence = new List<int>

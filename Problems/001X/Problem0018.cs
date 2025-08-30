@@ -2,6 +2,9 @@
 
 namespace Problems._001X;
 
+/// <summary>
+/// <a href="https://projecteuler.net/problem=18"/>
+/// </summary>
 public class Problem0018 : IEulerProblem<long>
 {
     private const string InputExample =

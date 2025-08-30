@@ -4,6 +4,9 @@ using Utils;
 
 namespace Problems._000X;
 
+/// <summary>
+/// <a href="https://projecteuler.net/problem=5"/>
+/// </summary>
 public class Problem0005 : IEulerProblem<long>
 {
     public long Example() => GetLeastCommonMultipleOfNumbersUpTo(10);

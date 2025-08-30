@@ -2,6 +2,9 @@
 
 namespace Problems._000X;
 
+/// <summary>
+/// <a href="https://projecteuler.net/problem=6"/>
+/// </summary>
 public class Problem0006 : IEulerProblem<long>
 {
     public long Example() => SumVsSquareFirstForNumbersUpTo(10);

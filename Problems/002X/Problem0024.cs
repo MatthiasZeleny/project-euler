@@ -2,6 +2,9 @@
 
 namespace Problems._002X;
 
+/// <summary>
+/// <a href="https://projecteuler.net/problem=24"/>
+/// </summary>
 public class Problem0024 : IEulerProblem<long>
 {
     public long Example() => GetNthElementOfLexicographicOrderOfDigitsUpTill(4, 2);

@@ -2,6 +2,9 @@
 
 namespace Problems._001X;
 
+/// <summary>
+/// <a href="https://projecteuler.net/problem=10"/>
+/// </summary>
 public class Problem0010 : IEulerProblem<long>
 {
     public long Example() => GetSumOfPrimesBelow(10);

@@ -3,6 +3,9 @@ using Numbers.SpecialNumbers;
 
 namespace Problems._002X;
 
+/// <summary>
+/// <a href="https://projecteuler.net/problem=21"/>
+/// </summary>
 public class Problem0021 : IEulerProblem<long>
 {
     public long Example() => GetSumOfAmicableNumbersBelow(1_000);

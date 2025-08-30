@@ -2,6 +2,9 @@
 
 namespace Problems._002X;
 
+/// <summary>
+/// <a href="https://projecteuler.net/problem=26"/>
+/// </summary>
 public class Problem0026 : IEulerProblem<long>
 {
     public long Example() => GetNumberCreatingLongestRecurringCycleUpTo(10);

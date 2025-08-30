@@ -3,6 +3,9 @@ using Utils;
 
 namespace Problems._003X;
 
+/// <summary>
+/// <a href="https://projecteuler.net/problem=32"/>
+/// </summary>
 public class Problem0032 : IEulerProblem<int>
 {
     public int Example() => GetSumOfPandigitalProducts(product => product == 7254);

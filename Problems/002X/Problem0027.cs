@@ -4,6 +4,9 @@ using Utils.Data;
 
 namespace Problems._002X;
 
+/// <summary>
+/// <a href="https://projecteuler.net/problem=27"/>
+/// </summary>
 public class Problem0027 : IEulerProblem<long>
 {
 

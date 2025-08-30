@@ -3,6 +3,9 @@ using Numbers.SpecialNumbers;
 
 namespace Problems._002X;
 
+/// <summary>
+/// <a href="https://projecteuler.net/problem=23"/>
+/// </summary>
 public class Problem0023 : IEulerProblem<long>
 {
     private const int SmallestNumberWhichCannotBeWrittenAsTheSumOfTwoAbundantNumbers = 24;

@@ -2,6 +2,9 @@
 
 namespace Problems._000X;
 
+/// <summary>
+/// <a href="https://projecteuler.net/problem=1"/>
+/// </summary>
 public class Problem0001 : IEulerProblem<long>
 {
     public long Example() => GetSumOfAllMultiplesOfThreeAndFiveBelow(10);

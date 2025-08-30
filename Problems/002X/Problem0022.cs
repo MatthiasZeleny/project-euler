@@ -3,6 +3,10 @@ using Utils;
 
 namespace Problems._002X;
 
+
+/// <summary>
+/// <a href="https://projecteuler.net/problem=22"/>
+/// </summary>
 public class Problem0022 : IEulerProblem<long>
 {
     public long Example() => ComputeSumOfSortedWordListMultipliedByPosition(name => name == "COLIN");

@@ -2,6 +2,9 @@
 
 namespace Problems._001X;
 
+/// <summary>
+/// <a href="https://projecteuler.net/problem=19"/>
+/// </summary>
 public class Problem0019 : IEulerProblem<long>
 {
     public long Example() => GetCountOfFirstOfMonthSundays(1900);

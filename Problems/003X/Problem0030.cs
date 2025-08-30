@@ -3,6 +3,9 @@ using Numbers.BasicMath;
 
 namespace Problems._003X;
 
+/// <summary>
+/// <a href="https://projecteuler.net/problem=30"/>
+/// </summary>
 public class Problem0030 : IEulerProblem<BigInteger>
 {
     public BigInteger Example() => ComputeSumOfAllNumberWhichAreTheSumOfTheirDigitsToThePowerOfN(4);

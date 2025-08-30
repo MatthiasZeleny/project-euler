@@ -3,6 +3,9 @@ using Numbers.Structures;
 
 namespace Problems._001X;
 
+/// <summary>
+/// <a href="https://projecteuler.net/problem=11"/>
+/// </summary>
 public class Problem0011 : IEulerProblem<long>
 {
 

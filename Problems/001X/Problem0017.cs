@@ -3,6 +3,9 @@ using Numbers.Texts;
 
 namespace Problems._001X;
 
+/// <summary>
+/// <a href="https://projecteuler.net/problem=17"/>
+/// </summary>
 public class Problem0017 : IEulerProblem<long>
 {
     public long Example() => CountLettersUpTo(5);

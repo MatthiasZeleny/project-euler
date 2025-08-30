@@ -2,6 +2,9 @@
 
 namespace Problems._000X;
 
+/// <summary>
+/// <a href="https://projecteuler.net/problem=3"/>
+/// </summary>
 public class Problem0003 : IEulerProblem<long>
 {
     public long Example() => GetBiggestPrimeFactorFor(13195);

@@ -3,6 +3,9 @@ using Numbers.BasicMath;
 
 namespace Problems._002X;
 
+/// <summary>
+/// <a href="https://projecteuler.net/problem=20"/>
+/// </summary>
 public class Problem0020 : IEulerProblem<long>
 {
     public long Example() => SumOfFactorialDigits(10);

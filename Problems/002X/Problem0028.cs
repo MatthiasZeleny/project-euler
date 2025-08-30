@@ -2,6 +2,9 @@
 
 namespace Problems._002X;
 
+/// <summary>
+/// <a href="https://projecteuler.net/problem=28"/>
+/// </summary>
 public class Problem0028 : IEulerProblem<long>
 {
     private const int FourDirections = 4;
