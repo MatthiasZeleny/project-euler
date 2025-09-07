@@ -25,8 +25,8 @@ public class Problem0032 : IEulerProblem<int>
         return allowedProducts.Select(candidate => candidate.Product).Distinct().Sum();
     }
 
-    private static IEnumerable<IReadOnlyCollection<int>> GetAllPermutationsFromOneToNine() =>
-        new Permutations(new HashSet<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9 }).GetAsVolatile();
+    private static IEnumerable<IReadOnlyCollection<int>> GetAllPermutationsFromOneToNine() 
+        => new Permutations(Digits.DecimalDigits).GetAsVolatile();
 
     private static bool IsValidProduct((int Multiplicand, int Multiplier, int Product) candidate) =>
         candidate.Multiplicand * candidate.Multiplier == candidate.Product;

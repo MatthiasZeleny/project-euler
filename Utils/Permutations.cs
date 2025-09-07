@@ -1,6 +1,6 @@
 ﻿namespace Utils;
 
-public class Permutations(ISet<int> hashSet)
+public class Permutations(IReadOnlySet<int> hashSet)
 {
 
     public IEnumerable<IReadOnlyCollection<int>> GetAsVolatile()
