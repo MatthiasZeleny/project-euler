@@ -18,14 +18,16 @@ public class Problem0032 : IEulerProblem<int>
 
         var potentialCandidates = GetPotentialCandidates(permutations);
 
-        var pandigitalProduct = potentialCandidates.Where(IsValidProduct).ToList();
+        var pandigitalCandidates = potentialCandidates.Where(IsValidProduct);
 
-        var allowedProducts = pandigitalProduct.Where(product => filter(product.Product)).ToList();
+        var distinctResults = pandigitalCandidates.Select(candidate => candidate.Product).Distinct();
 
-        return allowedProducts.Select(candidate => candidate.Product).Distinct().Sum();
+        var allowedResults = distinctResults.Where(filter);
+
+        return allowedResults.Sum();
     }
 
-    private static IEnumerable<IReadOnlyCollection<int>> GetAllPermutationsFromOneToNine() 
+    private static IEnumerable<IReadOnlyCollection<int>> GetAllPermutationsFromOneToNine()
         => new Permutations(Digits.DecimalDigits).GetAsVolatile();
 
     private static bool IsValidProduct((int Multiplicand, int Multiplier, int Product) candidate) =>
