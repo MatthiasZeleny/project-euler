@@ -3,6 +3,12 @@
 public class Permutations(IReadOnlySet<int> hashSet)
 {
 
+    /// <summary>
+    /// This <see cref="IEnumerable{T}"/> should not be used with <see cref="Enumerable.ToList{T}"/>.
+    /// The algorithm here uses the same array in order to reduce allocations needed. This means the
+    /// <see cref="Enumerable.ToList{T}"/> would be a list only containing the same last array multiple times.
+    /// </summary>
+    /// <returns></returns>
     public IEnumerable<IReadOnlyCollection<int>> GetAsVolatile()
     {
         if (hashSet.Count == 0)
