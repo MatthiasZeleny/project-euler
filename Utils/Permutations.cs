@@ -11,19 +11,23 @@ public class Permutations(IReadOnlySet<int> hashSet)
     /// <returns></returns>
     public IEnumerable<IReadOnlyCollection<int>> GetAsVolatile()
     {
-        if (hashSet.Count == 0)
-        {
-            yield break;
-        }
+        return HasNoElements() ? [] : CreatePermutations();
+    }
 
-        var mutatedArray = hashSet.ToArray();
-        var setSize = mutatedArray.Length;
-
-        var controlArray = mutatedArray.Select(_ => 0).ToArray();
+    /// <summary>
+    /// Creates a mutated array multiple times using <a href="https://en.wikipedia.org/wiki/Heap%27s_algorithm">Heap's algorithm</a>.
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerable<IReadOnlyCollection<int>> CreatePermutations()
+    {
+        var mutatedArray = CreateArray();
 
         yield return mutatedArray;
 
+
         var stackPointer = 1;
+        var setSize = mutatedArray.Length;
+        var controlArray = mutatedArray.Select(_ => 0).ToArray();
         while (stackPointer < setSize)
         {
             if (controlArray[stackPointer] < stackPointer)
@@ -50,4 +54,8 @@ public class Permutations(IReadOnlySet<int> hashSet)
             }
         }
     }
+
+    private int[] CreateArray() => hashSet.ToArray();
+
+    private bool HasNoElements() => hashSet.Count == 0;
 }
