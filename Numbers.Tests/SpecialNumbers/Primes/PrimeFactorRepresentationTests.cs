@@ -103,4 +103,49 @@ public class PrimeFactorRepresentationTests
 
         asNumber.Should().Be(number);
     }
+
+    [Test]
+    public void GreatestCommonDivisor_SameNumber_ShouldReturnSame()
+    {
+        var first = PrimeFactorRepresentation.For(2);
+        var second = PrimeFactorRepresentation.For(2);
+
+        var leastCommonMultiple = first.GreatestCommonDivisor(second).AsList();
+
+        leastCommonMultiple.Should().BeEquivalentTo(new List<int> { 2 });
+    }
+
+
+    [Test]
+    public void GreatestCommonDivisor_DifferentPrimes_ShouldReturnOne()
+    {
+        var first = PrimeFactorRepresentation.For(2);
+        var second = PrimeFactorRepresentation.For(3);
+
+        var leastCommonMultiple = first.GreatestCommonDivisor(second).AsList();
+
+        leastCommonMultiple.Should().BeEquivalentTo(new List<int>());
+    }
+
+    [Test]
+    public void GreatestCommonDivisor_SamePrimeDifferentCountFirstHasMore_ShouldReturnSmallerCount()
+    {
+        var first = PrimeFactorRepresentation.For(4);
+        var second = PrimeFactorRepresentation.For(2);
+
+        var leastCommonMultiple = first.GreatestCommonDivisor(second).AsList();
+
+        leastCommonMultiple.Should().BeEquivalentTo(new List<int> { 2 });
+    }
+
+    [Test]
+    public void GreatestCommonDivisor_SamePrimeDifferentCountSecondHasMore_ShouldReturnSmallerCount()
+    {
+        var first = PrimeFactorRepresentation.For(2);
+        var second = PrimeFactorRepresentation.For(4);
+
+        var leastCommonMultiple = first.GreatestCommonDivisor(second).AsList();
+
+        leastCommonMultiple.Should().BeEquivalentTo(new List<int> { 2 });
+    }
 }

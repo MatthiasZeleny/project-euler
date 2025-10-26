@@ -53,6 +53,23 @@ public class PrimeFactorRepresentation
         return new PrimeFactorRepresentation(primeFactors);
     }
 
+    public PrimeFactorRepresentation GreatestCommonDivisor(PrimeFactorRepresentation second)
+    {
+        var dictionary = _primeFactors
+            .ToList()
+            
+            .Select(pair =>
+            {
+                var prime = pair.Key;
+
+                var minOccurrence = Math.Min(pair.Value, second._primeFactors.GetValueOrDefault(prime, 0));
+
+                return (Prime: prime, Count: minOccurrence);
+            }).ToDictionary();
+        
+        return new PrimeFactorRepresentation(dictionary);
+    }
+
     private static void AddPrimeFactors(Dictionary<long, int> target, Dictionary<long, int> source)
     {
         var primesWithCountSecond = source.ToList();
@@ -72,4 +89,5 @@ public class PrimeFactorRepresentation
         numbers
             .Select(For)
             .Aggregate((first, second) => first.LeastCommonMultiple(second));
+
 }
