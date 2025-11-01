@@ -65,4 +65,70 @@ public class FractionTests
         
         hasSameValueAs.Should().BeTrue();
     }
+
+    [Test]
+    [TestCase(1,1)]
+    [TestCase(1,2)]
+    [TestCase(2,1)]
+    [TestCase(2,3)]
+    public void Reduce_IrreducibleShould_ReturnSame(int numerator, int denominator)
+    {
+        var fraction = new Fraction(numerator,denominator);
+
+        var reduced = fraction.Reduce();
+        
+        reduced.Denominator.Should().Be(denominator);
+        reduced.Numerator.Should().Be(numerator);
+    }
+
+    [Test]
+    [TestCase(2,2)]
+    [TestCase(3,3)]
+    public void Reduce_NumeratorSameAsDenominator_ShouldReturnOneDividedByOne(int numerator, int denominator)
+    {
+        var fraction = new Fraction(numerator,denominator);
+
+        var reduced = fraction.Reduce();
+        
+        reduced.Denominator.Should().Be(1);
+        reduced.Numerator.Should().Be(1);
+    }
+
+    [Test]
+    [TestCase(2,4, 2)]
+    [TestCase(3,15,5)]
+    public void Reduce_IsNumeratorContainedByDenominator_ShouldReturnOneDividedByRest(int numerator, int denominator, int reducedDenominator)
+    {
+        var fraction = new Fraction(numerator,denominator);
+
+        var reduced = fraction.Reduce();
+
+        reduced.Numerator.Should().Be(1);
+        reduced.Denominator.Should().Be(reducedDenominator);
+    }
+    
+    [Test]
+    [TestCase(4,2, 2)]
+    [TestCase(15,3,5)]
+    public void Reduce_IsDenominatorContainedByNumerator_ShouldReturnRestDividedByOne(int numerator, int denominator, int reducedNumerator)
+    {
+        var fraction = new Fraction(numerator,denominator);
+
+        var reduced = fraction.Reduce();
+
+        reduced.Denominator.Should().Be(1);
+        reduced.Numerator.Should().Be(reducedNumerator);
+    }
+    
+    [Test]
+    [TestCase(2*3,3*5,2,5)]
+    public void Reduce_NumeratorAndDenominatorHaveANonTrivialGreatestCommonDivisor_ShouldReturnRestDividedByOne(int numerator, int denominator, int reducedNumerator, int reducedDenominator)
+    {
+        var fraction = new Fraction(numerator,denominator);
+
+        var reduced = fraction.Reduce();
+
+        reduced.Numerator.Should().Be(reducedNumerator);
+        reduced.Denominator.Should().Be(reducedDenominator);
+    }
 }
