@@ -95,8 +95,8 @@ public class FractionTests
     }
 
     [Test]
-    [TestCase(2,4, 2)]
-    [TestCase(3,15,5)]
+    [TestCase(2,2*2, 2)]
+    [TestCase(3,3*5,5)]
     public void Reduce_IsNumeratorContainedByDenominator_ShouldReturnOneDividedByRest(int numerator, int denominator, int reducedDenominator)
     {
         var fraction = new Fraction(numerator,denominator);
@@ -108,8 +108,8 @@ public class FractionTests
     }
     
     [Test]
-    [TestCase(4,2, 2)]
-    [TestCase(15,3,5)]
+    [TestCase(2*2,2, 2)]
+    [TestCase(3*5,3,5)]
     public void Reduce_IsDenominatorContainedByNumerator_ShouldReturnRestDividedByOne(int numerator, int denominator, int reducedNumerator)
     {
         var fraction = new Fraction(numerator,denominator);
