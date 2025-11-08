@@ -13,10 +13,7 @@ public static class Prime
 
         foreach (var natural in naturals)
         {
-            if (primes.Any(prime => natural.IsDivisibleBy(prime)))
-            {
-                continue;
-            }
+            if (primes.Any(prime => natural.IsDivisibleBy(prime))) continue;
 
             primes.Add(natural);
 

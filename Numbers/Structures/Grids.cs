@@ -40,9 +40,6 @@ public static class Grids
 
     private static void Add(Dictionary<(long edgeCountWidth, long edgeCoundHeight), long> dictionary, Grid value, long count)
     {
-        if (dictionary.TryAdd(value.NormalizedSize, count) is false)
-        {
-            dictionary[value.NormalizedSize] += count;
-        }
+        if (dictionary.TryAdd(value.NormalizedSize, count) is false) dictionary[value.NormalizedSize] += count;
     }
 }

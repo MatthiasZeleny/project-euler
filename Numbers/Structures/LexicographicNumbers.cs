@@ -29,10 +29,7 @@ public static class LexicographicNumbers
 
         var nextNumberExists = candidates.Any();
 
-        if (nextNumberExists)
-        {
-            ReorderDigits(digits, candidates.Last());
-        }
+        if (nextNumberExists) ReorderDigits(digits, candidates.Last());
 
         return nextNumberExists;
     }

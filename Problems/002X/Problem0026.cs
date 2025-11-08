@@ -14,9 +14,8 @@ public class Problem0026 : IEulerProblem<long>
     private static long GetNumberCreatingLongestRecurringCycleUpTo(int maxDivisor) =>
         NumberList.NaturalNumbersUpTo(maxDivisor)
             .Skip(1)
-            .Select(
-                candidate => (candidate,
-                    length: candidate.GetLengthOfRecurringCycleForOneDividedBy()))
+            .Select(candidate => (candidate,
+                length: candidate.GetLengthOfRecurringCycleForOneDividedBy()))
             .MaxBy(tuple => tuple.length)
             .candidate;
 

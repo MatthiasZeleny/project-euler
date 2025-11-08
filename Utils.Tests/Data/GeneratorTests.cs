@@ -26,7 +26,7 @@ public class GeneratorTests
 
         enumerable.Skip(1).First().Should().Be("first->next");
     }
-    
+
     [Test]
     public void Third_ShouldBeCreatedByUsingStepOnFirstTwoTimes()
     {

@@ -23,9 +23,9 @@ public class Problem0030 : IEulerProblem<BigInteger>
 
     private static IEnumerable<long> GetCandidates(int exponent)
     {
-        var maximumNumberOfDigitsNeeded = NumberList.NaturalNumbers().First(
-            numberOfDigits => numberOfDigits * 9.ToThePowerOf(exponent) <
-                              NNinesAsNumber(numberOfDigits));
+        var maximumNumberOfDigitsNeeded = NumberList.NaturalNumbers().First(numberOfDigits =>
+            numberOfDigits * 9.ToThePowerOf(exponent) <
+            NNinesAsNumber(numberOfDigits));
 
         var biggestCandidate = NNinesAsNumber(maximumNumberOfDigitsNeeded);
 
@@ -49,8 +49,7 @@ public class Problem0030 : IEulerProblem<BigInteger>
 
     private static Func<long, bool> IsSumOfNPowerOfDigits(int exponent)
     {
-        return number => number.ToDigitList().Select(
-                digit => digit.ToThePowerOf(exponent))
+        return number => number.ToDigitList().Select(digit => digit.ToThePowerOf(exponent))
             .BigSum() == new BigInteger(number);
     }
 }

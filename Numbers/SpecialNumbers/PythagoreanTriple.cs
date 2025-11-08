@@ -25,10 +25,7 @@ public record PythagoreanTriple
             {
                 for (var c = 1; c <= highestPossibleNumber; c++)
                 {
-                    if (FulfillsPythagoreanTriple(a, b, c))
-                    {
-                        yield return Create(a, b, c);
-                    }
+                    if (FulfillsPythagoreanTriple(a, b, c)) yield return Create(a, b, c);
                 }
             }
         }
@@ -36,10 +33,7 @@ public record PythagoreanTriple
 
     public static PythagoreanTriple Create(int a, int b, int c)
     {
-        if (FulfillsPythagoreanTriple(a, b, c) is false)
-        {
-            throw new NotAPythagoreanTripleException(a, b, c);
-        }
+        if (FulfillsPythagoreanTriple(a, b, c) is false) throw new NotAPythagoreanTripleException(a, b, c);
 
         return new PythagoreanTriple(a, b, c);
     }

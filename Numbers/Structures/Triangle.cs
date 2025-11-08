@@ -4,7 +4,10 @@ public class Triangle
 {
     private readonly List<List<int>> _numbers;
 
-    private Triangle(List<List<int>> numbers) => _numbers = numbers;
+    private Triangle(List<List<int>> numbers)
+    {
+        _numbers = numbers;
+    }
 
     public int ComputeBiggestPath()
     {
@@ -39,9 +42,7 @@ public class Triangle
         foreach (var (rowSize, expectedSize) in list.Select((row, index) => (row.Count, index + 1)))
         {
             if ((rowSize == expectedSize) is false)
-            {
                 throw new ArgumentException($"Expected {expectedSize}, but got {rowSize}.");
-            }
         }
 
         return new Triangle(list);

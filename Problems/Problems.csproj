@@ -12,9 +12,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="002X\0022_Names.txt">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
+        <None Update="002X\0022_Names.txt">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 
 </Project>

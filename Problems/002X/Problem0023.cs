@@ -23,7 +23,8 @@ public class Problem0023 : IEulerProblem<long>
         var numbersUpTo = NumberList.NaturalNumbersUpTo(maximumNumber).ToList();
 
         var abundantNumbers = numbersUpTo.Where(number => number.IsAbundantNumber()).ToList();
-        var possibleSums = abundantNumbers.SelectMany(first=>abundantNumbers.Select(second=>first+second)).Distinct().ToList();
+        var possibleSums = abundantNumbers.SelectMany(first => abundantNumbers.Select(second => first + second)).Distinct()
+            .ToList();
 
         return numbersUpTo.Where(number => possibleSums.Contains(number) is false).Sum();
     }

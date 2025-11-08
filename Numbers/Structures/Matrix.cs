@@ -5,12 +5,10 @@ namespace Numbers.Structures;
 
 public static class Matrix
 {
-    public static IEnumerable<List<long>> GetAllPossibleCombinationsOfLength(int combinationLength, string matrix)
-    {
-        return TryLengthOneCase(combinationLength, matrix, out var listOfAllMatrixEntries)
+    public static IEnumerable<List<long>> GetAllPossibleCombinationsOfLength(int combinationLength, string matrix) =>
+        TryLengthOneCase(combinationLength, matrix, out var listOfAllMatrixEntries)
             ? listOfAllMatrixEntries
             : CreateMultipleEntryList(combinationLength, matrix);
-    }
 
     private static IEnumerable<List<long>> CreateMultipleEntryList(int numberOfDigits, string matrix)
     {
@@ -60,31 +58,24 @@ public static class Matrix
     }
 
     private static IEnumerable<List<long>> CreatePerpendicularDiagonalLines(SearchableMatrix searchableMatrix) =>
-        searchableMatrix.ThroughReducedHeight.SelectMany(
-                m => searchableMatrix.ThroughReducedWidth.Select(
-                    n => searchableMatrix.StepsThroughMatrix.Select(
-                        step => searchableMatrix.Matrix[m + searchableMatrix.ArrayLength - 1 - step, n + step]).ToList()))
+        searchableMatrix.ThroughReducedHeight.SelectMany(m => searchableMatrix.ThroughReducedWidth.Select(n =>
+                searchableMatrix.StepsThroughMatrix.Select(step =>
+                    searchableMatrix.Matrix[m + searchableMatrix.ArrayLength - 1 - step, n + step]).ToList()))
             .ToList();
 
     private static List<List<long>> CreateOriginDiagonalLines(SearchableMatrix searchableMatrix) =>
-        searchableMatrix.ThroughReducedHeight.SelectMany(
-                m => searchableMatrix.ThroughReducedWidth.Select(
-                    n => searchableMatrix.StepsThroughMatrix.Select(
-                        step => searchableMatrix.Matrix[m + step, n + step]).ToList()))
+        searchableMatrix.ThroughReducedHeight.SelectMany(m => searchableMatrix.ThroughReducedWidth.Select(n =>
+                searchableMatrix.StepsThroughMatrix.Select(step => searchableMatrix.Matrix[m + step, n + step]).ToList()))
             .ToList();
 
     private static List<List<long>> CreateVerticalLines(SearchableMatrix searchableMatrix) =>
-        searchableMatrix.ThroughReducedHeight.SelectMany(
-                m => searchableMatrix.ThroughWidth.Select(
-                    n => searchableMatrix.StepsThroughMatrix.Select(
-                        step => searchableMatrix.Matrix[m + step, n]).ToList()))
+        searchableMatrix.ThroughReducedHeight.SelectMany(m => searchableMatrix.ThroughWidth.Select(n =>
+                searchableMatrix.StepsThroughMatrix.Select(step => searchableMatrix.Matrix[m + step, n]).ToList()))
             .ToList();
 
     private static IEnumerable<List<long>> CreateHorizontalLines(SearchableMatrix searchableMatrix) =>
-        searchableMatrix.ThroughHeight.SelectMany(
-                m => searchableMatrix.ThroughReducedWidth.Select(
-                    n => searchableMatrix.StepsThroughMatrix.Select(
-                        step => searchableMatrix.Matrix[m, n + step]).ToList()))
+        searchableMatrix.ThroughHeight.SelectMany(m => searchableMatrix.ThroughReducedWidth.Select(n =>
+                searchableMatrix.StepsThroughMatrix.Select(step => searchableMatrix.Matrix[m, n + step]).ToList()))
             .ToList();
 
     private class SearchableMatrix
@@ -104,16 +95,12 @@ public static class Matrix
         var isLengthOne = combinationLength == 1;
 
         if (isLengthOne)
-        {
             list = matrix
                 .Split('\n')
                 .SelectMany(ToNumberList)
                 .Select(digit => new List<long> { digit });
-        }
         else
-        {
             list = null!;
-        }
 
         return isLengthOne;
     }

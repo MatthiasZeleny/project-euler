@@ -21,10 +21,7 @@ public static class NumberList
 
     private static long GetLowestNumberWithDigitsCount(int digitCount)
     {
-        if (digitCount == 1)
-        {
-            return 0;
-        }
+        if (digitCount == 1) return 0;
 
         var digitsLowestNumber = new List<long> { 1 };
         digitsLowestNumber.AddRange(ListOfZeros(digitCount - 1));

@@ -3,7 +3,6 @@ using Utils;
 
 namespace Problems._002X;
 
-
 /// <summary>
 /// <a href="https://projecteuler.net/problem=22"/>
 /// </summary>

@@ -14,15 +14,14 @@ public class Fraction
     public long Denominator { get; }
 
 
-    public bool HasSameValueAs(Fraction otherFraction)
-    {
-        return Numerator * otherFraction.Denominator == Denominator * otherFraction.Numerator;
-    }
+    public bool HasSameValueAs(Fraction otherFraction) =>
+        Numerator * otherFraction.Denominator == Denominator * otherFraction.Numerator;
 
     public Fraction Reduce()
     {
-        var greatestCommonDivisor = PrimeFactorRepresentation.For(Numerator).GreatestCommonDivisor(PrimeFactorRepresentation.For(Denominator)).AsNumber();
-        
-        return new Fraction(Numerator/greatestCommonDivisor, Denominator/greatestCommonDivisor);
+        var greatestCommonDivisor = PrimeFactorRepresentation.For(Numerator)
+            .GreatestCommonDivisor(PrimeFactorRepresentation.For(Denominator)).AsNumber();
+
+        return new Fraction(Numerator / greatestCommonDivisor, Denominator / greatestCommonDivisor);
     }
 }

@@ -22,8 +22,7 @@ public class Problem0004 : IEulerProblem<long>
 
     private static IEnumerable<long> EveryPossibleCombinationOf(IReadOnlyCollection<long> possibleNumbers) =>
         possibleNumbers
-            .SelectMany(
-                first =>
-                    possibleNumbers
-                        .Select(second => first * second));
+            .SelectMany(first =>
+                possibleNumbers
+                    .Select(second => first * second));
 }

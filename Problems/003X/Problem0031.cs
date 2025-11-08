@@ -30,9 +30,8 @@ public class Problem0031 : IEulerProblem<int>
     private static IEnumerable<IEnumerable<long>> CreateMonoCoinCombinationsNotAbove(IReadOnlyList<int> currencyValues,
         int targetValue) =>
         currencyValues
-            .Select(
-                value => new Generator<long>(0, current => current + value).CreateEnumerable()
-                    .TakeWhile(sum => sum <= targetValue));
+            .Select(value => new Generator<long>(0, current => current + value).CreateEnumerable()
+                .TakeWhile(sum => sum <= targetValue));
 
     private static IEnumerable<long> CreateCombinationsWhichAreNotTooMuch(
         List<IEnumerable<long>> possibleMonoCoinCombinations,
@@ -43,8 +42,7 @@ public class Problem0031 : IEulerProblem<int>
 
     private static IEnumerable<long> CreatePossibleCombinations(IEnumerable<long> uniqueSums,
         IEnumerable<long> monoCoinCombinations) =>
-        uniqueSums.SelectMany(
-            uniqueSum =>
-                monoCoinCombinations.Select(singleValueSum => uniqueSum + singleValueSum));
+        uniqueSums.SelectMany(uniqueSum =>
+            monoCoinCombinations.Select(singleValueSum => uniqueSum + singleValueSum));
 
 }

@@ -9,10 +9,7 @@ public class Permutations(IReadOnlySet<int> hashSet)
     /// <see cref="Enumerable.ToList{T}"/> would be a list only containing the same last array multiple times.
     /// </summary>
     /// <returns></returns>
-    public IEnumerable<IReadOnlyCollection<int>> GetAsVolatile()
-    {
-        return HasNoElements() ? [] : CreatePermutations();
-    }
+    public IEnumerable<IReadOnlyCollection<int>> GetAsVolatile() => HasNoElements() ? [] : CreatePermutations();
 
     /// <summary>
     /// Creates a mutated array multiple times using <a href="https://en.wikipedia.org/wiki/Heap%27s_algorithm">Heap's algorithm</a>.
@@ -33,14 +30,10 @@ public class Permutations(IReadOnlySet<int> hashSet)
             if (controlArray[stackPointer] < stackPointer)
             {
                 if (stackPointer % 2 == 0)
-                {
                     (mutatedArray[0], mutatedArray[stackPointer]) = (mutatedArray[stackPointer], mutatedArray[0]);
-                }
                 else
-                {
                     (mutatedArray[controlArray[stackPointer]], mutatedArray[stackPointer]) = (mutatedArray[stackPointer],
                         mutatedArray[controlArray[stackPointer]]);
-                }
 
                 yield return mutatedArray;
 

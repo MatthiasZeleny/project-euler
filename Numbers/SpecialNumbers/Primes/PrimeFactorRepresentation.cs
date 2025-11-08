@@ -6,8 +6,10 @@ public class PrimeFactorRepresentation
 {
     private readonly Dictionary<long, int> _primeFactors;
 
-    private PrimeFactorRepresentation(Dictionary<long, int> primeFactors) =>
+    private PrimeFactorRepresentation(Dictionary<long, int> primeFactors)
+    {
         _primeFactors = primeFactors;
+    }
 
     public static PrimeFactorRepresentation For(long number)
     {
@@ -22,16 +24,10 @@ public class PrimeFactorRepresentation
             {
                 rest /= prime;
 
-                if (primeFactors.TryAdd(prime, 1) is false)
-                {
-                    primeFactors[prime]++;
-                }
+                if (primeFactors.TryAdd(prime, 1) is false) primeFactors[prime]++;
             }
 
-            if (rest == 1)
-            {
-                break;
-            }
+            if (rest == 1) break;
         }
 
         return new PrimeFactorRepresentation(primeFactors);
@@ -57,7 +53,6 @@ public class PrimeFactorRepresentation
     {
         var dictionary = _primeFactors
             .ToList()
-            
             .Select(pair =>
             {
                 var prime = pair.Key;
@@ -66,7 +61,7 @@ public class PrimeFactorRepresentation
 
                 return (Prime: prime, Count: minOccurrence);
             }).ToDictionary();
-        
+
         return new PrimeFactorRepresentation(dictionary);
     }
 
@@ -76,10 +71,7 @@ public class PrimeFactorRepresentation
 
         foreach (var (prime, count) in primesWithCountSecond)
         {
-            if (target.TryAdd(prime, count) is false)
-            {
-                target[prime] = Math.Max(target[prime], count);
-            }
+            if (target.TryAdd(prime, count) is false) target[prime] = Math.Max(target[prime], count);
         }
     }
 
