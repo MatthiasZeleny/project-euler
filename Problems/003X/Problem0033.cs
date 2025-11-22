@@ -1,8 +1,10 @@
-﻿namespace Problems._003X;
+﻿using Numbers.BasicMath;
 
-public class Problem0033 : IEulerProblem<int>
+namespace Problems._003X;
+
+public class Problem0033 : IEulerProblem<long>
 {
-    public int Example() => 98 / 49;
+    public long Example() => new Fraction(98,49).Reduce().Numerator;
 
-    public int Solution() => 0;
+    public long Solution() => 0;
 }
