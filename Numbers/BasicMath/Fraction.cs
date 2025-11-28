@@ -4,6 +4,9 @@ namespace Numbers.BasicMath;
 
 public class Fraction
 {
+
+    public override int GetHashCode() => HashCode.Combine(Numerator, Denominator);
+
     public Fraction(long numerator, long denominator)
     {
         Numerator = numerator;
@@ -11,8 +14,8 @@ public class Fraction
     }
 
     public long Numerator { get; }
-    public long Denominator { get; }
 
+    public long Denominator { get; }
 
     public bool HasSameValueAs(Fraction otherFraction) =>
         Numerator * otherFraction.Denominator == Denominator * otherFraction.Numerator;
@@ -23,5 +26,16 @@ public class Fraction
             .GreatestCommonDivisor(PrimeFactorRepresentation.For(Denominator)).AsNumber();
 
         return new Fraction(Numerator / greatestCommonDivisor, Denominator / greatestCommonDivisor);
+    }
+
+    private bool Equals(Fraction other) => Numerator == other.Numerator && Denominator == other.Denominator;
+
+    public override bool Equals(object? obj)
+    {
+        if (obj is null) return false;
+        if (ReferenceEquals(this, obj)) return true;
+        if (obj.GetType() != GetType()) return false;
+
+        return Equals((Fraction)obj);
     }
 }
