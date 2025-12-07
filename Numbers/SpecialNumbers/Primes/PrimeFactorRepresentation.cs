@@ -13,6 +13,8 @@ public class PrimeFactorRepresentation
 
     public static PrimeFactorRepresentation For(long number)
     {
+        if (number == 0) throw new ArgumentException("number cannot be 0");
+
         var primes = Prime.Create();
 
         var primeFactors = new Dictionary<long, int>();

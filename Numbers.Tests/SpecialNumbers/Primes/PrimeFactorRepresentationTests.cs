@@ -6,6 +6,14 @@ namespace Numbers.Tests.SpecialNumbers.Primes;
 public class PrimeFactorRepresentationTests
 {
     [Test]
+    public void AsList_Zero_ShouldThrowArgumentException()
+    {
+        Action action = () => PrimeFactorRepresentation.For(0);
+
+        action.Should().Throw<ArgumentException>();
+    }
+
+    [Test]
     public void AsList_One_ShouldReturnEmptyList()
     {
         var list = PrimeFactorRepresentation.For(1).AsList();
