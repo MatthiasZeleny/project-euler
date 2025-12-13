@@ -9,6 +9,8 @@ public class Fraction
 
     public Fraction(long numerator, long denominator)
     {
+        if (denominator == 0) throw new ArgumentException("denominator cannot be zero");
+
         Numerator = numerator;
         Denominator = denominator;
     }
@@ -22,6 +24,10 @@ public class Fraction
 
     public Fraction Reduce()
     {
+        if (Numerator == 0)
+        {
+            return new Fraction(0, 1);
+        }
         var greatestCommonDivisor = PrimeFactorRepresentation.For(Numerator)
             .GreatestCommonDivisor(PrimeFactorRepresentation.For(Denominator)).AsNumber();
 

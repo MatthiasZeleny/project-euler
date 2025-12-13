@@ -134,4 +134,29 @@ public class FractionTests
         reduced.Numerator.Should().Be(reducedNumerator);
         reduced.Denominator.Should().Be(reducedDenominator);
     }
+
+    [Test]
+    [TestCase(1)]
+    [TestCase(0)]
+    public void Fraction_ZeroDenominator_ShouldThrowException(int numerator)
+    {
+        // ReSharper disable once ObjectCreationAsStatement
+        Action action = () => new Fraction(numerator, 0);
+
+        action.Should().Throw<ArgumentException>();
+    }
+
+    [Test]
+    [TestCase(1)]
+    [TestCase(2)]
+    public void Fraction_ZeroNumerator_ShouldReduceToOneDenominator(
+        int denominator)
+    {
+        var fraction = new Fraction(0, denominator);
+
+        var reduce = fraction.Reduce();
+
+        reduce.Denominator.Should().Be(1);
+        reduce.Numerator.Should().Be(0);
+    }
 }
