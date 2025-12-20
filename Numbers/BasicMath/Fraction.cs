@@ -1,7 +1,9 @@
-﻿using Numbers.SpecialNumbers.Primes;
+﻿using System.Diagnostics;
+using Numbers.SpecialNumbers.Primes;
 
 namespace Numbers.BasicMath;
 
+[DebuggerDisplay("{Numerator}/{Denominator}")]
 public class Fraction
 {
 

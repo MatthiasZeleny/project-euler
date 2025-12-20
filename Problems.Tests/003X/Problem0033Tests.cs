@@ -5,5 +5,5 @@ namespace Problems.Tests._003X;
 public class Problem0033Tests : EulerProblemTestBase<Problem0033, long>
 {
     protected override long ExampleResult => 2;
-    protected override long ProblemResult => 0;
+    protected override long ProblemResult => 100;
 }
