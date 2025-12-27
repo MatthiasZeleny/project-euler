@@ -8,7 +8,7 @@ public class Problem0033 : IEulerProblem<long>
     {
         var digitFractions = new List<TwoDigitFraction>
         {
-            new(new TwoDigitNumber(9, 8), new TwoDigitNumber(4, 9))
+            new(new TwoDigitNumber(Digit.Nine, Digit.Eight), new TwoDigitNumber(Digit.Four, Digit.Nine))
         };
         var digitCancelingFractions = digitFractions.Where(CanCancelByDigits).ToList();
 
@@ -19,23 +19,26 @@ public class Problem0033 : IEulerProblem<long>
 
     private static bool CanCancelByDigits(TwoDigitFraction fraction)
     {
-        var reducedFraction = new Fraction(fraction.Numerator.AsNumber, fraction.Denominator.AsNumber).Reduce();
+        var numerator = fraction.Numerator;
+        var denominator = fraction.Denominator;
+        
+        var reducedFraction = new Fraction(numerator.AsNumber, denominator.AsNumber).Reduce();
 
         var oneDigitNumeratorTenDigitDenominatorFraction =
-            fraction.Numerator.TenDigit == fraction.Denominator.OneDigit
-                ? GetMaybeNewFraction(fraction.Numerator.OneDigit, fraction.Denominator.TenDigit)?.Reduce()
+            numerator.TenDigit == denominator.OneDigit
+                ? GetMaybeNewFraction(numerator.OneDigit.AsNumber(), denominator.TenDigit.AsNumber())?.Reduce()
                 : null;
         var tenDigitNumeratorOneDigitDenominatorFraction =
-            fraction.Numerator.OneDigit == fraction.Denominator.TenDigit
-                ? GetMaybeNewFraction(fraction.Numerator.TenDigit, fraction.Denominator.OneDigit)?.Reduce()
+            numerator.OneDigit == denominator.TenDigit
+                ? GetMaybeNewFraction(numerator.TenDigit.AsNumber(), denominator.OneDigit.AsNumber())?.Reduce()
                 : null;
         var tenDigitNumeratorTenDigitDenominatorFraction =
-            fraction.Numerator.OneDigit == fraction.Denominator.OneDigit
-                ? GetMaybeNewFraction(fraction.Numerator.TenDigit, fraction.Denominator.TenDigit)?.Reduce()
+            numerator.OneDigit == denominator.OneDigit
+                ? GetMaybeNewFraction(numerator.TenDigit.AsNumber(), denominator.TenDigit.AsNumber())?.Reduce()
                 : null;
         var oneDigitNumeratorOneDigitDenominatorFraction =
-            fraction.Numerator.TenDigit == fraction.Denominator.TenDigit
-                ? GetMaybeNewFraction(fraction.Numerator.OneDigit, fraction.Denominator.OneDigit)?.Reduce()
+            numerator.TenDigit == denominator.TenDigit
+                ? GetMaybeNewFraction(numerator.OneDigit.AsNumber(), denominator.OneDigit.AsNumber())?.Reduce()
                 : null;
 
         return
@@ -50,10 +53,10 @@ public class Problem0033 : IEulerProblem<long>
 
     public long Solution()
     {
-        var digits = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        var digits = Enum.GetValues<Digit>();
 
         var twoDigitNumbers = digits.SelectMany(oneDigit => digits.Select(tenDigit => new TwoDigitNumber(oneDigit, tenDigit)))
-            .Where(number => number.TenDigit != 0).ToList();
+            .Where(number => number.TenDigit != Digit.Zero).ToList();
 
         var digitFractions = twoDigitNumbers.SelectMany(numerator =>
             twoDigitNumbers.Select(denominator => new TwoDigitFraction(numerator, denominator)));

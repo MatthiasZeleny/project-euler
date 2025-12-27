@@ -1,9 +1,9 @@
 ﻿namespace Numbers.BasicMath;
 
-public class TwoDigitNumber(int tenDigit, int oneDigit)
+public class TwoDigitNumber(Digit tenDigit, Digit oneDigit)
 {
-    public int TenDigit { get; } = tenDigit;
-    public int OneDigit { get; } = oneDigit;
+    public Digit TenDigit { get; } = tenDigit;
+    public Digit OneDigit { get; } = oneDigit;
 
-    public long AsNumber { get; } = tenDigit * 10 + oneDigit;
+    public long AsNumber { get; } = tenDigit.AsNumber() * 10 + oneDigit.AsNumber();
 }
