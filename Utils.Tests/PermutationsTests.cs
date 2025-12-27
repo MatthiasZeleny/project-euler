@@ -5,7 +5,7 @@ public class PermutationsTests
     [Test]
     public void GetAsVolatile_NoElement_ShouldReturnEmpty()
     {
-        var permutations = new Permutations(new HashSet<int>());
+        var permutations = new HashSet<int>().Permutations();
 
         var list = permutations.GetAsVolatile()
             .Select(array => array.ToList()).ToList();
@@ -16,7 +16,7 @@ public class PermutationsTests
     [Test]
     public void GetAsVolatile_SingleElement_ShouldReturnSingleElement()
     {
-        var permutations = new Permutations(new HashSet<int> { 1 });
+        var permutations = new HashSet<int> { 1 }.Permutations();
 
         var list = permutations.GetAsVolatile()
             .Select(array => array.ToList()).ToList();
@@ -32,7 +32,7 @@ public class PermutationsTests
     [Test]
     public void GetAsVolatile_TwoElements_ShouldReturnBothCombinations()
     {
-        var permutations = new Permutations(new HashSet<int> { 1, 2 });
+        var permutations = new HashSet<int> { 1, 2 }.Permutations();
 
         var list = permutations.GetAsVolatile()
             .Select(array => array.ToList()).ToList();
@@ -48,7 +48,7 @@ public class PermutationsTests
     [Test]
     public void GetAsVolatile_TwoElementsAndNotCopyingTheArrays_ShouldReturnLasCombination()
     {
-        var permutations = new Permutations(new HashSet<int> { 1, 2 });
+        var permutations = new HashSet<int> { 1, 2 }.Permutations();
 
         var list = permutations.GetAsVolatile()
             .Select(array => array).ToList();
@@ -64,7 +64,7 @@ public class PermutationsTests
     [Test]
     public void GetAsVolatile_ThreeElements_ShouldReturnBothCombinations()
     {
-        var permutations = new Permutations(new HashSet<int> { 1, 2, 3 });
+        var permutations = new HashSet<int> { 1, 2, 3 }.Permutations();
 
         var list = permutations.GetAsVolatile()
             .Select(array => array.ToList()).ToList();

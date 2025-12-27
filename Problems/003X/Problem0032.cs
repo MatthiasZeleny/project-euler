@@ -28,7 +28,15 @@ public class Problem0032 : IEulerProblem<int>
     }
 
     private static IEnumerable<IReadOnlyCollection<int>> GetAllPermutationsFromOneToNine()
-        => new Permutations(Digits.DecimalDigits).GetAsVolatile();
+    {
+        IReadOnlySet<Digit> readOnlySet = Digits.DecimalDigits.ToList().Where(digit => digit != Digit.Zero).ToHashSet();
+
+        var permutations = readOnlySet.Permutations();
+
+        return permutations
+            .GetAsVolatile()
+            .Select(digits=> digits.Select(digit=>digit.AsNumber()).ToList());
+    }
 
     private static bool IsValidProduct((int Multiplicand, int Multiplier, int Product) candidate) =>
         candidate.Multiplicand * candidate.Multiplier == candidate.Product;

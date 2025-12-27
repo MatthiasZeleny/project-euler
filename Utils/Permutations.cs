@@ -1,6 +1,6 @@
 ﻿namespace Utils;
 
-public class Permutations(IReadOnlySet<int> hashSet)
+public class Permutations<T>(IReadOnlySet<T> hashSet)
 {
 
     /// <summary>
@@ -9,13 +9,13 @@ public class Permutations(IReadOnlySet<int> hashSet)
     /// <see cref="Enumerable.ToList{T}"/> would be a list only containing the same last array multiple times.
     /// </summary>
     /// <returns></returns>
-    public IEnumerable<IReadOnlyCollection<int>> GetAsVolatile() => HasNoElements() ? [] : CreatePermutations();
+    public IEnumerable<IReadOnlyCollection<T>> GetAsVolatile() => HasNoElements() ? [] : CreatePermutations();
 
     /// <summary>
     /// Creates a mutated array multiple times using <a href="https://en.wikipedia.org/wiki/Heap%27s_algorithm">Heap's algorithm</a>.
     /// </summary>
     /// <returns></returns>
-    private IEnumerable<IReadOnlyCollection<int>> CreatePermutations()
+    private IEnumerable<IReadOnlyCollection<T>> CreatePermutations()
     {
         var mutatedArray = CreateArray();
 
@@ -48,7 +48,7 @@ public class Permutations(IReadOnlySet<int> hashSet)
         }
     }
 
-    private int[] CreateArray() => hashSet.ToArray();
+    private T[] CreateArray() => hashSet.ToArray();
 
     private bool HasNoElements() => hashSet.Count == 0;
 }
