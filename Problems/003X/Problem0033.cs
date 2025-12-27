@@ -85,18 +85,4 @@ public class Problem0033 : IEulerProblem<long>
     private static bool IsLessThenOne(TwoDigitFraction fraction) =>
         fraction.Numerator.AsNumber < fraction.Denominator.AsNumber;
 
-    private class TwoDigitNumber(int tenDigit, int oneDigit)
-    {
-        public int TenDigit { get; } = tenDigit;
-        public int OneDigit { get; } = oneDigit;
-
-        public long AsNumber { get; } = tenDigit * 10 + oneDigit;
-    }
-
-    private class TwoDigitFraction(TwoDigitNumber numerator, TwoDigitNumber denominator)
-    {
-        public TwoDigitNumber Numerator { get; } = numerator;
-        public TwoDigitNumber Denominator { get; } = denominator;
-
-    }
 }
