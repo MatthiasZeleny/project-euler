@@ -53,13 +53,10 @@ public class Problem0033 : IEulerProblem<long>
 
     public long Solution()
     {
-        var digits = Enum.GetValues<Digit>();
+        var numbersFromTenToNinetyNine = NumbersFromTenToNinetyNine();
 
-        var twoDigitNumbers = digits.SelectMany(oneDigit => digits.Select(tenDigit => new TwoDigitNumber(oneDigit, tenDigit)))
-            .Where(number => number.TenDigit != Digit.Zero).ToList();
-
-        var digitFractions = twoDigitNumbers.SelectMany(numerator =>
-            twoDigitNumbers.Select(denominator => new TwoDigitFraction(numerator, denominator)));
+        var digitFractions = CreateEveryPossibleCombination(numbersFromTenToNinetyNine);
+        
         var digitCancelingFractions = digitFractions
             .Where(CannotBeTriviallyReduced)
             .Where(IsLessThenOne)
@@ -74,6 +71,22 @@ public class Problem0033 : IEulerProblem<long>
                 (product, factor) =>
                     new Fraction(product.Numerator * factor.Numerator, product.Denominator * factor.Denominator).Reduce())
             .Denominator;
+    }
+
+    private static IEnumerable<TwoDigitFraction> CreateEveryPossibleCombination(List<TwoDigitNumber> numbersFromTenToNinetyNine)
+    {
+        return numbersFromTenToNinetyNine.SelectMany(numerator =>
+            numbersFromTenToNinetyNine.Select(denominator => new TwoDigitFraction(numerator, denominator)));
+    }
+
+    private static List<TwoDigitNumber> NumbersFromTenToNinetyNine()
+    {
+        var digits = Enum.GetValues<Digit>();
+
+        var numbersFromTenToNinetyNine = digits.SelectMany(oneDigit => digits.Select(tenDigit => new TwoDigitNumber(oneDigit, tenDigit)))
+            .Where(number => number.TenDigit != Digit.Zero).ToList();
+
+        return numbersFromTenToNinetyNine;
     }
 
     private static bool CannotBeTriviallyReduced(TwoDigitFraction fraction)
