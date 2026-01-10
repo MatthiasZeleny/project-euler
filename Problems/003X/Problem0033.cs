@@ -21,7 +21,7 @@ public class Problem0033 : IEulerProblem<long>
     {
         var numerator = fraction.Numerator;
         var denominator = fraction.Denominator;
-        
+
         var reducedFraction = new Fraction(numerator.AsNumber, denominator.AsNumber).Reduce();
 
         var oneDigitNumeratorTenDigitDenominatorFraction =
@@ -56,24 +56,35 @@ public class Problem0033 : IEulerProblem<long>
         var numbersFromTenToNinetyNine = NumbersFromTenToNinetyNine();
 
         var digitFractions = CreateEveryPossibleCombination(numbersFromTenToNinetyNine);
-        
+
+
         var digitCancelingFractions = digitFractions
             .Where(CannotBeTriviallyReduced)
             .Where(IsLessThenOne)
-            .Where(CanCancelByDigits);
+            .Where(CanCancelByDigits)
+            .Select(ToGenericFraction);
 
-
-        return digitCancelingFractions
-            .Select(fraction => new Fraction(fraction.Numerator.AsNumber, fraction.Denominator.AsNumber))
-            .Select(fraction=> fraction.Reduce())
-            .Aggregate(
-                new Fraction(1, 1),
-                (product, factor) =>
-                    new Fraction(product.Numerator * factor.Numerator, product.Denominator * factor.Denominator).Reduce())
-            .Denominator;
+        return ToSingleReducedFraction(digitCancelingFractions).Denominator;
     }
 
-    private static IEnumerable<TwoDigitFraction> CreateEveryPossibleCombination(List<TwoDigitNumber> numbersFromTenToNinetyNine)
+    private static Fraction ToSingleReducedFraction(IEnumerable<Fraction> fractions)
+    {
+        var neutralFraction = new Fraction(1, 1);
+        
+        var product = fractions
+            .Aggregate(
+                neutralFraction,
+                (product, factor) =>
+                    product * factor);
+
+        return product.Reduce();
+    }
+
+    private static Fraction ToGenericFraction(TwoDigitFraction fraction) =>
+        new(fraction.Numerator.AsNumber, fraction.Denominator.AsNumber);
+
+    private static IEnumerable<TwoDigitFraction> CreateEveryPossibleCombination(
+        List<TwoDigitNumber> numbersFromTenToNinetyNine)
     {
         return numbersFromTenToNinetyNine.SelectMany(numerator =>
             numbersFromTenToNinetyNine.Select(denominator => new TwoDigitFraction(numerator, denominator)));
@@ -83,7 +94,8 @@ public class Problem0033 : IEulerProblem<long>
     {
         var digits = Enum.GetValues<Digit>();
 
-        var numbersFromTenToNinetyNine = digits.SelectMany(oneDigit => digits.Select(tenDigit => new TwoDigitNumber(oneDigit, tenDigit)))
+        var numbersFromTenToNinetyNine = digits
+            .SelectMany(oneDigit => digits.Select(tenDigit => new TwoDigitNumber(oneDigit, tenDigit)))
             .Where(number => number.TenDigit != Digit.Zero).ToList();
 
         return numbersFromTenToNinetyNine;

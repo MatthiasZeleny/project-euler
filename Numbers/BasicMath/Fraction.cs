@@ -46,4 +46,7 @@ public class Fraction
 
         return Equals((Fraction)obj);
     }
+
+    public static Fraction operator *(Fraction left, Fraction right) =>
+        new(left.Numerator * right.Numerator, left.Denominator * right.Denominator);
 }
