@@ -56,28 +56,16 @@ public class Problem0033 : IEulerProblem<long>
         var numbersFromTenToNinetyNine = NumbersFromTenToNinetyNine();
 
         var digitFractions = CreateEveryPossibleCombination(numbersFromTenToNinetyNine);
-
-
+        
         var digitCancelingFractions = digitFractions
             .Where(CannotBeTriviallyReduced)
             .Where(IsLessThenOne)
             .Where(CanCancelByDigits)
             .Select(ToGenericFraction);
 
-        return ToSingleReducedFraction(digitCancelingFractions).Denominator;
-    }
+        var product = digitCancelingFractions.Product();
 
-    private static Fraction ToSingleReducedFraction(IEnumerable<Fraction> fractions)
-    {
-        var neutralFraction = new Fraction(1, 1);
-        
-        var product = fractions
-            .Aggregate(
-                neutralFraction,
-                (product, factor) =>
-                    product * factor);
-
-        return product.Reduce();
+        return product.Reduce().Denominator;
     }
 
     private static Fraction ToGenericFraction(TwoDigitFraction fraction) =>
