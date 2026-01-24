@@ -58,8 +58,8 @@ public class Problem0033 : IEulerProblem<long>
         var digitFractions = CreateEveryPossibleCombination(numbersFromTenToNinetyNine);
         
         var digitCancelingFractions = digitFractions
-            .Where(CannotBeTriviallyReduced)
-            .Where(IsLessThenOne)
+            .Where(fraction => fraction.CannotBeTriviallyReduced())
+            .Where(fraction => fraction.IsLessThenOne())
             .Where(CanCancelByDigits)
             .Select(ToGenericFraction);
 
@@ -88,17 +88,5 @@ public class Problem0033 : IEulerProblem<long>
 
         return numbersFromTenToNinetyNine;
     }
-
-    private static bool CannotBeTriviallyReduced(TwoDigitFraction fraction)
-    {
-        var bothDivisibleByTen = fraction.Denominator.OneDigit == 0 && fraction.Numerator.OneDigit == 0;
-        var isDivisibleByEleven =
-            fraction.Denominator.AsNumber.IsDivisibleBy(11) && fraction.Numerator.AsNumber.IsDivisibleBy(11);
-
-        return !bothDivisibleByTen && !isDivisibleByEleven;
-    }
-
-    private static bool IsLessThenOne(TwoDigitFraction fraction) =>
-        fraction.Numerator.AsNumber < fraction.Denominator.AsNumber;
 
 }
