@@ -7,20 +7,52 @@ namespace Problems._003X;
 /// </summary>
 public class Problem0034 : IEulerProblem<long>
 {
-    public long Example() => new List<long> { 145 }
-        .Where(number => number.ToDigitList().Select(Factorial).Sum() == number).Sum();
+    /// <summary>
+    /// Quote: "Note: as 1!=1 and 2!=2 are not sums they are not included."
+    /// </summary>
+    private const long LowestCandidate = 3;
+
+    public long Example()
+    {
+        var candidates = new List<long> { 145 };
+
+        return GetSumOfNumberWhereTheFactorialOfTheirDigitsIsEqualToThemselves(candidates);
+    }
 
     public long Solution()
     {
-        var maxDigitCount = NumberList.NaturalNumbers()
-            .TakeWhile(digitCount => digitCount * Factorial(9) > TenToThePowerOf(digitCount))
-            .Last() + 1;
+        var maxDigitCount = GetMaxPossibleDigitCount();
 
-        return NumberList.NumbersBetween(3, TenToThePowerOf(maxDigitCount))
-            .Where(number => number.ToDigitList().Select(Factorial).Sum() == number).Sum();
+        var candidates = GetAllCandidates(maxDigitCount);
+
+        return GetSumOfNumberWhereTheFactorialOfTheirDigitsIsEqualToThemselves(candidates);
     }
 
-    private long TenToThePowerOf(long digitCount)
+    private static IEnumerable<long> GetAllCandidates(long maxDigitCount) => NumberList.NumbersBetween(LowestCandidate, TenToThePowerOf(maxDigitCount));
+
+    private static long GetMaxPossibleDigitCount()
+    {
+        return NumberList.NaturalNumbers()
+            .TakeWhile(digitCount => digitCount * Factorial(9) > TenToThePowerOf(digitCount))
+            .Last() + 1;
+    }
+
+    private static long GetSumOfNumberWhereTheFactorialOfTheirDigitsIsEqualToThemselves(IEnumerable<long> candidates)
+    {
+        return candidates
+            .Where(IsTheFactorialOfTheirDigitsEqualToThemselves).Sum();
+    }
+
+    private static bool IsTheFactorialOfTheirDigitsEqualToThemselves(long number)
+    {
+        var digits = number.ToDigitList();
+
+        var sumOfTheFactorialOfTheirDigits = digits.Select(Factorial).Sum();
+
+        return sumOfTheFactorialOfTheirDigits == number;
+    }
+
+    private static long TenToThePowerOf(long digitCount)
     {
         if (digitCount == 0) return 1;
 
