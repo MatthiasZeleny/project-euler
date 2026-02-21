@@ -12,9 +12,16 @@ public class Problem0034 : IEulerProblem<long>
     /// </summary>
     private const long LowestCandidate = 3;
 
+    /// <summary>
+    /// 1! + 4! + 5! = 1 + 24 + 120 = 145 fulfills <see cref="IsTheFactorialOfTheirDigitsEqualToThemselves"/>.
+    /// </summary>
+    private const long ExampleNumber = 145;
+
     public long Example()
     {
-        var candidates = new List<long> { 145 };
+        var candidates = new List<long> {
+            ExampleNumber
+        };
 
         return GetSumOfNumberWhereTheFactorialOfTheirDigitsIsEqualToThemselves(candidates);
     }
