@@ -5,6 +5,7 @@ namespace Numbers.BasicMath;
 public static class Digits
 {
     private const long BaseTen = 10;
+    public const long HighestDigitBaseTen = BaseTen - 1;
 
     public static IEnumerable<long> ToDigitList(this long number) =>
         CreateEnumerableStartingFromLowest(number).Reverse();

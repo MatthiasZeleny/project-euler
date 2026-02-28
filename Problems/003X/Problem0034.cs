@@ -39,9 +39,11 @@ public class Problem0034 : IEulerProblem<long>
 
     private static long GetMaxPossibleDigitCount()
     {
-        return NumberList.NaturalNumbers()
-            .TakeWhile(digitCount => digitCount * Factorial(9) > TenToThePowerOf(digitCount))
-            .Last() + 1;
+        var highestDigitCountWhereTheSumOfTheFactorialsAlwaysHigherThanTheMaximumNumberWithThatDigitCount = NumberList.NaturalNumbers()
+            .TakeWhile(digitCount => digitCount * Factorial(Digits.HighestDigitBaseTen) > TenToThePowerOf(digitCount))
+            .Last();
+
+        return highestDigitCountWhereTheSumOfTheFactorialsAlwaysHigherThanTheMaximumNumberWithThatDigitCount + 1;
     }
 
     private static long GetSumOfNumberWhereTheFactorialOfTheirDigitsIsEqualToThemselves(IEnumerable<long> candidates)
