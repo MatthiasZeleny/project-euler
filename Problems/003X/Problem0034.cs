@@ -40,7 +40,7 @@ public class Problem0034 : IEulerProblem<long>
     private static long GetMaxPossibleDigitCount()
     {
         var highestDigitCountWhereTheSumOfTheFactorialsAlwaysHigherThanTheMaximumNumberWithThatDigitCount = NumberList.NaturalNumbers()
-            .TakeWhile(digitCount => digitCount * Factorial(Digits.HighestDigitBaseTen) > TenToThePowerOf(digitCount))
+            .TakeWhile(digitCount => digitCount * Digits.HighestDigitBaseTen.Factorial() > TenToThePowerOf(digitCount))
             .Last();
 
         return highestDigitCountWhereTheSumOfTheFactorialsAlwaysHigherThanTheMaximumNumberWithThatDigitCount + 1;
@@ -56,7 +56,7 @@ public class Problem0034 : IEulerProblem<long>
     {
         var digits = number.ToDigitList();
 
-        var sumOfTheFactorialOfTheirDigits = digits.Select(Factorial).Sum();
+        var sumOfTheFactorialOfTheirDigits = digits.Select(l => l.Factorial()).Sum();
 
         return sumOfTheFactorialOfTheirDigits == number;
     }
@@ -68,10 +68,4 @@ public class Problem0034 : IEulerProblem<long>
         return 10 * TenToThePowerOf(digitCount - 1);
     }
 
-    private static long Factorial(long digit)
-    {
-        if (digit == 0) return 1;
-
-        return digit * Factorial(digit - 1);
-    }
 }
