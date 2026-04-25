@@ -9,7 +9,7 @@ public class Problem0035 : IEulerProblem<long>
     {
         var primeChecker = new PrimeChecker();
 
-        return new List<int> { 197 }.Select(number=> RotatingDigits.From(number)).Count(rotation => rotation.All(candidate=>primeChecker.IsPrime(candidate)));
+        return NumberList.Below(100).Select(RotatingDigits.From).Count(rotation => rotation.All(candidate=>primeChecker.IsPrime(candidate)));
     }
 
     public long Solution() => 0;
