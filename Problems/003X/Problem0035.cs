@@ -5,12 +5,20 @@ namespace Problems._003X;
 
 public class Problem0035 : IEulerProblem<long>
 {
-    public long Example()
-    {
-        var primeChecker = new PrimeChecker();
+    private readonly PrimeChecker _primeChecker =new();
 
-        return NumberList.Below(100).Select(RotatingDigits.From).Count(rotation => rotation.All(candidate=>primeChecker.IsPrime(candidate)));
-    }
+    public long Example() => GetRotatingPrimesBelow(100);
 
     public long Solution() => 0;
+
+    private int GetRotatingPrimesBelow(int threshold)
+    {
+        return NumberList
+            .Below(threshold)
+            .Select(RotatingDigits.From)
+            .Count(AreAllPrime);
+    }
+
+    private bool AreAllPrime(IEnumerable<long> rotation) => rotation.All(_primeChecker.IsPrime);
+
 }
