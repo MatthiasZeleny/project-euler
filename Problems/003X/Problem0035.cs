@@ -9,16 +9,24 @@ public class Problem0035 : IEulerProblem<long>
 
     public long Example() => GetRotatingPrimesBelow(100);
 
-    public long Solution() => 0;
+    public long Solution() => GetRotatingPrimesBelow(1_000_000);
 
     private int GetRotatingPrimesBelow(int threshold)
     {
-        return NumberList
+        var enumerable = NumberList
             .Below(threshold)
-            .Select(RotatingDigits.From)
-            .Count(AreAllPrime);
+            .Where(IsPrime);
+
+        return enumerable
+            .Count(prime =>
+            {
+                var all = RotatingDigits.From(prime).All(IsPrime);
+                Console.WriteLine($"{prime}:{all}");
+
+                return all;
+            });
     }
 
-    private bool AreAllPrime(IEnumerable<long> rotation) => rotation.All(_primeChecker.IsPrime);
+    private bool IsPrime(long primeCandidate) => _primeChecker.IsPrime(primeCandidate);
 
 }
