@@ -11,21 +11,11 @@ public class Problem0035 : IEulerProblem<long>
 
     public long Solution() => GetRotatingPrimesBelow(1_000_000);
 
-    private int GetRotatingPrimesBelow(int threshold)
-    {
-        var enumerable = NumberList
+    private int GetRotatingPrimesBelow(int threshold) =>
+        NumberList
             .Below(threshold)
-            .Where(IsPrime);
-
-        return enumerable
-            .Count(prime =>
-            {
-                var all = RotatingDigits.From(prime).All(IsPrime);
-                Console.WriteLine($"{prime}:{all}");
-
-                return all;
-            });
-    }
+            .Where(IsPrime)
+            .Count(prime => RotatingDigits.From(prime).All(IsPrime));
 
     private bool IsPrime(long primeCandidate) => _primeChecker.IsPrime(primeCandidate);
 
