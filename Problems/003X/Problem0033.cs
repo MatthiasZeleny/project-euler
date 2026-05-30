@@ -8,7 +8,7 @@ public class Problem0033 : IEulerProblem<long>
     {
         var digitFractions = new List<TwoDigitFraction>
         {
-            new(new TwoDigitNumber(Digit.Nine, Digit.Eight), new TwoDigitNumber(Digit.Four, Digit.Nine))
+            new(new TwoDigitNumber(BaseTenDigit.Nine, BaseTenDigit.Eight), new TwoDigitNumber(BaseTenDigit.Four, BaseTenDigit.Nine))
         };
         var digitCancelingFractions = digitFractions.Where(CanCancelByDigits).ToList();
 
@@ -80,11 +80,11 @@ public class Problem0033 : IEulerProblem<long>
 
     private static List<TwoDigitNumber> NumbersFromTenToNinetyNine()
     {
-        var digits = Enum.GetValues<Digit>();
+        var digits = Enum.GetValues<BaseTenDigit>();
 
         var numbersFromTenToNinetyNine = digits
             .SelectMany(oneDigit => digits.Select(tenDigit => new TwoDigitNumber(oneDigit, tenDigit)))
-            .Where(number => number.TenDigit != Digit.Zero).ToList();
+            .Where(number => number.TenDigit != BaseTenDigit.Zero).ToList();
 
         return numbersFromTenToNinetyNine;
     }

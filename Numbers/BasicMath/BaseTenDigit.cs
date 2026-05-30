@@ -1,6 +1,6 @@
 ﻿namespace Numbers.BasicMath;
 
-public enum Digit
+public enum BaseTenDigit
 {
     Zero,
     One,

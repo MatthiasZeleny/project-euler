@@ -52,5 +52,5 @@ public static class Digits
     private static List<long> TakeSubList(IReadOnlyCollection<long> digits, int startingPosition, int length) =>
         digits.Skip(startingPosition).Take(length).ToList();
 
-    public static readonly IReadOnlySet<Digit> DecimalDigits = Enum.GetValues<Digit>().ToHashSet();
+    public static readonly IReadOnlySet<BaseTenDigit> DecimalDigits = Enum.GetValues<BaseTenDigit>().ToHashSet();
 }

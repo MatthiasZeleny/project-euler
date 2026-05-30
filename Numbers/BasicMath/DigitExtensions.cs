@@ -2,7 +2,7 @@
 
 public static class DigitExtensions
 {
-    public static int AsNumber(this Digit digit)
+    public static int AsNumber(this BaseTenDigit digit)
     {
         return (int)digit;
     }

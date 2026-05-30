@@ -29,7 +29,7 @@ public class Problem0032 : IEulerProblem<int>
 
     private static IEnumerable<IReadOnlyCollection<int>> GetAllPermutationsFromOneToNine()
     {
-        IReadOnlySet<Digit> readOnlySet = Digits.DecimalDigits.ToList().Where(digit => digit != Digit.Zero).ToHashSet();
+        IReadOnlySet<BaseTenDigit> readOnlySet = Digits.DecimalDigits.ToList().Where(digit => digit != BaseTenDigit.Zero).ToHashSet();
 
         var permutations = readOnlySet.Permutations();
 
