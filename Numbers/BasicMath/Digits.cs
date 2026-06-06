@@ -7,19 +7,19 @@ public static class Digits
     private const long BaseTen = 10;
     public const long HighestDigitBaseTen = BaseTen - 1;
 
-    public static IEnumerable<long> ToDigitList(this long number) =>
-        CreateEnumerableStartingFromLowest(number).Reverse();
+    public static IEnumerable<long> ToDigitList(this long number, long digitBase = BaseTen) =>
+        CreateEnumerableStartingFromLowest(number, digitBase).Reverse();
 
     public static IEnumerable<long> ToDigitList(this BigInteger number) =>
         CreateEnumerableStartingFromLowest(number).Reverse();
 
-    private static IEnumerable<long> CreateEnumerableStartingFromLowest(long number)
+    private static IEnumerable<long> CreateEnumerableStartingFromLowest(long number, long digitBase)
     {
         var temp = number;
         while (temp > 0)
         {
-            yield return temp % BaseTen;
-            temp /= BaseTen;
+            yield return temp % digitBase;
+            temp /= digitBase;
         }
     }
 
