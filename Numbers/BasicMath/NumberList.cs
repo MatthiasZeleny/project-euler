@@ -26,7 +26,7 @@ public static class NumberList
         var digitsLowestNumber = new List<long> { 1 };
         digitsLowestNumber.AddRange(ListOfZeros(digitCount - 1));
 
-        var lowestNumber = NumberExtensions.CreateNumberFromDigitListStartingFromHighest(digitsLowestNumber);
+        var lowestNumber = NumberExtensions.CreateNumberFromDigitListStartingFromLowest(digitsLowestNumber);
 
         return lowestNumber;
     }
@@ -35,7 +35,7 @@ public static class NumberList
     {
         var digitsHighestNumber = ListOfNines(digitCount);
 
-        var highestNumber = NumberExtensions.CreateNumberFromDigitListStartingFromHighest(digitsHighestNumber);
+        var highestNumber = NumberExtensions.CreateNumberFromDigitListStartingFromLowest(digitsHighestNumber);
 
         return highestNumber;
     }

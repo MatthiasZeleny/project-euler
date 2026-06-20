@@ -10,32 +10,16 @@ public static class NumberExtensions
 
     public static bool IsPalindrome(this long number)
     {
-        var digitsStartingFromLowest = GetDigitsAsListStartingFromLowest(number);
+        var digitsStartingFromHighest = number.ToDigitList();
 
-        var numberWithReveredDigits = CreateNumberFromDigitListStartingFromHighest(digitsStartingFromLowest);
+        var numberWithReveredDigits = CreateNumberFromDigitListStartingFromLowest(digitsStartingFromHighest.Reverse());
 
         return numberWithReveredDigits == number;
     }
 
-    public static long CreateNumberFromDigitListStartingFromHighest(IEnumerable<long> digitsStartingFromLowest) =>
+    public static long CreateNumberFromDigitListStartingFromLowest(IEnumerable<long> digitsStartingFromLowest) =>
         digitsStartingFromLowest
             .Aggregate(0L, (current, nextDigit) => current * TenBase + nextDigit);
-
-    private static IEnumerable<long> GetDigitsAsListStartingFromLowest(long number)
-    {
-        var rest = number;
-
-        var digitsStartingFromLowest = new List<long>();
-
-        while (rest > 0)
-        {
-            digitsStartingFromLowest.Add(rest % TenBase);
-
-            rest /= TenBase;
-        }
-
-        return digitsStartingFromLowest;
-    }
 
     public static long Squared(this long number) => number * number;
 
