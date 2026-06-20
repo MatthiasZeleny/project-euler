@@ -10,7 +10,7 @@ public static class NumberExtensions
 
     public static bool IsPalindrome(this long number)
     {
-        var digitsStartingFromHighest = number.ToDigitList();
+        var digitsStartingFromHighest = number.ToDigitListStartingFromHighest();
 
         var numberWithReveredDigits = CreateNumberFromDigitListStartingFromLowest(digitsStartingFromHighest.Reverse());
 

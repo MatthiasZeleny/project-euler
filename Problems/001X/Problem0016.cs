@@ -14,7 +14,7 @@ public class Problem0016 : IEulerProblem<long>
 
     private static long GetDigitSumOfTwoToThePowerOf(int count) =>
         TwoToThePowerOf(count)
-            .ToDigitList()
+            .ToDigitListStartingFromHighest()
             .Sum();
 
     private static BigInteger TwoToThePowerOf(int count) =>

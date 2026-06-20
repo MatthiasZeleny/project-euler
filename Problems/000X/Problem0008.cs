@@ -36,7 +36,7 @@ public class Problem0008 : IEulerProblem<long>
 
     private static long GetLargestProductInMatrixUsingNDigits(int numberOfDigits) =>
         ThousandDigitNumber
-            .ToDigitList()
+            .ToDigitListStartingFromHighest()
             .GetConsecutiveDigitsOfLength(numberOfDigits)
             .Select(digits => digits.MultiplyToSingleNumber())
             .Max();

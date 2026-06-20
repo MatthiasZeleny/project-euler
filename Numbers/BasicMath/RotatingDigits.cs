@@ -4,7 +4,7 @@ public static class RotatingDigits
 {
     public static IEnumerable<long> From(long number)
     {
-        var digits = number.ToDigitList().ToList();
+        var digits = number.ToDigitListStartingFromHighest().ToList();
 
         var allCombinations = digits.Select((_, index) =>
         {

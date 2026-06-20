@@ -16,5 +16,5 @@ public class Problem0025 : IEulerProblem<BigInteger>
     private static BigInteger GetPositionOfFirstFibonacciNumberWithNDigits(int numberOfDigits) =>
         Fibonacci.GetAllLessOrEqualStartingWithOneOneBigInteger()
             .Select((number, index) => (Number: number, EntryNumber: index + 1))
-            .First(tuple => tuple.Number.ToDigitList().Count() >= numberOfDigits).EntryNumber;
+            .First(tuple => tuple.Number.ToDigitListStartingFromHighest().Count() >= numberOfDigits).EntryNumber;
 }

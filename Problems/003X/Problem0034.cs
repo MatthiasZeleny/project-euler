@@ -54,7 +54,7 @@ public class Problem0034 : IEulerProblem<long>
 
     private static bool IsTheFactorialOfTheirDigitsEqualToThemselves(long number)
     {
-        var digits = number.ToDigitList();
+        var digits = number.ToDigitListStartingFromHighest();
 
         var sumOfTheFactorialOfTheirDigits = digits.Select(l => l.Factorial()).Sum();
 

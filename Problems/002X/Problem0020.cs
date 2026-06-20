@@ -16,6 +16,6 @@ public class Problem0020 : IEulerProblem<long>
         Enumerable.Range(1, largestFactor - 1)
             .Select(number => new BigInteger(number))
             .Aggregate((product, factor) => product * factor)
-            .ToDigitList()
+            .ToDigitListStartingFromHighest()
             .Sum();
 }

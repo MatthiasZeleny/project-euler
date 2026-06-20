@@ -14,7 +14,7 @@ public class DigitsTests
     [TestCase(210, 2, 1, 0)]
     public void ToDigitList_Number_ShouldReturnCorrectList(long number, params long[] expectedDigits)
     {
-        var digitList = number.ToDigitList();
+        var digitList = number.ToDigitListStartingFromHighest();
 
         digitList.Should().BeEquivalentToWithStrictOrdering(expectedDigits);
     }
@@ -25,7 +25,7 @@ public class DigitsTests
     [TestCase(3, 1, 1)]
     public void ToDigitList_BaseTwo_ShouldReturnCorrectList(long number, params long[] expectedDigits)
     {
-        var digitList = number.ToDigitList(2);
+        var digitList = number.ToDigitListStartingFromHighest(2);
 
         digitList.Should().BeEquivalentToWithStrictOrdering(expectedDigits);
     }
@@ -37,7 +37,7 @@ public class DigitsTests
     [TestCase(210, 2, 1, 0)]
     public void ToDigitList_BigIntegerNumber_ShouldReturnCorrectList(long number, params long[] expectedDigits)
     {
-        var digitList = (BigInteger.One * number).ToDigitList();
+        var digitList = (BigInteger.One * number).ToDigitListStartingFromHighest();
 
         digitList.Should().BeEquivalentToWithStrictOrdering(expectedDigits);
     }
@@ -48,7 +48,7 @@ public class DigitsTests
     [TestCase("12", 1, 2)]
     public void ToDigitList_ShouldReturnCorrectDigits(string text, params long[] expectedDigits)
     {
-        var digitList = text.ToDigitList();
+        var digitList = text.ToDigitListStartingFromHighest();
 
         digitList.Should().BeEquivalentToWithStrictOrdering(expectedDigits.ToList());
     }

@@ -49,7 +49,7 @@ public class Problem0030 : IEulerProblem<BigInteger>
 
     private static Func<long, bool> IsSumOfNPowerOfDigits(int exponent)
     {
-        return number => number.ToDigitList().Select(digit => digit.ToThePowerOf(exponent))
+        return number => number.ToDigitListStartingFromHighest().Select(digit => digit.ToThePowerOf(exponent))
             .BigSum() == new BigInteger(number);
     }
 }
