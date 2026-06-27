@@ -8,18 +8,18 @@ public static class NumberExtensions
 
     public static bool IsEven(this long number) => number.IsDivisibleBy(2);
 
-    public static bool IsPalindrome(this long number)
+    public static bool IsPalindrome(this long number, long digitBase = TenBase)
     {
-        var digitsStartingFromHighest = number.ToDigitListStartingFromHighest();
+        var digitsStartingFromHighest = number.ToDigitListStartingFromHighest(digitBase);
 
-        var numberWithReveredDigits = CreateNumberFromDigitListStartingFromLowest(digitsStartingFromHighest.Reverse());
+        var numberWithReveredDigits = CreateNumberFromDigitListStartingFromLowest(digitsStartingFromHighest.Reverse(), digitBase);
 
         return numberWithReveredDigits == number;
     }
 
-    public static long CreateNumberFromDigitListStartingFromLowest(IEnumerable<long> digitsStartingFromLowest) =>
+    public static long CreateNumberFromDigitListStartingFromLowest(IEnumerable<long> digitsStartingFromLowest, long digitBase = TenBase) =>
         digitsStartingFromLowest
-            .Aggregate(0L, (current, nextDigit) => current * TenBase + nextDigit);
+            .Aggregate(0L, (current, nextDigit) => current * digitBase + nextDigit);
 
     public static long Squared(this long number) => number * number;
 

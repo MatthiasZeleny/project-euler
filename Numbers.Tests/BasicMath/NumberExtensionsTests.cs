@@ -30,6 +30,25 @@ public class NumberExtensionsTests
         isPalindrome.Should().BeTrue();
     }
 
+    [TestCase(0b1)]
+    [TestCase(0b11)]
+    [TestCase(0b101)]
+    public void IsPalindrome_BinaryPalindrome_ShouldBeTrue(long number)
+    {
+        var isPalindrome = number.IsPalindrome(2);
+
+        isPalindrome.Should().BeTrue();
+    }
+
+    [TestCase(2)]
+    [TestCase(11)]
+    public void IsPalindrome_BinaryNonPalindromeButBaseTenPalindrome_ShouldBeTrue(long number)
+    {
+        var isPalindrome = number.IsPalindrome(2);
+
+        isPalindrome.Should().BeFalse();
+    }
+
     [Test]
     public void IsPalindrome_Ten_ShouldBeFalse()
     {
