@@ -5,7 +5,7 @@ namespace Problems._003X;
 public class Problem0036 : IEulerProblem<long>
 {
     public long Example() => new List<long> { 585 }
-        .Count(IsBaseTenAndBaseTwoBaIsPalindrome);
+        .Where(IsBaseTenAndBaseTwoBaIsPalindrome).Sum();
 
     private static bool IsBaseTenAndBaseTwoBaIsPalindrome(long number) => number.IsPalindrome(10) && number.IsPalindrome(2);
 
