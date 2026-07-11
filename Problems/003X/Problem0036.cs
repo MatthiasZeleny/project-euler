@@ -9,5 +9,7 @@ public class Problem0036 : IEulerProblem<long>
 
     private static bool IsBaseTenAndBaseTwoBaIsPalindrome(long number) => number.IsPalindrome(10) && number.IsPalindrome(2);
 
-    public long Solution() => 0;
+    public long Solution() => NumberList.NumbersBetween(1,1_000_000)
+        .Where(IsBaseTenAndBaseTwoBaIsPalindrome)
+        .Sum();
 }
