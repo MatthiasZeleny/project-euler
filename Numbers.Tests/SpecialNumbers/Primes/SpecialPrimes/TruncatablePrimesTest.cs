@@ -5,7 +5,7 @@ using Numbers.SpecialNumbers.Primes.SpecialPrimes;
 namespace Numbers.Tests.SpecialNumbers.Primes.SpecialPrimes;
 
 [TestFixture]
-public class TrunctablePrimesTest
+public class TruncatablePrimesTest
 {
     private static readonly PrimeChecker PrimeChecker = new();
 
@@ -18,7 +18,7 @@ public class TrunctablePrimesTest
     {
         PrimeChecker.IsPrime(number).Should().BeTrue();
 
-        var result = number.IsTrunctablePrime(PrimeChecker);
+        var result = number.IsTruncatablePrime(PrimeChecker);
 
         result.Should().BeFalse("defined as not part of the definition in problem 37.");
     }
@@ -30,7 +30,7 @@ public class TrunctablePrimesTest
     {
         PrimeChecker.IsPrime(number).Should().BeFalse();
 
-        var result = number.IsTrunctablePrime(PrimeChecker);
+        var result = number.IsTruncatablePrime(PrimeChecker);
 
         result.Should().BeFalse();
     }
@@ -41,7 +41,29 @@ public class TrunctablePrimesTest
     {
         PrimeChecker.IsPrime(number).Should().BeTrue();
 
-        var result = number.IsTrunctablePrime(PrimeChecker);
+        var result = number.IsTruncatablePrime(PrimeChecker);
+
+        result.Should().BeFalse();
+    }
+
+    [Test]
+    [TestCase(23)]
+    public void IsTrunctablePrime_TruncatablePrime_ShouldReturnTrue(long number)
+    {
+        PrimeChecker.IsPrime(number).Should().BeTrue();
+
+        var result = number.IsTruncatablePrime(PrimeChecker);
+
+        result.Should().BeTrue();
+    }
+
+    [Test]
+    [TestCase(43)]
+    public void IsTrunctablePrime_OnlyLeftTruncatable_ShouldReturnFalse(long number)
+    {
+        PrimeChecker.IsPrime(number).Should().BeTrue();
+
+        var result = number.IsTruncatablePrime(PrimeChecker);
 
         result.Should().BeFalse();
     }
