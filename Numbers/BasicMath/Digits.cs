@@ -13,7 +13,7 @@ public static class Digits
     public static IEnumerable<long> ToDigitListStartingFromHighest(this BigInteger number) =>
         ToDigitListStartingFromLowest(number).Reverse();
 
-    private static IEnumerable<long> ToDigitListStartingFromLowest(long number, long digitBase)
+    public static IEnumerable<long> ToDigitListStartingFromLowest(this long number, long digitBase = BaseTen)
     {
         var temp = number;
         while (temp > 0)

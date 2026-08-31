@@ -48,6 +48,7 @@ public class TruncatablePrimesTest
 
     [Test]
     [TestCase(23)]
+    [TestCase(739397)]
     public void IsTrunctablePrime_TruncatablePrime_ShouldReturnTrue(long number)
     {
         PrimeChecker.IsPrime(number).Should().BeTrue();
@@ -60,6 +61,17 @@ public class TruncatablePrimesTest
     [Test]
     [TestCase(43)]
     public void IsTrunctablePrime_OnlyLeftTruncatable_ShouldReturnFalse(long number)
+    {
+        PrimeChecker.IsPrime(number).Should().BeTrue();
+
+        var result = number.IsTruncatablePrime(PrimeChecker);
+
+        result.Should().BeFalse();
+    }
+
+    [Test]
+    [TestCase( 29)]
+    public void IsTrunctablePrime_OnlyRightTruncatable_ShouldReturnFalse(long number)
     {
         PrimeChecker.IsPrime(number).Should().BeTrue();
 
