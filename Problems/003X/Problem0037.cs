@@ -1,4 +1,5 @@
 ﻿using Numbers.SpecialNumbers.Primes;
+using Numbers.SpecialNumbers.Primes.SpecialPrimes;
 
 namespace Problems._003X;
 
@@ -9,5 +10,5 @@ public class Problem0037 : IEulerProblem<long>
     public long Solution() => 0;
 
     private static bool IsValidNumber(long number) => IsPrime(number);
-    private static bool IsPrime(long number) => PrimeChecker.IsPrime(number);
+    private static bool IsPrime(long number) => number.IsTruncatablePrime(PrimeChecker);
 }
