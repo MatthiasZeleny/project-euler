@@ -1,6 +1,4 @@
-﻿using Numbers.BasicMath;
-
-namespace Numbers.SpecialNumbers.Primes.SpecialPrimes;
+﻿namespace Numbers.SpecialNumbers.Primes.SpecialPrimes;
 
 public static class TruncatablePrimes
 {
