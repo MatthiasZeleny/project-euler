@@ -10,6 +10,5 @@ public class Problem0037 : IEulerProblem<long>
     public long Example() => new List<long> { 3797 }.Where(IsValidNumber).Sum();
     public long Solution() => Numbers.BasicMath.NumberList.NaturalNumbers().Where(IsValidNumber).Take(NumberOfExistingNumbersAccordingToProblem).Sum();
 
-    private static bool IsValidNumber(long number) => IsPrime(number);
-    private static bool IsPrime(long number) => number.IsTruncatablePrime(PrimeChecker);
+    private static bool IsValidNumber(long number) => number.IsTruncatablePrime(PrimeChecker);
 }
