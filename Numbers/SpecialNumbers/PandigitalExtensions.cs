@@ -2,8 +2,15 @@
 
 public static class PandigitalExtensions
 {
+    private const long SmallestPandigitalNumber = 123456789L;
+    private const long LargestPandigitalNumber = 987654321L;
+
     public static bool IsPandigital(this long number)
     {
+        if (number is < SmallestPandigitalNumber or > LargestPandigitalNumber)
+        {
+            return false;
+        }
         var rest = number;
         var oneCounter = 0;
         var twoCounter = 0;
