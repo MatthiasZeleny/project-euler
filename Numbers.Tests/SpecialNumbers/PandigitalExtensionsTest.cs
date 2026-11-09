@@ -28,6 +28,7 @@ public class PandigitalExtensionsTest
     [TestCase(1233456789L, false, "3 is doubled")]
     [TestCase(1223456789L, false, "2 is doubled")]
     [TestCase(1123456789L, false, "1 is doubled")]
+    [TestCase(223456789L, false, "1 is doubled")]
     public void IsPandigital_ShouldReturnExpectedResult(long number, bool isPandigital, string reason)
     {
         var isPanDigital = number.IsPandigital();
