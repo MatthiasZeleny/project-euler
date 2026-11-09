@@ -7,6 +7,7 @@ public class PandigitalExtensionsTest
 {
 
     [TestCase(123456789L, true, "default example")]
+    [TestCase(987654321L, true, "highest example")]
     [TestCase(12345678L, false, "9 is missing")]
     [TestCase(12345679L, false, "8 is missing")]
     [TestCase(12345689L, false, "7 is missing")]
