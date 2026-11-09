@@ -11,6 +11,8 @@ public static class PandigitalExtensions
         {
             return false;
         }
+
+        return true;
         var rest = number;
         var oneCounter = 0;
         var twoCounter = 0;
